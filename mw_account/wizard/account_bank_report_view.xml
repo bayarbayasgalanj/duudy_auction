@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_bank_report" model="ir.ui.view">
+            <field name="name">account.bank.report.form</field>
+            <field name="model">account.bank.report</field>
+            <field name="arch" type="xml">
+                <form string="Account bank.reports">
+                    <group>
+                        <div>
+                            <field name="date_from" class="oe_inline"/> - 
+                            <field name="date_to" class="oe_inline"/>
+                        </div>
+                            <field name="by_month"/>
+                    </group>
+                    <footer>
+                        <button string="Хэвлэх" name="print_report_window" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Цуцлах" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_bank_report" model="ir.actions.act_window">
+            <field name="name">Хуулга хэвлэх</field>
+            <field name="res_model">account.bank.report</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_bank_report"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

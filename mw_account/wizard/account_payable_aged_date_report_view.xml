@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_payable_aged_date_report_view" model="ir.ui.view">
+            <field name="name">Төлөлтийн тайлан</field>
+            <field name="model">account.payable.aged.date.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <group colspan="4" col="2" expand="1">
+                    		<group>
+	                   <field name="company_id" widget='selection' />
+	                   <field name="all" />
+	                      <field name="categ_ids" widget='many2many_tags'/>
+	                   </group>
+	                   <group colspan="2" name='Filters'>
+	                        <notebook tabpos="up">
+	                            <page string="Filters">
+				                   <group colspan="2" name='Filters'>
+<!-- 	                                <field name="date_from" /> -->
+<!-- 	                                <field name="is_odoo" /> -->
+	                                <field name="date_to" />
+	                                <field name="target_move" />
+	                                <field name="period_length" />
+	                               </group>
+									<group>
+	                               </group>
+	                            </page>
+	                        </notebook>
+	                    </group>
+	                    <separator colspan="2"/>
+	                    <footer>
+<!-- 	                    <group colspan="2"> -->
+	                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="fa-file-excel-o" name="check_report" string="Татах" type="object" colspan="2" default_focus="1" />
+	                        <button icon="fa-file-excel-o" name="pivot_report" string="Харах" type="object" colspan="2" default_focus="1" />
+<!-- 	                    </group> -->
+						</footer>
+	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_payable_aged_date_report" model="ir.actions.act_window">
+            <field name="name">Account payable report</field>
+            <field name="res_model">account.payable.aged.date.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_payable_aged_date_report_view"/>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem icon="STOCK_PRINT"
+                name="Account payable report"
+                action="action_account_payable_aged_date_report"
+                id="menu_action_account_payable_aged_date_report2"
+                parent="menu_finance_legal_statement_xls"
+                sequence="12"/>
+    </data>
+</openerp>

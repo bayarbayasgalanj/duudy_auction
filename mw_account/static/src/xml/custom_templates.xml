@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="mw_account.AccountReportTranBalance">
+	    <div id="grid_report" style="width: 100%;" t-att-class="'oe_mw_grid_report'">
+		    <div id="grid"></div>
+	    	Гүйлгээ баланс
+	    </div>
+    </t>
+    
+    <t t-name="mw_account.AccountReportGeneralJournal">
+	    <div id="grid_report" style="width: 100%;" t-att-class="'oe_mw_grid_report'">
+		    <div id="grid"></div>
+	    	Ерөнхий журнал
+	    </div>
+    </t>    
+    
+    <t t-name="mw_account.AccountReportPartnerLedger">
+	    <div id="grid_report" style="width: 100%;" t-att-class="'oe_mw_grid_report'">
+		    <div id="grid"></div>
+	    	Харилцагчийн товчоо
+	    </div>
+    </t>    
+        
+
+    <t t-name="mw_account.AccountReportPartnerDetail">
+	    <div id="grid_report" style="width: 100%;" t-att-class="'oe_mw_grid_report'">
+		    <div id="grid"></div>
+	    	Харилцагчийн гүйлгээний дэлгэрэнгүй тайлан
+	    </div>
+    </t>    
+                
+</templates>
+

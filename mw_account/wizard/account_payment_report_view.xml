@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_payment_report_view" model="ir.ui.view">
+            <field name="name">Төлөлтийн тайлан</field>
+            <field name="model">account.sale.payment.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <group colspan="4" col="2" expand="1">
+                    		<group>
+	                   <field name="company_id" widget='selection' />
+	                   <field name="user_id" />
+	                   <field name="user_ids"  widget='many2many_tags'/>
+	                   <field name="branch_ids" widget='many2many_tags' domain="[('company_id', '=', company_id)]"/>
+	                   </group>
+						<group>
+		                   <field name="user_get_so" />
+	                   </group>
+	                   <group colspan="2" name='Filters'>
+	                        <notebook tabpos="up">
+	                            <page string="Filters">
+				                   <group colspan="2" name='Filters'>
+	                                <field name="date_from" />
+	                                <field name="date_to" />
+	                               </group>
+	                            </page>
+	                        </notebook>
+	                    </group>
+	                    <separator colspan="2"/>
+	                    <footer>
+<!-- 	                    <group colspan="2"> -->
+	                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="fa-file-excel-o" name="check_report" string="Татах" type="object" colspan="2" default_focus="1" />
+	                        <button icon="fa-file-excel-o" name="pivot_report" string="Харах" type="object" colspan="2" default_focus="1" />
+	                        <button icon="fa-file-excel-o" name="check_report_partner" string="Partner detail" type="object" colspan="2" default_focus="1" />
+<!-- 	                    </group> -->
+						</footer>
+	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_payment_report" model="ir.actions.act_window">
+            <field name="name">Төлөлтийн тайлан</field>
+            <field name="res_model">account.sale.payment.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_payment_report_view"/>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem icon="STOCK_PRINT"
+                name="Төлөлтийн тайлан"
+                action="action_account_payment_report"
+                id="menu_action_account_payment_report"
+                parent="menu_finance_legal_statement_xls"
+                sequence="10"/>
+    </data>
+</openerp>

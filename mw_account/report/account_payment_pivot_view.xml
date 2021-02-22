@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="account_payment_pivot_tree_view" model="ir.ui.view">
+            <field name="name">report.payment.account.pivot.tree.view</field>
+            <field name="model">report.payment.account.pivot</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+               <tree>
+                     <field name="partner_id" />
+                     <field name="amount" />
+                     <field name="get_amount" />
+                     <field name="payd_amount" />
+                     <field name="zuruu" />
+                     <field name="prec" />
+               </tree>
+            </field>
+        </record>
+
+        <record id="account_payment_pivot_form_view" model="ir.ui.view">
+            <field name="name">report.payment.account.pivot.form.view</field>
+            <field name="model">report.payment.account.pivot</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                <sheet>
+                    <group col="4">
+                     <field name="partner_id" />
+                     <field name="amount" />
+                     <field name="get_amount" />
+                     <field name="payd_amount" />
+                     <field name="zuruu" />
+                     <field name="prec" />
+                    </group>
+                </sheet>
+               </form>
+            </field>
+        </record>
+
+        <record id="account_payment_pivot_pivot" model="ir.ui.view">
+             <field name="name">report.payment.account.pivot.pivot</field>
+             <field name="model">report.payment.account.pivot</field>
+             <field name="arch" type="xml">
+                 <pivot string="Analysis">
+                     <field name="partner_id" type="row"/>
+                     <field name="amount" type="measure"/>
+                     <field name="get_amount" type="measure"/>
+                     <field name="payd_amount" type="measure"/>
+                     <field name="zuruu" type="measure"/>
+                     <field name="prec" type="measure"/>
+                 </pivot>
+             </field>
+        </record>
+
+        <record id="account_payment_pivot_search" model="ir.ui.view">
+            <field name="name">report.payment.account.pivot.search</field>
+            <field name="model">report.payment.account.pivot</field>
+            <field name="arch" type="xml">
+                <search string="Analysis">
+<!--                     <field name="date"/>
+                    <filter name="today" string="Өнөөдөр" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="Энэ сар" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="Энэ жил" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/> -->
+                    <group expand="0" string="Group By">
+                        <filter string="Partner" name="харилцагч" context="{'group_by':'partner_id'}"/>
+                        <separator/>
+<!--                         <filter string="Сараар" context="{'group_by':'date:month'}" help="Pppp"/>
+                        <filter string="Жилээр" context="{'group_by':'date:year'}" help="Жил жилээр"/> -->
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</openerp>

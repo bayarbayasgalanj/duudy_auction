@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_vat_report_view" model="ir.ui.view">
+            <field name="name">Төлөлтийн тайлан</field>
+            <field name="model">account.vat.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <group colspan="4" col="2" expand="1">
+                    		<group>
+	                   <field name="company_id" widget='selection' />
+	                   <field name="account_ids"  widget='many2many_tags'/>
+	                   <field name="journal_ids"  widget='many2many_tags'/>
+	                   <field name="is_all"  />
+	                   <field name="is_sale"  />
+	                   <field name="branch_ids" widget='many2many_tags' domain="[('company_id', '=', company_id)]"/>
+	                   </group>
+	                   <group colspan="2" name='Filters'>
+	                        <notebook tabpos="up">
+	                            <page string="Filters">
+				                   <group colspan="2" name='Filters'>
+	                                <field name="date_from" />
+	                                <field name="date_to" />
+	                               </group>
+	                            </page>
+	                        </notebook>
+	                    </group>
+	                    <separator colspan="2"/>
+	                    <group colspan="2">
+	                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+	                    </group>
+	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_vat_report" model="ir.actions.act_window">
+            <field name="name">Худалдан авалтын дэвтэр</field>
+            <field name="res_model">account.vat.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_vat_report_view"/>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem icon="STOCK_PRINT"
+                name="Худалдан авалтын дэвтэр"
+                action="action_account_vat_report"
+                id="menu_action_account_vat_report"
+                parent="menu_finance_legal_statement_xls"
+                sequence="11"/>
+    </data>
+</openerp>

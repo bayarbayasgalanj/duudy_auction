@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_chart" model="ir.ui.view">
+            <field name="name">account.chart.form</field>
+            <field name="model">account.chart</field>
+            <field name="arch" type="xml">
+                <form string="Account charts">
+                    <group>
+<!--                         <field name="target_move"/> -->
+                        <div>
+	                        <field name="company_id" />
+	                       <newline/>
+                            <field name="date_from" class="oe_inline"/> - 
+                            <field name="date_to" class="oe_inline"/>
+<!--                             <field name="target_move" class="oe_inline"/> -->
+                        </div>
+                    </group>
+                    <footer>
+                        <button string="Open Charts" name="account_chart_open_window" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_chart" model="ir.actions.act_window">
+            <field name="name">Chart of Accounts</field>
+            <field name="res_model">account.chart</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_chart"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem icon="STOCK_INDENT" action="action_account_chart"
+            id="menu_action_account_tree2"
+            parent="menu_account_chart_view" />        
+    </data>
+</openerp>

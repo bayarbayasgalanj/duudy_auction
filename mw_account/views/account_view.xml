@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="analytic_account_form_inherit">
+            <field name="name">account.analytic.account.form.inherit.budget</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_budget.view_account_analytic_account_form_inherit_budget"/>
+            <field name="priority" eval="50"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Warehouse and Products setting">
+                        <group col="4">
+                            <field name="warehouse_ids" options="{'no_create':True}"
+                                placeholder="Choose warehouse"
+                                nolabel="1" colspan="4" widget="many2many_tags"/>
+                            <field name="product_ids" options="{'no_create':True}"
+                                placeholder="Choose product template"
+                                nolabel="1" colspan="4" widget="many2many_tags"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_account_cash_move_type_form" model="ir.ui.view">
+		    <field name="name">account.cash.move.type.form</field>
+		    <field name="model">account.cash.move.type</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Cash Move Type">
+					<group>
+			            <field name="name" select="1"/>
+			            <field name="sequence"/>
+			            <field name="number"/>
+			            <field name="name_en" select="1"/>
+	<!-- 		            <field name="group_name" select="1"/> -->
+	 		            <field name="group_name" select="1" widget="selection"/> 
+			            <field name="is_income" select="1"/>
+			            <field name="company_id"/>
+					</group>			      
+					<group>
+					<field name="bank_line_ids" nolabel="1"/>
+					</group>      
+		        </form>
+		    </field>
+		</record>
+		
+		<record id="view_account_cash_move_type_tree" model="ir.ui.view">
+		    <field name="name">account.cash.move.type.tree</field>
+		    <field name="model">account.cash.move.type</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Cash Move Type">
+		            <field name="name"/>
+ 		            <field name="group_name"/> 
+<!-- 		            <field name="name"/> -->
+		            <field name="number"/>
+		            <field name="sequence"/>
+		            <field name="company_id"/>
+		        </tree>
+		    </field>
+		</record>
+		
+        <record id="view_account_cash_move_search" model="ir.ui.view">
+            <field name="name">account.cash.move.type.search.account</field>
+            <field name="model">account.cash.move.type</field>
+            <field name="arch" type="xml">
+                <search string="Account cash move">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('number','=like','%'+str(self)+'%')]" string="Type"/>
+                    <field name="is_income"/>
+                </search>
+            </field>
+        </record>		
+        
+		<record id="action_account_cash_move_type" model="ir.actions.act_window">
+		    <field name="name">Cash Move Type</field>
+		    <field name="res_model">account.cash.move.type</field>
+		    <field name="view_mode">tree,form</field>
+<!--             <field name="search_view_id" ref="view_account_cash_move_search"/> -->
+            <field name="view_id" ref="view_account_cash_move_type_tree"/>
+		    <field name="help">The cash move types is used to generate your statement of cash flows report from your cash statement orders or bank statements orders. You can manage your cash statement types and edit your statement of cash flows report template.</field>
+		</record>
+		
+		<menuitem action="action_account_cash_move_type" id="menu_action_account_cash_move_type" parent="account.menu_finance_reports" string="Мөнгөн гүйлгээний төрөл" />
+        		
+<!-- skip conf -->
+
+        <record id="view_account_cash_skip_conf_form" model="ir.ui.view">
+		    <field name="name">account.cash.skip.conf.form</field>
+		    <field name="model">account.cash.skip.conf</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Cash Move Type">
+					<group>
+			            <field name="name" select="1"/>
+					</group>			      
+					<group>
+					<field name="skip_journal_ids" nolabel="1"/>
+					</group>      
+		        </form>
+		    </field>
+		</record>
+		
+		<record id="view_account_cash_skip_conf_tree" model="ir.ui.view">
+		    <field name="name">account.cash.skip.conf.tree</field>
+		    <field name="model">account.cash.skip.conf</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Cash Move Type">
+		            <field name="name"/>
+		        </tree>
+		    </field>
+		</record>
+		
+        <record id="view_account_cash_skip_conf_search" model="ir.ui.view">
+            <field name="name">account.cash.skip.conf.search.account</field>
+            <field name="model">account.cash.skip.conf</field>
+            <field name="arch" type="xml">
+                <search string="Account cash move">
+                    <field name="name" filter_domain="[('name','ilike',self))]" string="Type"/>
+                </search>
+            </field>
+        </record>		
+        
+		<record id="action_account_cash_skip_conf" model="ir.actions.act_window">
+		    <field name="name">Мөнгөн гүйлгээний тохиргоо</field>
+		    <field name="res_model">account.cash.skip.conf</field>
+		    <field name="view_mode">tree,form</field>
+<!--             <field name="search_view_id" ref="view_account_cash_move_search"/> -->
+            <field name="view_id" ref="view_account_cash_skip_conf_tree"/>
+		</record>
+		
+		<menuitem action="action_account_cash_skip_conf" id="menu_action_account_cash_skip_conf" parent="account.menu_finance_reports" string="Мөнгөн гүйлгээний тохиргоо" />
+        		
+
+      <menuitem parent="account.menu_finance"
+				name="Chart of account"
+	            id="menu_account_chart_view"/>
+        
+        <!-- account_accountant -->
+        <record id="menu_account_chart_view" model="ir.ui.menu">
+            <field name="parent_id" ref="account_accountant.menu_accounting"/>
+        </record>
+
+
+        <record id="view_account_bnk_stmt_wm_cashbox" model="ir.ui.view">
+            <field name="name">account.bnk_stmt_cashbox_mw.form</field>
+            <field name="model">account.bank.statement.cashbox</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+						<group>
+	                    <field name="desc" string="Бусад зардалын утга"/>
+	                    <field name="other" string="Дүн"/>
+	                    </group>
+                        <field name="cashbox_lines_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="coin_value"/>
+                                <field name="number"/>
+                                <field name="subtotal" sum="Total"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Confirm" name="validate" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_account_bnk_stmt_wm_cashbox" model="ir.actions.act_window">
+            <field name="name">Касс дэвсгэртлэх</field>
+            <field name="res_model">account.bank.statement.cashbox</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_bnk_stmt_wm_cashbox"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_bank_statement_line_mw_form" model="ir.ui.view">
+            <field name="name">bank.statement.line.mw.form</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="priority">8</field>
+            <field name="arch" type="xml">
+            <form string="Statement Line" create="false">
+ 				 <group col="4">
+                    <field name="statement_id" readonly="1"/>
+                    <field name="date" readonly="1"/>
+                    <field name="name" readonly="1"/>
+                    <field name="ref" readonly="1"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="amount" readonly="1"/>
+                    <field name="journal_currency_id" invisible="1"/>
+                    <field name="sequence" invisible="1"/>
+                    <field name="note" readonly="1"/>
+                     <field name="cashbox_end_id" invisible="1"/>                    
+                    <field name="transaction_type" readonly="1"/>
+                     <button class="oe_inline oe_link oe_edit_only" name="%(action_view_account_bnk_stmt_wm_cashbox)d"
+                        string="Дэвсгэртлэх" type="action"
+                        attrs="{'invisible':[('cashbox_end_id','!=',False)]}" 
+                        context="{'balance':'close'}"/>
+                    <button name="open_cashbox_id" 
+                    	attrs="{'invisible': [('cashbox_end_id', '=', False)]}" 
+                    	string="Дэвсгэртлэх" type="object" class="oe_edit_only oe_link oe_inline" 
+                    	context="{'balance':'close', 'cashbox_id': cashbox_end_id}"/>
+                    
+                </group>
+            </form>
+            </field>
+        </record>        
+                
+        <record model="ir.ui.view" id="view_bank_statement_form_mn">
+            <field name="name">account.bank.statement.form.mn</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form"/>   
+            <field name="arch" type="xml">
+		        	<xpath expr='//button[@name="button_journal_entries"]' position="before">
+	                    <button name="%(action_partial_bank_confirm)d" string="Partial confirm" type="action" states="open" class="oe_highlight" />
+	                    <button name="%(action_bank_payment_match)d" string="Payment match" type="action" states="open" class="oe_highlight" />
+ 		        		<button class="oe_inline oe_stat_button" name="%(action_account_bank_statement_import_file)d"
+			                string="Import File" type="action"
+			                attrs="{'invisible':[('state','=','confirm')]}" widget="statinfo" icon="fa-pencil-square-o"/>
+<!--			                
+		            	<button class="oe_inline oe_stat_button" name="%(action_view_account_bank_statement_import_invoice)d"
+			                string="Import Invoice" type="action"
+			                attrs="{'invisible':[('state','=','confirm')]}" widget="statinfo" icon="fa-pencil-square-o"/>  -->             	
+                     <button class="oe_stat_button" string="Нэхэмжлэх импортлох"
+	                    	type="action" name="%(mw_account.action_import_bank_invoice)d" icon="fa-tasks" states="open,draft"/> 
+                     <button name="%(action_account_bank_report)d" string="Хэвлэх" type="action"/>
+	            </xpath>
+                 <xpath expr="//field[@name='balance_end']" position="after">
+                      <field name="in_total" string="Нийт орлого"/>
+	                <field name="out_total" string="Нийт зарлага"/>
+				</xpath>	            
+                <xpath expr="//div[@name='button_box']/button[@name='button_journal_entries']" position="after">
+                    <button class="oe_stat_button" name="button_import"
+                                    string="Ажил гүйлгээ импортолох" type="object"
+                                    attrs="{'invisible': [('state','not in',['open'])]}" icon="fa-download"/>
+                </xpath>
+                 <xpath expr="//field[@name='line_ids']/tree/field[@name='sequence']" position="replace">
+					<field name="sequence" invisible="1"/>
+                </xpath>
+                 <xpath expr="//field[@name='line_ids']/tree/field[@name='partner_id']" position="replace">
+<!--                     <field name="cash_type_id" /> -->
+					<field name="is_payable" invisible="1"/>
+                    <field name="partner_id" domain="['|',('parent_id','=',False),('is_company','=',True)]"
+                         context="{'default_supplier': 1}"
+                         attrs="{'readonly' : [('journal_entry_ids', '!=', [])], 'required' : [('is_payable', '=', True)]}" options="{'no_create': True}"/>
+					<field name="partner_print" optional="show"/>
+                    <field name="analytic_account_id" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }" optional="show" 
+                    									groups="mw_account.group_mn_analytic_accountant"/>
+                    <field name="account_id" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }" options='{"fg_color": "green: move_color == True; red:inv_color == True"}' domain="[('is_stock','=',False)]"/> 
+                    <field name="bank_account_id" 
+                        domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]" force_save="1	"/>
+       				<button name="print_bank_order" colspan="1" type="object" icon="fa-print"/>
+<!--                      <button name="action_show_details" string="Change" type="object" icon="fa-list" attrs="{'invisible': [('journal_entry_ids', '=', [])]}" options='{"warn": true}'/> -->
+                        <button name="%(action_account_bank_line_change)d" icon="fa-arrows" class="oe_stat_button" string="Change" type="action" attrs="{'invisible': [('journal_entry_ids', '=', [])]}"/>
+                    <field name="invoice_ids" invisible="1"/>
+                    <field name="import_aml_ids" invisible="1" />
+                    <field name="import_line_ids" invisible="1" />
+		           <field name="move_color" invisible="1"/>
+		           <field name="inv_color" invisible="1"/>
+                   <button name="show_details" string="Modify" type="object" icon="fa-pencil" optional="show"/>
+			       <button name="print_mw_statement"
+				                           optional="show"     string="БЭЛЭН МӨНГӨ ХҮЛЭЭН АВАХ БАРИМТ ХЭВЛЭХ" type="object" icon="fa-print" class="oe_highlight"/>
+                </xpath>
+                 <xpath expr="//field[@name='line_ids']/tree/field[@name='date']" position="after">
+		           <field name="cash_type_id" optional="show" required="1" string="МГ төрөл"/>
+                </xpath>
+                <xpath expr="//button[@name='button_cancel_reconciliation']" position="after">
+                    <button name="button_validate_line" string="Батлах" type="object" icon="fa-bars"
+                    				attrs="{'invisible': ['|',('journal_entry_ids', '!=', [])]}"  optional="show"/><!--   -->
+                </xpath>
+            </field>
+        </record>
+        
+
+        <record id="view_account_mn_form" model="ir.ui.view">
+            <field name="name">account.account.mn.form</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>   
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='deprecated']" position="after">
+	                <field name="is_temporary"/>
+	                <field name="is_stock"/>
+	                <field name="is_recpay"/>
+                    <field name="cmtype_ids" widget="many2many_tags"/>
+	                <field name="is_sale_return"/>
+	                <field name="is_employee_recpay"/>
+                </xpath>
+                 <xpath expr="//field[@name='internal_type']" position="replace">
+	                <field name="internal_type"/>
+                 </xpath>
+                 <xpath expr="//field[@name='group_id']" position="after">
+<!--                     <field name="analytic_account_ids" widget="many2many_tags"/> -->
+                    <field name="analytic_account_id" />                    
+                </xpath>
+            </field>
+        </record>
+        
+
+        <record id="view_account_mn_list" model="ir.ui.view">
+            <field name="name">account.account.mn.list</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>   
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='user_type_id']" position="after">
+                 </xpath>
+            </field>
+        </record>        
+        
+
+            
+        <record id="view_account_list_mn" model="ir.ui.view">
+            <field name="name">account.account.mn</field>
+            <field name="model">account.account</field>
+            <field name="arch" type="xml">
+                <tree string="Chart of accounts" >
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="user_type_id"/>
+                    <field name="balance_start" />
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance" />
+                </tree>
+            </field>
+        </record>            
+        
+        <record id="action_account_form_mn" model="ir.actions.act_window">
+            <field name="name">Chart account</field>
+            <field name="res_model">account.account</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="account.view_account_search"/>
+            <field name="view_id" ref="view_account_list_mn"/>
+        </record>
+      
+		<menuitem action="account.action_account_type_form" id="menu_action_account_type_form" parent="account.account_account_menu" />
+                  		
+        <record id="view_account_type_mn_form" model="ir.ui.view">
+            <field name="name">account.account.type.mn.form</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='include_initial_balance']" position="after">
+                    <field name="balance_type"/>
+                 </xpath>
+            </field>
+        </record>
+           
+
+    <record id="account_move_many_print_form" model="ir.ui.view">
+        <field name="name">account.move.many.print.confirm.form</field>
+        <field name="model">account.move.many.confirm</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="4">
+                    <field name="print_payment" />
+                </group>
+                <footer>
+                    <button name="action_done" string="Multi print" type="object" class="btn-primary"/>
+                    <button special="cancel" string="Cancel" type="object" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window name="Multi print"
+            res_model="account.move.many.confirm"
+            binding_model="account.move"
+            view_mode="form"
+            target="new"
+            id="account_move_many_print_action"/>
+
+	<record id="view_account_move_line_mw_account_tree" model="ir.ui.view">
+        <field name="name">account.move.line.mw_account</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_maturity']" position="after">
+                <field name="cash_type_id"/>
+            </xpath>
+        </field>
+    </record>
+    
+<!-- 
+        <record id="base.view_partner_bank_form" model="ir.ui.view">
+            <field name="name">res.partner.bank.form</field>
+            <field name="model">res.partner.bank</field>
+            <field name="arch" type="xml">
+                <form string="Bank account">
+                    <group col="4">
+                        <field name="acc_number"/>
+                        <field name="bank_id"/>
+	                    <field name="is_print"/>
+                        <field name="currency_id" groups="base.group_multi_currency" options="{'no_create': True}"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="base.view_partner_bank_tree" model="ir.ui.view">
+            <field name="name">res.partner.bank.tree</field>
+            <field name="model">res.partner.bank</field>
+            <field name="arch" type="xml">
+                <tree string="Bank Accounts">
+                    <field name="sequence" invisible="1"/>
+                    <field name="acc_number"/>
+                    <field name="bank_name"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="partner_id"/>
+                    <field name="is_print"/>
+                </tree>
+            </field>
+        </record>     -->
+        
+
+        <record id="view_account_print_invoice_sign_form" model="ir.ui.view">
+		    <field name="name">print.invoice.sign.form</field>
+		    <field name="model">print.invoice.sign</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Cash Move Type">
+					<group>
+			            <field name="name" select="1"/>
+			            <field name="desc" select="1"/>
+					</group>			      
+		        </form>
+		    </field>
+		</record>
+		
+		<record id="view_account_print_invoice_sign" model="ir.ui.view">
+		    <field name="name">print.invoice.sign.tree</field>
+		    <field name="model">print.invoice.sign</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Cash Move Type">
+		            <field name="name"/>
+		        </tree>
+		    </field>
+		</record>
+		
+		<record id="action_account_print_invoice_sign" model="ir.actions.act_window">
+		    <field name="name">Invoice sign</field>
+		    <field name="res_model">print.invoice.sign</field>
+		    <field name="view_mode">tree,form</field>
+		    <field name="help">The cash move types is used to generate your statement of cash flows report from your cash statement orders or bank statements orders. You can manage your cash statement types and edit your statement of cash flows report template.</field>
+		</record>
+		
+		<menuitem action="action_account_print_invoice_sign" id="menu_action_print_invoice_sign" parent="account.menu_finance_reports" string="Invoice sign" />
+        		
+
+	<record id="view_account_move_line_mw_account_tree" model="ir.ui.view">
+        <field name="name">account.move.mw_account</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_invoice_register_payment']" position="after">
+                        <button name="%(action_view_account_move_print)d" string="Print invoice"
+                                type="action" 
+                                attrs="{'invisible': [('type', 'not in', ('out_invoice', 'out_refund','in_invoice'))]}"/>
+            </xpath>
+                 <xpath expr="//field[@name='to_check']" position="after">
+	                    <field name="from_ref" string="Гүйлгээний утгаар"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='quantity']" position="attributes">
+                <attribute name="sum">SUM</attribute>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']" position="attributes">
+                <attribute name="sum">SUM</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+        <record id="account.view_bank_statement_line_form" model="ir.ui.view">
+            <field name="name">bank.statement.line.form</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="priority">8</field>
+            <field name="arch" type="xml">
+            <form string="Statement Line" create="false">
+                <group col="4">
+                    <field name="statement_id"/>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="journal_currency_id" invisible="1"/>
+                    <field name="sequence" invisible="1"/>
+                    <field name="note"/>
+                     <field name="cashbox_end_id" invisible="1"/>                    
+                    <field name="transaction_type"/>
+                     <button class="oe_inline oe_link oe_edit_only" name="%(action_view_account_bnk_stmt_wm_cashbox)d"
+                        string="Дэвсгэртлэх" type="action"
+                        attrs="{'invisible':[('cashbox_end_id','!=',False)]}" 
+                        context="{'balance':'close'}"/>
+                    <button name="open_cashbox_id" 
+                    	attrs="{'invisible': [('cashbox_end_id', '=', False)]}" 
+                    	string="Дэвсгэртлэх" type="object" class="oe_edit_only oe_link oe_inline" 
+                    	context="{'balance':'close', 'cashbox_id': cashbox_end_id}"/>
+                    
+                </group>
+            </form>
+            </field>
+        </record>
+        
+        <!-- Касс хуулбарлах -->
+        <record id="copy_statement_view_form" model="ir.ui.view">
+            <field name="name">account.bank.statement.copy.view.form</field>
+            <field name="model">account.bank.statement.copy</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="date"/>
+                    </group>
+                    <group class="oe_footer">
+                        <button name="action_done" string="Хуулбарлах" type="object" icon="gtk-apply"/>
+                        <button special="cancel" string="Үгүй" type="object" icon="gtk-cancel"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <act_window name="Касс хуулбарлах"
+                res_model="account.bank.statement.copy"
+                binding_model="account.bank.statement"
+                view_mode="form"
+                view_id = "copy_statement_view_form"
+                target="new"
+                id="copy_statement" />
+                
+                
+<!-- search wrong cash move types -->            
+
+        <record id="view_account_cash_move_check_form" model="ir.ui.view">
+		    <field name="name">account.cash.move.check.form</field>
+		    <field name="model">account.cash.move.check</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Cash Move Type">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+					<group>
+			            <field name="name" select="1"/>
+			            <field name="company_id" />
+					</group>			      
+                  <notebook>
+                        <page string="Тооцооллууд">
+		                     <button type="object" name="compute" string="Тооцоолох" states="draft"/> 
+<!-- 		                     <button type="object" name="update" string="Дт Кт Шинэчлэх !!" states="draft"/>  -->
+		                    <field colspan="4" name="line_ids" nolabel="1">
+		                    	<tree delete="true" create="true" >
+  			                            <field name="name" string="Утга"/>
+  			                            <field name="date" string="Огноо"/>
+					                    <field name="debit" string="Дебит" />
+					                    <field name="credit" string="Кредит"/>
+					                    <field name="amount" string="Дүн" />
+					                    <field name="cash_type_id" />
+					                    <field name="bank_line_id" />
+					                    <field name="is_income" />
+					             </tree>
+				           </field>
+			           </page>
+                        <page string="Төрөл сонгоогой">
+		                     <button type="object" name="compute_null" string="Тооцоолох" states="draft"/> 
+<!-- 		                     <button type="object" name="update" string="Дт Кт Шинэчлэх !!" states="draft"/>  -->
+		                    <field colspan="4" name="null_line_ids" nolabel="1">
+		                    	<tree delete="true" create="true" >
+  			                            <field name="name" string="Утга"/>
+  			                            <field name="date" string="Огноо"/>
+					                    <field name="debit" string="Дебит" />
+					                    <field name="credit" string="Кредит"/>
+					                    <field name="amount" string="Дүн" />
+<!-- 					                    <field name="cash_type_id" /> -->
+					                    <field name="aml_id" />
+ 					                    <field name="bsl_id" /> 
+					             </tree>
+				           </field>
+			           </page>
+		           <page>
+						<group>
+							<field name="bank_line_ids" nolabel="1"/>
+						</group>      
+		           </page>
+		           </notebook>
+		        </form>
+		    </field>
+		</record>
+		
+		<record id="view_account_cash_move_check_tree" model="ir.ui.view">
+		    <field name="name">account.cash.move.check.tree</field>
+		    <field name="model">account.cash.move.check</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Cash Move Type">
+		            <field name="name"/>
+		        </tree>
+		    </field>
+		</record>
+		
+		<record id="action_account_cash_move_check" model="ir.actions.act_window">
+		    <field name="name">Cash Move Check</field>
+		    <field name="res_model">account.cash.move.check</field>
+		    <field name="view_mode">tree,form</field>
+<!--             <field name="search_view_id" ref="view_account_cash_move_check_search"/> -->
+            <field name="view_id" ref="view_account_cash_move_check_tree"/>
+		    <field name="help">The cash move types is used to generate your statement of cash flows report from your cash statement orders or bank statements orders. You can manage your cash statement types and edit your statement of cash flows report template.</field>
+		</record>
+		
+		<menuitem action="action_account_cash_move_check" id="menu_action_account_cash_move_check" parent="account.menu_finance_reports" string="Мөнгөн гүйлгээ шалгах" />
+        		            	                
+	</data>
+</odoo>

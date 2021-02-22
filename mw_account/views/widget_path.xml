@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+    <template id="account_report_mw_account" name="Account's assets common" inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+    
+	            <script type="text/javascript" src="/mw_account/static/src/js/widget.js"></script>
+	            <script type="text/javascript" src="/mw_account/static/src/js/widget_general_journal.js"></script>
+	            <script type="text/javascript" src="/mw_account/static/src/js/widget_partner_ledger.js"></script>
+	            <script type="text/javascript" src="/mw_account/static/src/js/widget_partner_detail.js"></script>
+	
+ 			    <!-- <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script> -->
+			    
+<!-- 			    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jszip.min.js"></script> 
+			    
+	 		    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>-->
+	 		    
+	 		    
+	 		    <script src="/mw_html_finance_report/static/lib/js/jszip.min.js"></script>
+	 		    <script src="/mw_html_finance_report/static/lib/js/kendo.all.min.js"></script>
+    
+            </xpath>
+        
+     </template>
+	</data>
+</odoo>

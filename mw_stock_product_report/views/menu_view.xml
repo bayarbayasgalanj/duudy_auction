@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<menuitem id="menu_product_income_expense_report" 
+		action="action_product_detailed_income_expense" 
+		parent="stock.menu_warehouse_report" sequence="2" 
+		groups="mw_stock_product_report.group_stock_reporter"/>
+	
+</odoo>

@@ -1,0 +1,39 @@
+.oe_mw_grid_report .k-grid td, .k-grid th {
+    padding: 0px 0px;
+
+}
+
+.k-grid td, .k-grid th {
+    padding: 0px 0px;
+
+}
+
+.k-grid {
+    font-size: 10px;
+}
+
+
+.k-grid td {
+    line-height: 2em;
+}
+
+
+.oe_mw_grid_report td, th {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+ .mw_subtotalcolor{
+        font-weight: bold;
+        background-color: #F0FFFF;
+      }
+
+ .mw_totaltcolor {
+        font-weight: bold;
+        background-color: #00FFFF;
+      }
+
+ .mw_initcolor {
+        font-weight: bold;
+        background-color: #DCDCDC;
+      }

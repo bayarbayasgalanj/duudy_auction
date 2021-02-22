@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="assets_for_branch" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/branch/static/src/js/pos_extended.js"></script>
+            </xpath>
+        </template>
+        
+        	
+	    <record id="pos_branch_field_session" model="ir.ui.view">
+            <field name="name">POS Session</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <field name="config_id" position="after">
+						<field name="branch_id"/>
+                </field>
+            </field>
+        </record>
+
+
+
+		<record model="ir.ui.view" id="pos_sale_order_branch_field">
+		    <field name="name">pos.order.view.form</field>
+		    <field name="model">pos.order</field>
+		    <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+		    <field name="arch" type="xml">
+		    
+		        <field name="partner_id" position="after">
+					<field string="Branch" name="branch_id"/>
+				</field>
+				
+		    </field>
+		</record>
+    
+    
+<!-- 
+	    <record id="pos_account_statement_line_extended" model="ir.ui.view">
+            <field name="name">POS Statement Line</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+					
+            	<xpath expr="//page/field[@name='statement_ids']/tree/field[@name='amount']" position="after">
+                    <field name="branch_id"/>
+                </xpath>
+
+            </field>
+        </record> -->
+
+
+
+	    <record id="pos_config_view_inherit_form" model="ir.ui.view">
+	        <field name="name">pos.config.form.branch.view</field>
+	        <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+	        <field name="arch" type="xml">
+	            	<xpath expr="//div[@id='inventory_location']" position="inside">
+                        <div class="col-xs-12 col-md-6 o_setting_box" >
+                            <div class="o_setting_right_pane">
+                                <label for="branch_id" string="Branch"/>
+                                <div class="text-muted">
+                                    Branchs used for the own session
+                                </div>
+                                <div>
+				                    <field name="branch_id" options="{'no_create': True}" required="1"/>
+				                </div>
+                                <label for="address"/>
+                                <div>
+				                    <field name="address" readonly="0"/>
+				                </div>
+                                <label for="telephone_no"/>
+                                <div>
+				                    <field name="telephone_no" readonly="0"/>
+				                </div>
+                                <div class="text-muted">
+                                    Used for create invoice branch
+                                </div>
+                                <div>
+				                    <field name="invoice_branch_id" options="{'no_create': True}" attrs="{'required' : [('module_account', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>	            	
+                </xpath>
+
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="point_of_sale.action_pos_config_kanban">
+            <field name="name">Point of Sale</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.config</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="point_of_sale.view_pos_config_search" />
+             <field name="domain">[('branch_id.user_ids', 'in',[uid])]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new PoS config.
+              </p><p>
+                Configure at least one Point of Sale to be able to sell through the PoS interface.
+              </p>
+            </field>
+        </record>
+        
+    
+    </data>
+</odoo>
+

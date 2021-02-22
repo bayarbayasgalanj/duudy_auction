@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_statement_report_view" model="ir.ui.view">
+            <field name="name">account.statement.report wizard</field>
+            <field name="model">account.statement.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                    <group col="4" colspan="4">
+                        <newline/>
+                        <field name="date_start" />
+                        <field name="date_end" />
+                    </group>
+                    <group >
+                        <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <newline/>
+                    </group>
+                    <group col="3">
+                        <button icon="fa-times" special="cancel" string="Хаах"/>
+                        <!-- <button name="export_report" string="Татах" type="object" 
+                        icon="fa-file-excel-o"/> -->
+                        <button name="see_pivot_report" string="Харах" type="object" 
+                        class="oe_highlight"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_account_statement_report" model="ir.actions.act_window">
+            <field name="name">Касс/Харилцах шинжилгээ</field>
+            <field name="res_model">account.statement.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_statement_report_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_action_account_statement_report" action="action_account_statement_report" name="Касс/Харилцах шинжилгээ" parent="menu_cash_bank_statement_tree" sequence="9"/>
+
+        <!-- Other expense -->
+        <record id="account_statement_pivot_report" model="ir.ui.view">
+             <field name="name">account.statement.pivot.view</field>
+             <field name="model">account.statement.pivot</field>
+             <field name="arch" type="xml">
+                 <pivot string="Analysis">
+                     <field name="journal_id" type="row"/>
+                     <field name="amount_expense" type="measure"/>
+                     <field name="amount_income" type="measure"/>
+                     <field name="balance_start" type="measure"/>
+                     <field name="balance_end" type="measure"/>
+                 </pivot>
+             </field>
+        </record>
+
+        <record id="account_statement_pivot_search" model="ir.ui.view">
+            <field name="name">account.statement.pivot.search</field>
+            <field name="model">account.statement.pivot</field>
+            <field name="arch" type="xml">
+                <search string="Analysis 1">
+<!--                     <filter name="today" string="Өнөөдөр" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="Энэ сар" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="Энэ жил" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date_expected','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Сараар" context="{'group_by':'date:month'}" help="Сараар"/>
+                        <filter string="Жилээр" context="{'group_by':'date:year'}" help="Жил жилээр"/>
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+    </data>
+</openerp>

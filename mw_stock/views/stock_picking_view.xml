@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_tree_request_inherit_mw" model="ir.ui.view">
+        <field name="name">stock.picking.tree.view.request_mw</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="scheduled_date" position="after">
+        		<field name="date_done" optional="show" readonly="1" force_save="1"/>
+        	</field>
+        </field>
+    </record>
+
+    <record id="view_picking_withcarrier_out_form" model="ir.ui.view">
+        <field name="name">delivery.stock.picking_withcarrier.form.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+          <data>
+                <xpath expr="//field[@name='move_ids_without_package']/tree" position="attributes">
+                    <attribute name="decoration-muted">scrapped == True or (state == 'done' and is_locked == True)</attribute>
+                    <attribute name="decoration-danger">state == 'cancel' or (state not in ('cancel', 'done') and product_uom_qty != reserved_availability) or ((not parent.immediate_transfer and state != 'done' and quantity_done > reserved_availability and show_reserved_availability))</attribute>
+                </xpath>
+                <field name="product_uom" position="after">
+                    <field name="state" readonly="1" force_save="1"/>
+                </field>
+                <xpath expr="//button[@name='action_toggle_is_locked'][1]" position="attributes">
+                    <attribute name="groups">stock.group_stock_user,stock.group_stock_manager</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_toggle_is_locked'][2]" position="attributes">
+                    <attribute name="groups">stock.group_stock_user,stock.group_stock_manager</attribute>
+                </xpath>
+                <field name="location_dest_id" position="after">
+                    <field name="view_from_loc_on_hand" invisible="1"/>
+                    <field name="move_product_view_on_hand" widget="boolean_toggle" invisible="1"/>
+                </field>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_id']" position="before">
+                    <field name="on_hand_from_loc" optional="show" sum="SUM" attrs="{'column_invisible': [('parent.view_from_loc_on_hand', '!=', True)]}"/>
+                    <field name="move_product_view_on_hand" invisible="1"/>
+                </xpath>
+                <button name="action_cancel" position="after">
+                    <button name="action_to_draft" string="Ноорог болгох" 
+                    type="object" class="btn-danger" states="cancel"/>
+                    <!-- <button name="action_to_force_unreverse" string="Хүчээр Нөөцлөлтийн Цуцлах" 
+                    type="object" class="btn-warning" states="confirmed,assigned" invisible="1"/> -->
+                </button>
+                <xpath expr="//field[@name='location_id']" position="attributes">
+                    <attribute name="domain">[('usage', '=', 'internal')]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                    <attribute name="domain">[('usage', '=', 'internal')]</attribute>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/form/group/field[@name='product_id']" position="before">
+                    <field name="location_id" readonly="1"/>
+                    <field name="location_dest_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']" position="attributes">
+                    <attribute name="sum">SUM</attribute>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='reserved_availability']" position="attributes">
+                    <attribute name="sum">SUM</attribute>
+                </xpath>
+                <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position="attributes">
+                    <attribute name="sum">SUM</attribute>
+                </xpath>
+                <field name="picking_type_id" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
+                </field>
+                <field name="date_done" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
+                    <attribute name="invisible">0</attribute>
+                </field>
+                <button name="do_print_picking" position="replace">
+                    <button name="do_print_picking" string="Баримт Хэвлэх" groups="stock.group_stock_user" type="object"/>
+                </button>
+                <button name="%(stock.action_report_delivery)d" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                    
+                <field name="priority" position="after">
+                    <field name="printed"/>
+                    <button name="action_barcode_print" string="Шошго хэвлэх"
+                        type="object" class="oe_highlight"/>
+                </field>
+                <xpath expr="//form/sheet/notebook" position="before">
+                    <group attrs="{'invisible': [('state', 'in', ['done','cancel'])]}">
+                        <group col="1">
+                            <button name="copy_qty_to_done" confirm="Нөөцлөгдсөн тоог дууссан руу хуулах итгэлтэй Байна уу!!" string="Нөөцлөгдсөн тоог дууссан руу хуулах" attrs="{'inivisible': [('state','in',['done','cancel'])]}" type="object" class="oe_highlight"/>
+                            <button name="copy_uom_qty_to_done" confirm="Захиалсан тоог дууссан руу хуулах итгэлтэй Байна уу!!" string="Захиалсан тоог дууссан руу хуулах" attrs="{'inivisible': [('state','in',['done','cancel'])]}" type="object" class="oe_highlight"/>
+                        </group>
+                    </group>
+                </xpath>
+          </data>
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_mw_stock" model="ir.ui.view">
+        <field name="name">view.stock.move.line.mw.stock</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_uom_qty" position="attributes">
+                <attribute name="sum">SUM</attribute>
+            </field>
+            <field name="qty_done" position="attributes">
+                <attribute name="sum">SUM</attribute>
+            </field>
+        </field>
+    </record>
+    
+    <record id="view_picking_internal_search_inherit_mw_stock" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search.inherit.mn.stock</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="model">stock.picking</field>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sched_date"/>
+            </field>
+            <filter name="done" position="after">
+                <filter name="this_month" string="Энэ сар" 
+                    domain="[('scheduled_date','like',time.strftime('%%Y-%%m'))]"/>
+                <filter string="Энэ Долоо Хоног" name="this_week" domain="[
+                ('scheduled_date', '>=', (datetime.datetime.combine(context_today() + relativedelta(weeks=-1,days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')),
+                ('scheduled_date', '&lt;', (datetime.datetime.combine(context_today() + relativedelta(days=1,weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                <separator/>
+                <filter name="printed" string="Хэвлэгдсэн" domain="[('printed','=',True)]"/>
+                <filter name="no_printed" string="Хэвлэгдээгүй" domain="[('printed','!=',True)]"/>
+                <separator/>
+                <filter name="date_not_equal_day" string="Батлагдсан Өдөр  Зөрүүтэй" domain="[('date_not_equal','=',True)]"/>
+                <filter name="date_not_equal_month" string="Батлагдсан Сар Зөрүүтэй" domain="[('month_not_equal','=',True)]"/>
+                <separator/>
+            </filter>
+
+            <filter name="backorder" position="before">
+                <filter name="not_done" string="Дуусаагүй" domain="[('state','not in', ['done','cancel'])]"/>
+                <filter name="to_loc" string="Гарах Байрлалаар" context="{'group_by': 'location_id'}"/>
+                <filter name="dest_loc" string="Хүрэх Байрлалаар" context="{'group_by': 'location_dest_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+   <!-- picking form deer uusgedegui bolgov -->
+   <record id="stock.stock_picking_action_picking_type" model="ir.actions.act_window">
+        <field name="name">New record name</field>
+        <field name="context">{'contact_display': 'partner_address','create': False}</field>
+    </record>
+    
+
+    <!-- stock move view by warehouse -->
+    <record model="ir.actions.act_window" id="stock.stock_move_action">
+        <field name="domain">['|',('location_dest_id.set_warehouse_id.access_user_ids', 'in',[uid]), ('location_id.set_warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+    
+    <!-- stock move line view by warehouse -->
+    <record model="ir.actions.act_window" id="stock.stock_move_line_action">
+        <field name="domain">['|',('location_dest_id.set_warehouse_id.access_user_ids', 'in',[uid]), ('location_id.set_warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+
+    <!-- stock move line view by warehouse -->
+    <record model="ir.actions.act_window" id="stock.action_picking_tree_all">
+        <field name="context">{'contact_display': 'partner_address', 'default_company_id': allowed_company_ids[0], 'search_default_this_month': 1, 'create': False}</field>
+        <field name="domain">['|',('location_dest_id.set_warehouse_id.access_user_ids', 'in',[uid]), ('location_id.set_warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="stock.stock_picking_type_action">
+        <field name="domain">['|',('warehouse_id.access_user_ids', 'in',[uid]), ('warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+    
+    <record id="stock_picking_type_kanban_mw_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.type.kanban.mw.inherit</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.stock_picking_type_kanban"/>
+        <field name="arch" type="xml">
+            <a name="%(stock.action_picking_form)d" position="replace">
+                <a name="%(stock.action_picking_form)d" invisible="1" type="action">Immediate Transfer</a>
+            </a>
+            <field name="count_picking_ready" position="after">
+                <field name="count_picking_incoming"/>
+            </field>
+            <xpath expr="//button[@name='get_action_picking_tree_ready']" position="after">
+                <button class="btn btn-warning" t-if="record.code.raw_value =='internal'"
+                    name="get_action_incoming_transfer_picking_view" type="object">
+                    <span><t t-esc="record.count_picking_incoming.value"/> Ирж Гарч Буй Шилжүүлэг</span>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    
+    <record id="stock_return_picking_mw_stock" model="ir.ui.view">
+        <field name="name">stock.return.picking.mn.stock</field>
+        <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
+        <field name="model">stock.return.picking</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="after">
+                <field name="return_desc"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_picking_type_form_inherit" model="ir.ui.view">
+        <field name="name">view.picking.type.form.inherit</field>
+        <field name="inherit_id" ref="stock.view_picking_type_form"/>
+        <field name="model">stock.picking.type</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="MW Stock">
+                    <field name="last_expense_out"/>
+                    <field name="with_print_cost"/>
+                    <field name="with_print_location"/>
+                    <field name="with_print_on_hand"/>
+                    <field name="view_from_loc_on_hand"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

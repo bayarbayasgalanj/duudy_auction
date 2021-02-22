@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_bank_line_change" model="ir.ui.view">
+            <field name="name">account.bank.line.change.form</field>
+            <field name="model">account.bank.line.change</field>
+            <field name="arch" type="xml">
+                <form string="Account charts">
+                    <group colspan="2">
+                            <field name="name" /> 
+                            <field name="bank_line_id" invisible="1"/> 
+                            <field name="partner_id" invisible="1"/> 
+                            <field name="cash_type_id" /> 
+	                        <field name="bank_account_id" domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]"/>
+                            <field name="ref" /> 
+                    </group>
+                    <footer>
+                        <button string="Change" name="account_bank_line_change" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_account_bank_line_change" model="ir.actions.act_window">
+            <field name="name">Change</field>
+            <field name="res_model">account.bank.line.change</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_bank_line_change"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

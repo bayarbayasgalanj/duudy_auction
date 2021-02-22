@@ -1,0 +1,22 @@
+#. module: stock
+#: model:ir.actions.act_window,name:stock.stock_move_action
+#: model:ir.model.fields,field_description:stock.field_stock_picking__move_lines
+#: model:ir.ui.menu,name:stock.stock_move_menu
+#: model_terms:ir.ui.view,arch_db:stock.stock_move_line_view_search
+#: model_terms:ir.ui.view,arch_db:stock.view_move_form
+#: model_terms:ir.ui.view,arch_db:stock.view_move_picking_tree
+#: model_terms:ir.ui.view,arch_db:stock.view_move_search
+#: model_terms:ir.ui.view,arch_db:stock.view_picking_form
+#: model_terms:ir.ui.view,arch_db:stock.view_picking_move_tree
+msgid "Stock Moves"
+msgstr "БМ хөдөлгөөн"
+
+#. module: stock
+#: model_terms:ir.ui.view,arch_db:stock.view_picking_form
+msgid "Effective Date"
+msgstr "Дуусгасан огноо"
+
+#. module: stock
+#: model:ir.model.fields,field_description:stock.field_stock_picking__date_done
+msgid "Date of Transfer"
+msgstr "Дуусгасан огноо"

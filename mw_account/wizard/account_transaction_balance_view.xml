@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_transaction_balance_report_view" model="ir.ui.view">
+            <field name="name">Transaction Balance</field>
+            <field name="model">account.transaction.balance.report.new</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <group colspan="4" col="2" expand="1">
+                    		<group colspan="4" >
+		                   <field name="company_id" widget='selection' />
+	<!-- 	                   <field name="chart_account_id" widget='selection'/> 
+		                   <field name="company_type"/>
+		                   <field name="fiscalyear_id" widget='selection'/>-->
+		                   <field name="target_move"/>
+<!-- 		                   <field name="is_report" string="Салбар сонгох?"/> 
+		                   <field name="report_id" string="Салбар" attrs="{'invisible':[('is_report','!=',True)]}"/>-->
+		                </group>
+	                   <group colspan="2" name='Filters'>
+	                        <notebook tabpos="up">
+	                            <page string="Filters">
+<!--                                 <field name="filter" on_change="onchange_filter(filter, fiscalyear_id)" />
+	                                <separator string="Dates" colspan="4"/>-->
+				                   <group colspan="2" name='Filters'>
+	                                <field name="date_from" />
+	                                <field name="date_to" />
+	                               </group>	
+	                            </page>
+			                        <page name="accounts" string="Choose accounts" >
+			                            <field name="chart_account_ids" colspan="4" nolabel="1"/>
+							            <group col="3">
+							                <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
+							            </group>
+			                        </page>
+
+	                        </notebook>
+	                    </group>
+	                    <group colspan="2" col="4">
+	                        <field name="check_balance_method"/>
+	                        <field name="is_categ" />
+	                        <field name="is_currency" string="Валют харуулах?"/>
+<!-- 	                        <field name="is_excel"/>
+	                        <field name="save" groups="usi_base.usi_groups_can_save_report_attachment"/>-->
+	                    </group>
+	                    <separator colspan="2"/>
+ 	                    <group colspan="2">
+	                        <field name="name" invisible="1"/>
+	                        <field name="data" readonly="1" filename="name"/>
+	                    </group>
+
+						<footer col="3" class="oe_right">
+	                        <button icon="fa-times" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="fa-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+	                        <button icon="fa-print" name="print_report_html" string="View" type="object" colspan="2" default_focus="1" />
+<!-- 	                        <button icon="fa-print" name="view_report" string="Харах" type="object" colspan="2" default_focus="1" /> -->
+        			       </footer>
+	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_transaction_balance_report" model="ir.actions.act_window">
+            <field name="name">Transaction Balance</field>
+            <field name="res_model">account.transaction.balance.report.new</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_transaction_balance_report_view"/>
+            <field name="target">new</field>
+        </record>
+        
+<!--         <menuitem id="account.menu_finance_reports" name="Reporting" parent="account.menu_finance" sequence="5" groups="mn_account.group_account_report_all"/> -->
+        <menuitem id="menu_finance_legal_statement_xls" name="Эксел тайлангууд" parent="account.menu_finance_reports"/>
+        
+        <menuitem icon="STOCK_PRINT"
+                name="Гүйлгээ баланс"
+                action="action_account_transaction_balance_report"
+                id="menu_action_account_transaction_balance_report"
+                parent="menu_finance_legal_statement_xls"
+                sequence="1"/>
+                
+                
+		<record id="view_mw_account_report_tran_balance_mn" model="ir.ui.view">
+            <field name="name">mw.account.report.mn</field>
+            <field name="model">mw.account.report</field>
+            <field name="arch" type="xml">
+                <form string="Chart of accounts" >
+                    <field name="name"/>
+				        <group>
+ 	                        <widget name="mw_account_tran_report_widget"/>
+                         </group>
+				                    
+                </form>
+            </field>
+        </record>            
+        
+        <record id="action_mw_account_tran_balance_report" model="ir.actions.act_window">
+            <field name="name">MW account report</field>
+            <field name="res_model">mw.account.report</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_mw_account_report_tran_balance_mn"/>
+        </record>        
+                        
+    </data>
+</openerp>

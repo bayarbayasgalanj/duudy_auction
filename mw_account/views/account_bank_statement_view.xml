@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- 
+        <record id="bank_statement_mn_form_inherit" model="ir.ui.view">
+            <field name="name">bank.statement.mn.form.inherit</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account_cancel.bank_statement_cancel_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_cancel_reconciliation']" position="after">
+                    <button name="button_validate_line" string="Батлах" type="object" icon="fa-bars"
+                    				attrs="{'invisible': ['|',('journal_entry_ids', '!=', [])]}"/> 
+                </xpath>
+            </field>
+        </record> -->
+<!-- 	<record model="ir.ui.view" id="l10n_mn_bank_statement_inherit">
+        <field name="name">l10n.mn.bank.statement.inherit</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr='//button[@name="button_journal_entries"]' position="before">
+        		<button class="oe_inline oe_stat_button" name="%(action_account_bank_statement_import_file)d"
+	                string="Import File" type="action"
+	                attrs="{'invisible':[('state','=','confirm')]}" widget="statinfo" icon="fa-pencil-square-o"/>
+	                
+            	<button class="oe_inline oe_stat_button" name="%(action_view_account_bank_statement_import_invoice)d"
+	                string="Import Invoice" type="action"
+	                attrs="{'invisible':[('state','=','confirm')]}" widget="statinfo" icon="fa-pencil-square-o"/>
+            </xpath>
+             
+        	<xpath expr="//form/sheet/notebook/page/field/tree/field[@name='sequence']" position="attributes">
+                <attribute name="attrs">{'readonly': '1'}</attribute>
+                <attribute name="widget"></attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='ref']" position="replace"/>
+            <xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/field[@name='bank_account_id']" position="replace">
+                                        <field name="bank_account_id" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"
+                                domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]"/>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page/field[@name='line_ids']/tree/button[@name='button_cancel_reconciliation']" position="attributes">
+            	<attribute name="attrs">{'invisible': [('journal_entry_ids', '=', [])]}</attribute>
+            </xpath>
+        	<field name='partner_id' position="after">
+        		<field name="cashflow_id" required="1" domain="[('type','!=','view')]"/>
+                <field name="account_id"/>
+        		<button 
+	        		name="print_cash_order" 
+	        		type="object" 
+	        		string="Print" 
+	        		attrs="{'invisible':[('journal_entry_ids','=', [])]}" 
+	        		icon="fa-print"/>
+        	</field>
+        </field>
+    </record>
+    <record id="view_bank_statement_line_form_inherit" model="ir.ui.view">
+	    <field name="name">bank.statement.line.form.inherit</field>
+	    <field name="model">account.bank.statement.line</field>
+	    <field name="inherit_id" ref="account.view_bank_statement_line_form"/>
+	    <field name="arch" type="xml">
+	    	<xpath expr="//form/group/field[@name='sequence']" position="after">
+                <field name="payment_id"/>
+                <field name="account_id"/>
+                <field name="cashflow_id" required="1" domain="[('type','!=','view')]"/>
+                <field name="related_statement_line_id" />
+                <field name="currency_exchange_move_id" />
+            </xpath>
+            <xpath expr="//form/group/field[@name='name']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='partner_id']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='note']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='date']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='ref']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='amount']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='sequence']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='cashflow_id']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            <xpath expr="//form/group/field[@name='payment_id']" position="attributes">
+            	<attribute name="attrs">{'readonly':[('journal_entry_ids','!=',[])]}</attribute>
+            </xpath>
+            
+	    </field>
+    
+    </record>-->
+
+    <record id="view_bank_statement_line_inherit_search" model="ir.ui.view">
+        <field name="name">account.bank.statement.line.search</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account.view_bank_statement_line_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <filter string="Date" name="date" date="date"/>
+                <group expand="0" string="Group By">
+                    <filter string="Date" name="date" context="{'group_by': 'date'}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_bank_statement_tree_inherit_mn_account" model="ir.ui.view">
+        <field name="name">account.bank.statement.tree</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_tree"/>
+        <field name="arch" type="xml">
+               <xpath expr="//tree/field[@name='journal_id']" position="after">
+                <field name="create_date" />
+                <field name="in_total" string="Нийт орлого"/>
+                <field name="out_total" string="Нийт зарлага"/>
+            </xpath>
+       </field> 
+    </record>
+    
+    <record id="view_bank_statement_tree_inherit_mn_account" model="ir.ui.view">
+        <field name="name">account.bank.statement.tree</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_tree"/>
+        <field name="arch" type="xml">
+               <xpath expr="//tree/field[@name='journal_id']" position="after">
+                <field name="create_date" />
+                <field name="in_total" string="Нийт орлого"/>
+                <field name="out_total" string="Нийт зарлага"/>
+            </xpath>
+       </field> 
+    </record>    
+        <menuitem id="menu_cash_bank_statement_tree" name="Cash and bank" parent="account.menu_finance" sequence="3" />
+        <!-- account_accountant -->
+        <record id="menu_cash_bank_statement_tree" model="ir.ui.menu">
+            <field name="parent_id" ref="account_accountant.menu_accounting"/>
+        </record>
+        
+        <menuitem id="menu_action_bank_statement_tree" action="account.action_bank_statement_tree" name="Bank statement" parent="menu_cash_bank_statement_tree" sequence="1" />
+        <menuitem id="menu_action_view_bank_statement_tree" action="account.action_view_bank_statement_tree" name="Cash statement" parent="menu_cash_bank_statement_tree" sequence="1" />
+    
+        <menuitem id="menu_action_bank_statement_line" action="account.action_bank_statement_line" name="Гүйлгээнүүд" parent="menu_cash_bank_statement_tree" sequence="3" />
+    
+
+        <record id="action_view_bank_statement_sale_tree" model="ir.actions.act_window">
+            <field name="name">Касс</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.bank.statement</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="view_id" ref="account.view_bank_statement_tree"/>
+            <field name="search_view_id" ref="account.view_bank_statement_search"/>
+            <field name="domain">[('journal_id.type', '=', 'cash'),('branch_id.main_user_ids', 'in', [uid]),('pos_session_id','=',False)]</field>
+            <field name="context">{'journal_type':'cash'}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new cash log.
+              </p><p>
+                A Cash Register allows you to manage cash entries in your cash
+                journals. This feature provides an easy way to follow up cash
+                payments on a daily basis. You can enter the coins that are in
+                your cash box, and then post entries when money comes in or
+                goes out of the cash box.
+              </p>
+            </field>
+        </record>
+
+		<menuitem name="Касс харилцах" parent="sale.sale_menu_root" 
+			id="sales_cash_root_menu" sequence="5" />	
+
+		<menuitem
+            parent="sales_cash_root_menu"
+            action="action_view_bank_statement_sale_tree"
+            id="menu_action_view_bank_statement_sale_tree"
+            sequence="5"
+            groups= "group_mn_sale_cash_and_bank"/> 
+                
+</odoo>

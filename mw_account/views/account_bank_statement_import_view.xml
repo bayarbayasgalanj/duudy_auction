@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- Import File -->
+     <record id="account_bank_statement_import_file_view" model="ir.ui.view">
+         <field name="name">Import Bank Statements</field>
+         <field name="model">account.bank.statement.import.file</field>
+         <field name="priority">1</field>
+         <field name="arch" type="xml">
+             <form string="Import Bank Statements">
+                 <h2>ЗААВРЫГ УНШИНА УУ. ЗААВРЫН ДАГУУ ЭКСЕЛ ФАЙЛАА СОНГОНО УУ!!!</h2>
+	             <field name="type"/>
+                    <div class="alert alert-danger alert-dismissible text-left" 
+                        role="alert" 
+                        attrs="{'invisible': [('type','!=','default')]}">
+                        <a href="#" class="close" data-dismiss="alert" 
+                            aria-label="close">x</a>
+		             <field name="desc" attrs="{'invisible': [('type','!=','default')]}"/>
+                    </div>	             
+                 <field name="data_file" filename="filename" placeholder="Choose a file to import..."/>
+                 <footer>
+                     <button name="import_file" string="_Import" type="object" class="btn-primary" />
+                     <button string="Cancel" class="btn-default" special="cancel"/>
+                 </footer>
+             </form>
+         </field>
+     </record>
+
+     <record id="action_account_bank_statement_import_file" model="ir.actions.act_window">
+         <field name="name">Import</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">account.bank.statement.import.file</field>
+         <field name="view_mode">form</field>
+         <field name="target">new</field>
+         <field name="view_id" ref="account_bank_statement_import_file_view"/>
+     </record>
+        
+	<!-- Import Invoice -->
+    <record id="view_account_bank_statement_import_invoice" model="ir.ui.view">
+        <field name="name">account.bank.statement.import.invoice.form</field>
+        <field name="model">account.bank.statement.import.invoice</field>
+        <field name="arch" type="xml">
+            <form string="Import Invoices">
+                <separator string="Invoice"/>
+                <field height="300" width="900"
+                domain="[('state', '=', 'open')]"
+                name="account_invoices" />
+                <footer>
+                    <button string="Import" name="populate_invoice" type="object" class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+           </form>
+        </field>
+    </record>
+    <record id="action_view_account_bank_statement_import_invoice" model="ir.actions.act_window">
+        <field name="name">Import Invoices</field>
+        <field name="res_model">account.bank.statement.import.invoice</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_account_bank_statement_import_invoice"/>
+        <field name="target">new</field>
+        <field name="context">{'statement_id': active_id}</field>
+    </record>
+</odoo>
