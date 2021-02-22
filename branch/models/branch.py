@@ -110,7 +110,7 @@ class account_journal(models.Model):
         return branch_id
 
 
-    branch_id = fields.Many2one('res.branch', 'Branch', required=True, default = _get_joural_default_branch)    
+    branch_id = fields.Many2one('res.branch', 'Branch', default = _get_joural_default_branch)    
    
 
 
@@ -409,7 +409,7 @@ class account_bank_statement_line(models.Model):
 
 
 
-    branch_id = fields.Many2one('res.branch', 'Branch', related='statement_id.branch_id', default=_get_bank_statement_default_branch ,required=True)
+    branch_id = fields.Many2one('res.branch', 'Branch', related='statement_id.branch_id', default=_get_bank_statement_default_branch ,)
     tax_id = fields.Many2one('account.tax', 'Tax')
     branch_res_id = fields.Many2one('res.branch', 'Branch')
 # 
