@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- New product request -->
+
+    <!-- Sequences for  -->
+    <record id="seq_new_product_request" model="ir.sequence">
+        <field name="name">new.product.request</field>
+        <field name="code">new.product.request</field>
+        <field name="prefix">NPR%(year)s%(month)s-</field>
+        <field name="padding">3</field>
+        <field name="company_id" eval='False'/>
+    </record>
+
+
+
+
+    <record id="new_product_request_form_view" model="ir.ui.view">
+        <field name="name">new.product.request.form</field>
+        <field name="model">new.product.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!-- <button name="action_to_draft" string="Draft" type="object" /> -->
+                    <button name="action_to_send" class="oe_highlight" string="Илгээх"
+                        states="draft" type="object" />
+                    <button name="action_to_created" class="oe_highlight"
+                        string="Бараа үүсгэсэн" states="sent" type="object"
+                        groups="mw_product.group_stock_product_creating" />
+                    <button name="action_to_cancel"
+                        string="Цуцлах" states="sent" type="object"
+                        groups="mw_product.group_stock_product_creating" />
+                    <button name="action_to_done" class="oe_highlight"
+                        string="Дуусгах" states="created" type="object"
+                        groups="mw_product.group_stock_product_creating" />
+
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,sent,created,done" readonly="1" />
+                </header>
+                <sheet>
+                    <group>
+                        <group col="2" string="Хүсэлт">
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="user_id"/>
+                            <field name="date_sent"/>
+                        </group>
+                        <group col="2" string="Гүйцэтгэл">
+                            <field name="date"/>
+                            <field name="done_description"
+                                attrs="{'required':[('state','in',['sent','created'])]}"/>
+
+                            <field name="new_product_id" options="{'no_create':True}"
+                                attrs="{'required':[('state','=','created')],
+                                        'invisible':[('state','=','draft')]}"/>
+                            <field name="create_user_id"/>
+                            <field name="date_done"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="new_product_request_tree_view" model="ir.ui.view">
+        <field name="name">new.product.request.tree</field>
+        <field name="model">new.product.request</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='created'"
+                  decoration-danger="state =='sent'" decoration-muted="state =='done'">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="date_sent"/>
+                <field name="date_done"/>
+                <field name="new_product_id"/>
+                <field name="user_id"/>
+                <field name="create_user_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="new_product_request_filter_view" model="ir.ui.view">
+        <field name="name">new.product.request.filter</field>
+        <field name="model">new.product.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="done_description"/>
+                <field name="new_product_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="state" context="{'group_by' : 'state'}" string="State"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model='ir.actions.act_window' id='action_new_product_request'>
+        <field name="name">new.product.request.action</field>
+        <field name="res_model">new.product.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Шинэ барааны хүсэлт" parent="stock.menu_stock_inventory_control"
+        id="new_product_request_menu" sequence="50"
+        action="action_new_product_request" />
+
+</odoo>
