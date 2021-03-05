@@ -28,10 +28,11 @@ class sale_order(models.Model):
     @api.model
     def _get_default_branch(self):
         user_obj = self.env['res.users']
+        print ('self.env.user ',self.env.user)
         branch_id = user_obj.browse(self.env.user.id).branch_id
         return branch_id
 
-    branch_id=fields.Many2one('res.branch', 'Branch', required=True , default=_get_default_branch)
+    branch_id=fields.Many2one('res.branch', 'Branch', default=_get_default_branch)#required=True , 
     
     def _prepare_invoice(self):
         """

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        
+        <menuitem id="purchase_request_root_menu" name="Худалдан Авалтын Хүсэлт" sequence="20" web_icon="mw_purchase_request,static/img/Purchase_request.png"/>
+        <menuitem id="purchase_request_add_new_menu" name="Хүсэлт" parent="purchase_request_root_menu" action="action_purchase_request_tree_view" sequence="1"/>
+        <menuitem id="purchase_request_add_new_all_menu" name="Бүх хүсэлт" parent="purchase_request_root_menu" action="action_purchase_request_tree_all_view" sequence="2" groups="mw_purchase_request.group_mw_purchase_request_all_view"/>
+        <menuitem id="purchase_request_line_menu" name="Хүсэлтийн мөр" parent="purchase_request_root_menu" action="action_purchase_request_line_tree_view" sequence="3" groups="mw_purchase_request.group_mw_purchase_request_manager"/>
+        <menuitem id="purchase_request_report" name="Тайлан" parent="purchase_request_root_menu" sequence="88" groups="mw_purchase_request.group_mw_purchase_request_manager"/>
+        <menuitem id="pr_report_menu" parent="purchase_request_report" action="pr_report_action" sequence="99"/>
+        <!-- <menuitem id="purchase_report_mw" name="Худалдан авалтын тайлан" parent="purchase_request_report" sequence="10"
+        groups="purchase.group_purchase_manager" action="purchase.action_purchase_order_report_all"/> -->
+        <menuitem id="purchase_request_line_menu_user_again" parent="purchase_request_root_menu" action="action_purchase_request_line_tree_view_user" sequence="5"/>
+        <menuitem id="purchase_request_line_menu_user_again_all" parent="purchase_request_root_menu" action="action_purchase_request_line_tree_view_all" sequence="6"/>
+        <menuitem id="po_report_mw_menu" parent="purchase_request_report" action="po_report_mw_action" sequence="20"/>
+        <menuitem id="pr_report_excel_menu" parent="purchase_request_report" action="action_pr_report_excel" sequence="90"/>
+    </data>
+</odoo>

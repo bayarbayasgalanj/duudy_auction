@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_line_import_view" model="ir.ui.view">
+        <field name="name">purchase.order.line.import wizard</field>
+        <field name="model">purchase.order.line.import</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+           <form>
+                <group col="4">
+                	<field name="purchase_id" domain="[('state','=','draft')]" required="1"/>
+                    <field name="import_data"/>
+                    <button name="action_import_line" string="Inentory import" type="object" icon="fa-arrow-circle-down" />
+                </group>
+           </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_order_line_import" model="ir.actions.act_window">
+        <field name="name">Purchase line import</field>
+        <field name="res_model">purchase.order.line.import</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="purchase_order_line_import_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem action="action_purchase_order_line_import" id="menu_purchase_order_line_mpirt" parent="purchase.menu_procurement_management" sequence="100"/>
+
+</odoo>

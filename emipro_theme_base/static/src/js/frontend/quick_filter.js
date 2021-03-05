@@ -25,7 +25,7 @@ odoo.define('emipro_theme_base.quick_filter', function(require) {
             /* open quick filter */
             if ($('#products_grid_before').hasClass('sticky-media')) {
                 $('#products_grid_before').css({ position: 'unset', top: 'initial', height: 'auto'});
-                $('#products_grid_before').removeClass('sticky-media');
+           //     $('#products_grid_before').removeClass('sticky-media');
             }
             $(".te_quick_filter_main_div").toggleClass("active");
             $(".te_quick_filter_dropdown_menu").slideToggle(500);

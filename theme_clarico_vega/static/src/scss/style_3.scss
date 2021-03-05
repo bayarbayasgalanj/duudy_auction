@@ -19,6 +19,9 @@
 			09. Brand Slider
 
 ************************************************/
+$as-dark-color:					          #323232;
+$as-theme: 			#ff0000;
+
 /*================= 01. Shop ======================*/
 body.editor_enable
 {
@@ -634,6 +637,116 @@ body.editor_enable
 	padding: 0px 12px 12px;
 	border-bottom : 1px solid nth($f_color,8);
     width:95%;
+}
+
+/*Category listing */
+#wsale_products_categories_collapse {
+	~ #wsale_products_attributes_collapse {
+ 		margin-top: 25px;
+	}
+	.nav {
+		padding: 0;
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+		li.nav-item {
+		    margin: 0;
+		    padding: 3px 0;
+		    position: relative;
+		    font-size: 13px;
+			i.text-primary {
+			    cursor: pointer;
+			    position: absolute;
+			    top: 2px;
+			    right: 0;
+			    width: 24px;
+			    height: 24px;
+			    text-align: center;
+				color: $as-dark-color !important;
+				&:after,
+				&:before {
+					content: "";
+					background: currentColor;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					margin: auto;
+				}
+				&:after {
+					height: 10px;
+					width: 2px;
+				}
+				&:before {
+					width: 10px;
+					height: 2px;
+				}
+				&.fa-chevron-down {
+					color: $as-theme !important;
+					+ a {
+						color: $as-dark-color;
+					}
+				}
+			}
+			a {
+	            background: none;
+			    padding: 0 0 0 22px;
+			    position: relative;
+			    font-weight: 400;
+			    color: #878787;
+			    font-size: 14px;
+			    display: inline;
+			    line-height: 22px;
+			    &:before {
+			    	content: "";
+				    width: 15px;
+				    height: 15px;
+				    border: 1px solid #000;
+				    position: absolute;
+				    top: 1px;
+				    left: 0;
+				    opacity: 0.2;
+			    }
+			    &:after {
+		    	    content: "";
+				    position: absolute;
+				    left: 4px;
+				    width: 8px;
+				    height: 4px;
+				    border-left: 1px solid #000;
+				    border-bottom: 1px solid #000;
+				    top: 5px;
+				    transform: rotate(-45deg);
+				    opacity: 0;
+			    }
+				&:hover,
+				&.active {
+					background: none;
+					color: $as-dark-color;
+					&:before {
+						opacity: 1;
+					}
+				}
+				&.active {
+					&:after {
+						opacity: 1;	
+					}
+				}
+			}
+		}
+		ul {
+			margin-left: 15px;
+			padding-top: 10px;
+		}
+	}
+}
+/*js_attributes*/
+.js_attributes {
+	margin-bottom: 30px;
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 #wsale_products_attributes_collapse
 {

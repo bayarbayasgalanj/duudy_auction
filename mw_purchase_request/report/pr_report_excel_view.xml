@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="pr_report_excel_view" model="ir.ui.view">
+            <field name="name">pr.report.excel.wizard</field>
+            <field name="model">pr.report.excel</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                    <group col="4" colspan="4">
+                        <label for="date_range_id" string="Эхлэх, дуусах хоёр өдөр тайлант хугацаанд орно!" colspan="4"/>
+                        <newline/>
+                        <field name="date_range_id" options="{'no_create':True, 'no_open':True}"/>
+                        <field name="date_type" required="1"/>
+                    </group>
+                    <group col="4" colspan="4">
+                        <field name="date_start" />
+                        <field name="date_end" />
+                    </group>
+                    <group>
+                        <field name="attachment_ids" widget="many2many_binary" readonly="1"/>
+                    </group>
+                    <footer>
+                        <group col="6">
+                            <button icon="fa-times" special="cancel" string="Хаах"/>
+                            <button name="action_export" string="Татах" type="object" 
+                                icon="fa-file-excel-o" class="oe_highlight"/>
+                        </group>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_pr_report_excel" model="ir.actions.act_window">
+            <field name="name">Хүсэлтийн Тайлан Эксел</field>
+            <field name="res_model">pr.report.excel</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="pr_report_excel_view"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

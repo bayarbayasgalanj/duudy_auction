@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="products_models" inherit_id="website_sale.products" active="False" customize_show="True" name="Product model's Filters">
+        <xpath expr="//div[@id='products_grid_before']" position="before">
+            <t t-set="enable_left_column" t-value="True"/>
+        </xpath>
+        <xpath expr="//div[@id='products_grid_before']" position="inside">
+            <div class="collapse d-lg-block" id="wsale_products_models_collapse">
+                <form class="js_models mb-2" method="get">
+                   <div ><!-- class="te_attr_title" -->
+                       <span >Модел</span>
+<!--                        <a t-att-attribute-name="a.id" class="te_clear_all_variant">(Clear)</a> -->
+                   </div>
+                    <ul class="nav nav-pills flex-column">
+                            <li t-if="models and len(models) &gt; 0" class="nav-item">
+<!--                                 <div>
+                                    <strong t-field="m.name" />
+                                </div> -->
+<!--                                 <t t-if="a.display_type == 'select'"> -->
+                                   <!--  <select class="form-control" name="mdls">
+                                        <option value="" />
+                                        <t t-foreach="models" t-as="m">
+                                            <option t-att-value="'-%s' % (m.id)" t-esc="m.name" t-att-selected="m.id in model_set" />
+                                        </t>
+                                    </select> -->
+<!--                                 </t> -->
+<!--                                  <t t-if="a.display_type == 'radio'"> -->
+                                    <ul class="nav nav-pills flex-column">
+                                        <t t-foreach="models" t-as="m">
+                                            <li class="nav-item">
+                                                <label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if m.id in model_set else ''}">
+                                                    <input type="checkbox" name="mdls" t-att-value="'%s-1' % (m.id)" t-att-checked="'checked' if m.id in model_set else None" />
+                                                    <span style="font-weight: normal" t-field="m.name" />
+                                                </label>
+                                            </li>
+                                        </t>
+                                    </ul>
+<!--                                </t>
+                                 </t>  -->
+                            </li> 
+                            
+                    </ul>
+                </form>
+            </div>
+            
+            <div class="collapse d-lg-block" id="wsale_products_make_collapse">
+                <form class="js_makes mb-2" method="get">
+                   <div ><!-- class="te_attr_title" -->
+                       <span >Үйлдвэрлэгч</span>
+<!--                        <a t-att-attribute-name="a.id" class="te_clear_all_variant">(Clear)</a> -->
+                   </div>
+<!--                     <ul class="nav nav-pills flex-column"> -->
+                            <li t-if="models and len(makes) &gt; 0" class="nav-item">
+                                    <ul class="nav nav-pills flex-column">
+                                        <t t-foreach="makes" t-as="mk">
+                                            <li class="nav-item">
+                                                <label style="margin: 0 20px;" t-attf-class="nav-link#{' active' if mk.id in make_set else ''}">
+                                                    <input type="checkbox" name="mks" t-att-value="'%s-1' % (mk.id)" t-att-checked="'checked' if mk.id in make_set else None" />
+                                                    <span style="font-weight: normal" t-field="mk.name" />
+                                                </label>
+                                            </li>
+                                        </t>
+                                    </ul>
+<!--                                </t>
+                                 </t>  -->
+                            </li> 
+                            
+                    </ul>
+                </form>
+            </div>            
+        </xpath>
+    </template>
+
+</odoo>

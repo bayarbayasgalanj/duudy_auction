@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_purchase_request,purchase.request,mw_purchase_request.model_purchase_request,group_mw_purchase_request_user,1,1,1,0
+access_purchase_request_line,purchase.request.line,mw_purchase_request.model_purchase_request_line,group_mw_purchase_request_user,1,1,1,1
+access_request_refund_history,request.refund.history,mw_purchase_request.model_request_refund_history,group_mw_purchase_request_user,1,1,1,0
+
+access_purchase_request_manager,purchase.request,mw_purchase_request.model_purchase_request,group_mw_purchase_request_manager,1,1,1,1
+access_purchase_request_line_manager,purchase.request.line,mw_purchase_request.model_purchase_request_line,group_mw_purchase_request_manager,1,1,1,1
+access_request_refund_history_manager,request.refund.history,mw_purchase_request.model_request_refund_history,group_mw_purchase_request_manager,1,1,1,1
+
+access_pr_report_user,pr.report,mw_purchase_request.model_pr_report,group_mw_purchase_request_user,1,1,1,1
+access_po_report_mw_user,pr.report,mw_purchase_request.model_po_report_mw,group_mw_purchase_request_user,1,1,1,1
+
+access_purchase_flow_history,purchase.flow.history,mw_purchase_request.model_purchase_flow_history,group_mw_purchase_request_user,1,1,1,1
+
+access_transport_track,transport.track,mw_purchase_request.model_transport_track,group_mw_purchase_request_manager,1,1,1,1
