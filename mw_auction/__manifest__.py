@@ -12,8 +12,8 @@
         'website_sale_stock',
         'website_sale',
     ],
-
     'data': [
+        'security/ir.model.access.csv',
         'templates/shop.xml',
         'templates/assets.xml',
         'views/auction_view.xml'
