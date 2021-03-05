@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_dynamic_flow,dynamic.flow,mw_dynamic_flow.model_dynamic_flow,base.group_user,1,0,0,0
+access_dynamic_flow_line,dynamic.flow.line,mw_dynamic_flow.model_dynamic_flow_line,base.group_user,1,0,0,0
+access_dynamic_flow_line_stage,dynamic.flow.line.stage,mw_dynamic_flow.model_dynamic_flow_line_stage,base.group_user,1,0,0,0
+
+access_dynamic_flow_manager,dynamic.flow,mw_dynamic_flow.model_dynamic_flow,group_dynamic_flow_manager,1,1,1,1
+access_dynamic_flow_line_manager,dynamic.flow.line,mw_dynamic_flow.model_dynamic_flow_line,group_dynamic_flow_manager,1,1,1,1
+access_dynamic_flow_line_stage_manager,dynamic.flow.line.stage,mw_dynamic_flow.model_dynamic_flow_line_stage,group_dynamic_flow_manager,1,1,1,1
