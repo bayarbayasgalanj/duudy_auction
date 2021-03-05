@@ -50,7 +50,7 @@
                        <span >Үйлдвэрлэгч</span>
 <!--                        <a t-att-attribute-name="a.id" class="te_clear_all_variant">(Clear)</a> -->
                    </div>
-<!--                     <ul class="nav nav-pills flex-column"> -->
+                    <ul class="nav nav-pills flex-column">
                             <li t-if="models and len(makes) &gt; 0" class="nav-item">
                                     <ul class="nav nav-pills flex-column">
                                         <t t-foreach="makes" t-as="mk">
