@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_account_user,account.user,model_account_invoice_bank_statement,account.group_account_user,1,1,1,0
+access_account_account_aml_user,account.aml_user,model_account_aml_bank_statement,account.group_account_user,1,1,1,0
+access_account_bank_statement_group_invoice_branch,account.bank.statement.group.invoice branch,model_account_bank_statement,mw_account.group_mn_branch_account,1,0,0,0
+access_account_bank_statement_line_group_invoice_branch,account.bank.statement.line.group.invoice branch,model_account_bank_statement_line,mw_account.group_mn_branch_account,1,0,0,0
+access_account_move_uinvoice_branch,account.move branch,model_account_move,mw_account.group_mn_branch_account,1,1,1,1
+access_account_move_line_uinvoice_branch,account.move.line invoice branch,model_account_move_line,mw_account.group_mn_branch_account,1,1,1,1

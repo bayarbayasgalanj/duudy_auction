@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="cash_box_out_form_mw">
+            <field name="name">cash_box_out.mw</field>
+            <field name="model">cash.box.out</field>
+            <field name="inherit_id" ref="account.cash_box_out_form"/>
+	        <field name="arch" type="xml">
+                <field name="amount" position="after">
+                        <field name="account_id" class="oe_inline" />
+                        <field name="branch_id" class="oe_inline" />
+                        <field name="partner_id" class="oe_inline" /><!-- required="1" -->
+                        <field name="date" class="oe_inline" />
+                </field>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="account_cash_box_tranfere_form">
+            <field name="name">cash_box_tranfer</field>
+            <field name="model">cash.box.tranfer</field>
+            <field name="arch" type="xml">
+                <form string="Дотоод шилжүүлэг">
+                    <separator string="Касс харилцах хооронд дотоод шилжүүлэг:"/>
+                    <group>
+<!--                         <field name="name_id" string="Утга" /> -->
+                        <field name="name" string="Утга"/>
+                        <field name="date" string="Огноо"/>
+<!--                         <field name="partner_id" class="oe_inline" string="Харилцагч"/> -->
+<!--                         <field name="account_id" class="oe_inline" string="Данс"/> -->
+                        <field name="income_statement_id" class="oe_inline" string="Хүлээн авах касс/харилцах" required="1"/>
+                        <field name="branch_id" class="oe_inline" />
+                        <field name="amount" class="oe_inline" string="Дүн"/>
+                         <field name="type" class="oe_inline" string="Төрөл"/> 
+                    </group>
+                    <footer>
+                        <button name="run" string="Шилжүүлэг хийх" type="object" class="btn-primary"/>
+                        <button class="btn-default" special="cancel" string="Цуцлах" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window 
+            name="Дотоод шилжүүлэг"
+            res_model="cash.box.tranfer"
+            binding_model="account.bank.statement"
+            view_mode="form"
+            target="new"
+            id="action_cash_box_tranfer" /> 
+            
+<!-- 
+	    <act_window name="Хөрөнгө шилжүүлэх"
+            res_model="account.asset.moves"
+            binding_model="account.asset"
+            view_mode="form"
+            target="new"
+            view_id="account_asset_move_views"
+            id="action_account_asset_move"/>     -->           
+            
+    </data>
+</odoo>

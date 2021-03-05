@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- account.move.import -->
+    <record id="account_move_import_tree" model="ir.ui.view">
+        <field name="name">account.move.import.tree</field>
+        <field name="model">account.move.import</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="state=='draft'" decoration-danger="state=='draft'" decoration-muted="state=='done'">
+               <field name="name" />
+               <field name="journal_id" />
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_move_import_form" model="ir.ui.view">
+        <field name="name">account.move.import.form</field>
+        <field name="model">account.move.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_done" states="draft" string="Батлах" class="oe_highlight" type="object"/>
+                    <button name="action_draft" states="done" string="Ноороглох" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <group >
+                        <field name="name" />
+                        <field name="date" />
+                        <field name="journal_id" required="1"/>
+                    </group>
+                    <notebook >
+                        <page string="Moves">
+<!--                         	<group attrs="{'invisible':[('type','in',('fuel_in'))]}">
+                        		<button name="action_import_technic"  string="Техник импортлох" type="object"/>
+                        	</group>
+ -->                        	<group col="4" >
+		                        <button name="action_export" string="Темплате Экспортлох" type="object" icon="fa-file-excel-o"/>
+		                        <field name="import_data" states="draft" class="oe_edit_only"/>
+		                        <button name="action_import" states="draft" class="btn btn-default fa fa-download" string="Импортлох" type="object"/>
+		                    </group>
+                            <group >
+                                <field name="line_ids" nolabel="1" />
+                            </group>
+                            <group >
+<!--                                 <field name="sum_total" readonly="1"/>
+                                <field name="sum_in_total" readonly="1" attrs="{'invisible':[('type','in',('fuel_in','oil'))]}"/>
+                                <field name="diff_in_total" readonly="1" attrs="{'invisible':[('type','in',('fuel_in','oil'))]}"/>
+ -->                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_account_move_import" model="ir.actions.act_window">
+        <field name="name">Import account move</field>
+        <field name="res_model">account.move.import</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    	<menuitem id="menu_action_account_move_import" parent="account.menu_finance_entries_actions"  sequence="4" action="action_account_move_import"/>
+
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_cash_details_wizard" model="ir.ui.view">
+        <field name="name">cash.details.wizard.form</field>
+        <field name="model">cash.details.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cash Details">
+                <group col="4">
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+<!--                 <group col="4">
+                    <field name="branch_id"/>
+                </group> -->
+                <group>
+                    <field name="journal_ids" colspan="4" nolabel="1" widget="many2many_tags" domain="[('type','=','cash')]"/>
+                </group>
+                <footer>
+                    <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_cash_details" model="ir.actions.act_window">
+        <field name="name">Cash Details</field>
+        <field name="res_model">cash.details.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_report_cash_details" name="Cash Details" action="action_report_cash_details" parent="account.menu_finance_reports" sequence="4"/>
+
+    <record id="cash_details_report" model="ir.actions.report">
+        <field name="name">Cash Details</field>
+        <field name="model">report.mn_account.report_cashdetails</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mn_account.report_cashdetails</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="group_purchase_use_lot" model="res.groups">
+        <field name="name">Худалдан авалтын дэлгэцэнд цуврал ашиглах</field>
+        <field name="category_id" ref="base.module_category_operations_purchase"/>
+    </record>
+    <record id="group_set_discount_on_partner" model="res.groups">
+        <field name="name">Худалдан авалтын хөнгөлөлтийг харилцагчид тохируулах</field>
+        <field name="category_id" ref="base.module_category_operations_purchase"/>
+    </record>
+</odoo>

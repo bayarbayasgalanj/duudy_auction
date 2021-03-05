@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_account_financial_report_line_form" model="ir.ui.view">
+            <field name="name">account.financial.report.line.form</field>
+            <field name="model">account.financial.report.line</field>
+            <field name="arch" type="xml">
+                <form string="Account Report">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="number"/>
+                        <field name="seq"/>
+                        <field name="is_bold"/>
+                        <field name="is_number"/>
+                        <field name="is_line"/>
+                     </group>
+	                    <notebook >
+	                        <page string="Report">
+<!-- 		                        <field name="account_ids"/> -->
+				                    <field name="account_ids" attrs="{'invisible': [('is_line', '=', True)]}">
+				                    	<tree delete="true" create="true" colors="blue:type == 'view';black:type in ('other','receivable','payable','consolidation');gray:type == 'closed'">
+				                            <field name="code" />
+				                            <field name="name" />
+				                             <field name="internal_type" />
+				                             <field name="user_type_id"  />
+				                    	</tree>
+				                    </field>
+				                    <field name="line_ids" attrs="{'invisible': [('is_line', '!=', True)]}" domain="[('report_id', '=', parent.id)]">
+				                    	<tree delete="true" create="true" >
+					                       <field name="name"/>
+					                       <field name="number"/>
+					                       <field name="seq"/>
+					                       <field name="is_bold"/>
+					                       <field name="is_number"/>
+				                    	</tree>
+				                    </field>
+		                       </page>
+		                 </notebook>
+                </form>
+            </field>
+        </record>
+                    
+        <record id="view_account_financial_report_line_tree" model="ir.ui.view">
+            <field name="name">account.financial.report.line.tree</field>
+            <field name="model">account.financial.report.line</field>
+            <field name="arch" type="xml">
+                <tree string="Account Report line">
+                    <field name="name"/>
+                    <field name="number" />
+                    <field name="seq"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_account_financial_report_inherit_mn_form" model="ir.ui.view">
+            <field name="name">account.financial.html.report.mn.form</field>
+            <field name="model">account.financial.html.report</field>
+            <field name="inherit_id" ref="account_reports.view_account_financial_report_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='tax_report']" position="after">
+                	<field name="active"/>
+                	<field name="is_mw"/>
+                	<field name="report_type" string="Тайлангийн төрөл"/>
+<!--                 	<field name="branch" string="Салбар"/> -->
+                </xpath>
+                 <xpath expr="//field[@name='line_ids']" position="replace">
+                       <field name="line_ids" attrs="{'invisible': [('is_mw', '=', True)]}"/>
+                       <field name="account_line_ids" attrs="{'invisible': [('is_mw', '!=', True)]}"/>
+                 </xpath>
+            </field>
+        </record>    
+
+</odoo>

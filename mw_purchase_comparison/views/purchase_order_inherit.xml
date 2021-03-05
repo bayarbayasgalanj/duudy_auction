@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+		<record id="purchase_order_form_inherit_mw_purchase" model="ir.ui.view">
+	        <field name="name">purchase.order.form.inherit.mw.purchase</field>
+	        <field name="model">purchase.order</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+	        <field name="arch" type="xml">
+                <data>
+                    <div name="button_box" position="inside">
+                        <button name="%(mw_purchase_comparison.purchase_comparison_line_pivot_action_pivot)d" type="action" class="oe_stat_button" icon="fa-users"  string="Харьцуулалт харах" attrs="{'invisible': [('is_comparison', '=', False)]}"/>
+                    </div>
+                    
+
+                    <field name="partner_id" position="after">
+                        <field name="is_comparison"/>
+                    </field>
+                    <notebook position="inside">
+                         <page string="ХА харьцуулалт" attrs="{'invisible': [('is_comparison', '!=', True)]}">
+                            <group col="3">
+                                <button name="%(mw_purchase_comparison.act_purchase_comparison_create_form)d" type="action"  string="Харьцуулах харилцагч оруулах" class="oe_highlight"/>
+                                <field name="win_partner_id" readonly="1"/>
+                                <field name="default_partner_id" readonly="1" invisible="1"/>
+                            </group>
+                            <field name="comparison_line" attrs="{'readonly': [('win_partner_id', '!=', False)]}">
+                                <tree decoration-success="status in ['win']" decoration-bf="status in ['not','win']" decoration-muted="status in ['loss']">
+                                    <field name="partner_id"/>
+                                    <field name="desc"/>
+                                    <field name="currency_id"/>
+                                    <field name="amount_total" sum="SUM"/>
+                                    <field name="select_user_id"/>
+                                    <field name="status"/>
+                                    <button name="action_select" type="object" icon="fa-check" attrs="{'invisible': [('status', '!=', 'not')]}" help="Тухайн харилцагчийг ялсан болгох"/>
+                                    <button name="action_un_select" type="object" icon="fa-minus" attrs="{'invisible': [('status', '!=', 'win')]}" help="Ялсаныг буцаад тодорхойгүй болгох"/>
+                                </tree>
+                             </field>
+                         </page>
+                    </notebook>
+
+                    <!-- <xpath expr="//field[@name='order_line']" position="attributes">
+                        <attribute name="attrs">{'readonly': ['|',('state', 'in', ('done', 'cancel')), ('is_comparison','=',True)]}</attribute>
+                    </xpath> -->
+                    <!-- <xpath expr="//field[@name='partner_id']" position="attributes">
+                    </xpath> -->
+                </data>
+	        </field>
+	    </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_view_parent_product_template">
+        <field name="name">Бараа</field>
+        <field name="res_model">product.template</field>
+        <field name="domain">[('product_variant_ids', 'in', [active_id])]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('product.product_template_tree_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('product.product_template_only_form_view')})]"/>
+    </record>
+
+    <record id="product_normal_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.normal.form.view.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button type="action" class="oe_stat_button" icon="fa-product" name="%(action_view_parent_product_template)d"
+                    attrs="{'invisible': [('product_tmpl_id', '=', False)]}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            1
+                        </span>
+                        <span class="o_stat_text">Бараа</span>
+                    </div>
+                </button>
+            </div>
+            <field name="default_code" position="before">
+                <!-- <field name="product_tmpl_id" class="oe_inline" readonly="1" attrs="{'invisible': [('product_tmpl_id', '=', False)]}"/> -->
+                <field name="product_code"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_variant_easy_edit_view_inherit" model="ir.ui.view">
+        <field name="name">product.variant.easy.edit.view.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="after">
+                <field name="product_tmpl_id" readonly="1" string="Бараа" attrs="{'invisible': [('product_tmpl_id', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="product_template_only_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.product.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field name="product_code"/>
+            </field>
+            <button name="%(product.product_variant_action)d" position="replace" >
+                <button name="%(product.product_variant_action)d" type="action"
+                    icon="fa-sitemap" class="oe_stat_button"
+                    groups="product.group_product_variant">
+                    <field string="Variants" name="product_variant_count" widget="statinfo"/>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="product.product_variant_action" model="ir.actions.act_window">
+        <field name="name">Product Variants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="context">{'search_default_product_tmpl_id': [active_id], 'default_product_tmpl_id': active_id}</field>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'tree'}),
+                      (0, 0, {'view_mode': 'form', 'view_id': ref('product.product_normal_form_view')}),
+                      (0, 0, {'view_mode': 'kanban'})]"/>
+         <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to define a new product.
+          </p><p>
+            You must define a product for everything you sell, whether it's
+            a physical product, a consumable or a service you offer to
+            customers.
+          </p><p>
+            The product form contains information to simplify the sale
+            process: price, notes in the quotation, accounting data,
+            procurement methods, etc.
+          </p>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_mw_inherit" model="ir.ui.view">
+        <field name="name">product.template.search.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace">
+                <field name="name" string="Product" filter_domain="['|','|','|',('default_code','ilike',self),('product_code','ilike',self),('name','ilike',self),('barcode','ilike',self)]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_product_tree_view_mw_inherit" model="ir.ui.view">
+        <field name="name">product.product.tree.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="before">
+                <field name="product_code"/>
+            </field>
+            <field name="uom_id" position="after">
+                <field name="supplier_partner_id"/>
+                <field name="production_partner_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- <record id="product_template_tree_view_mw_inherit" model="ir.ui.view">
+        <field name="name">product.template.product.tree.mw.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="default_code" position="before">
+                <field name="product_code"/>
+            </field>
+            <field name="uom_id" position="after">
+                <field name="supplier_partner_id"/>
+                <field name="production_partner_id"/>
+            </field>
+        </field>
+    </record> -->
+
+    <record id="product_template_form_view_mw" model="ir.ui.view">
+        <field name="name">product.template.common.form.mw</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="uom_po_id" position="after">
+                <field name="supplier_partner_id"/>
+                <field name="production_partner_id"/>
+            </field>
+        </field>
+    </record>
+</odoo>

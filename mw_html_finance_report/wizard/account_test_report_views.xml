@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mw_account_test_report" model="ir.ui.view">
+        <field name="name">Account Test Report</field>
+        <field name="model">mw.account.test.report</field>
+        <field name="arch" type="xml">
+            <form string="Product Routes Report">
+                <group>
+                   <field name="account_id"  />
+                   <separator string="Огноо" />
+                   <field name="date_from" string="Эхлэх"/>
+                   <field name="date_to" string="Дуусах"/>
+                </group>
+                <footer>
+                    <button name="print_report" 
+                        string="Overview" 
+                        type="object" 
+                        class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mw_account_test_report" model="ir.actions.act_window">
+        <field name="name">MW Account Test Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mw.account.test.report</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_mw_account_test_report"/>
+        <field name="target">new</field>
+    </record>
+
+	<menuitem action="action_mw_account_test_report"
+		id="menu_action_mw_account_test_report"
+		parent="account.menu_finance_reports" sequence="16" />  
+		
+		
+		  
+</odoo>

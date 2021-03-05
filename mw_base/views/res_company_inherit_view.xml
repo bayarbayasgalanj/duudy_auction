@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+       <record id="view_company_property_mw_form" model="ir.ui.view">
+            <field name="name">res.company.mw.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                       <field name="transfer_account_id" options="{'no_create': True, 'no_open': True}" />
+                </field>
+                <data>
+                <xpath expr='//page[1]' position="after">
+                    <page string="Accounts">
+                        <group col="2">    
+                            <field name="account_id" domain="[('deprecated', '=', False)]" options="{'no_create': True}"/>
+                            <field name="account_prepaid_id" domain="[('deprecated', '=', False)]" options="{'no_create': True}"/>
+                            <field name="journal_id" options="{'no_create': True}" />
+                            <field name="account_payable_id" domain="[('deprecated', '=', False)]" options="{'no_create': True}"/>
+                            <field name="account_partner_id" options="{'no_create': True}"/>
+                            <!-- <field name="ndsh_partner_id" options="{'no_create': True}"/> -->
+                            <field name="account_ndsh_id" options="{'no_create': True}"/>
+                            <field name="account_ndsh1_id" options="{'no_create': True}"/>
+                            <field name="account_clearing_id" options="{'no_create': True}"/>
+                            <field name="account_pit_payable_id" options="{'no_create': True}"/>
+                            <field name="account_employee_recievable_id" options="{'no_create': True}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </data>
+            </field>
+        </record>      
+</odoo>

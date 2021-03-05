@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!-- Payment Request Import Incash -->
+        <record id="view_import_bank_invoice" model="ir.ui.view">
+            <field name="name">import.bank.invoice.form</field>
+            <field name="model">import.bank.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Import Invoice">
+                	<group col="4" >
+                    	<field name="partner_id" string="Харилцагч"/><!--  attrs="{'readonly':[('is_multi','=',False)]}"/> -->
+                    	<field name="type" string="Төрөл" />
+                    	<field name="is_multi"  attrs="{'invisible':[('is_line','=',True)]}"/>
+                    	<field name="date" />
+                    	<field name="amount" attrs="{'invisible':['|',('is_multi','=',False),('is_line','=',True)],'required':['|',('is_multi','=',True),('is_line','=',False)]}"/>
+                    <button name="button_import_invoice" string="Олон гүйлгээ импортлох" 
+                        type="object" icon="gtk-execute" colspan="1" attrs="{'invisible':['|',('is_multi','=',False),('is_line','=',True)]}"/>
+                    	<field name="is_multi_invoice_choose" attrs="{'invisible':['|',('is_multi','=',False),('is_line','=',True)]}"/>
+                    	<field name="sort_by_due" attrs="{'invisible':['|',('is_multi','=',False),('is_line','=',True)]}"/>
+					</group>
+					<group>
+                    	<field name="is_line" invisible="1"/>
+                    	<field name="to_line" invisible="1"/>
+                    	<field name="income_line" invisible="1"/>
+                    </group>
+                    <group col="4">
+	                    <field 
+	                        name="multi_inv_ids" nolabel="1" colspan="4" 
+	                        attrs="{'invisible':['|','|',('type','!=','invoice'),('is_multi','=',False),('is_multi_invoice_choose','=',False)]}"
+	                        domain="[('account_id.internal_type','in',['payable','receivable']),('state', '=', 'open'),('partner_id', '=', partner_id)]"/>
+<!-- 				                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice">
+				                    <field name="partner_id" string="Харилцагч"/>
+				                    <field name="date_invoice" string="Огноо"/>
+				                    <field name="number" string="Дугаар"/>
+				                    <field name="commercial_partner_id" invisible="1"/>
+				                    <field name="reference" invisible="1"/>
+				                    <field name="name" string="Утга"/>
+				                    <field name="journal_id" invisible="1"/>
+				                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+				                    <field name="user_id"/>
+				                    <field name="date_due"/>
+				                    <field name="origin" string="Эх баримт"/>
+				                    <field name="amount_total_signed" string="Дүн"/>
+				                    <field name="residual_signed"/>
+				                    <field name="currency_id" invisible="1"/>
+				                    <field name="company_currency_id" invisible="1"/>
+				                    <field name="state" string="Төлөв"/>
+				                    <field name="type" invisible="context.get('type',True)"/>
+				                </tree>	                        
+	                        </field>		 -->
+	                                            
+	                    <field 
+	                        name="inv_ids" nolabel="1" colspan="4" 
+	                        attrs="{'invisible':['|',('type','!=','invoice'),('is_multi','=',True)]}"
+	                        domain="[('account_id.internal_type','in',['payable','receivable']),('state', '=', 'open'),('partner_id', '=', partner_id)]"/>
+<!-- 				                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice">
+				                    <field name="partner_id" string="Харилцагч"/>
+				                    <field name="date_invoice" string="Огноо"/>
+				                    <field name="number" string="Дугаар"/>
+				                    <field name="commercial_partner_id" invisible="1"/>
+				                    <field name="reference" invisible="1"/>
+				                    <field name="name" string="Утга"/>
+				                    <field name="journal_id" invisible="1"/>
+				                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+				                    <field name="user_id"/>
+				                    <field name="date_due"/>
+				                    <field name="origin" string="Эх баримт"/>
+				                    <field name="amount_total_signed" string="Дүн"/>
+				                    <field name="residual_signed"/>
+				                    <field name="currency_id" invisible="1"/>
+				                    <field name="company_currency_id" invisible="1"/>
+				                    <field name="state" string="Төлөв"/>
+				                    <field name="type" invisible="context.get('type',True)"/>
+				                </tree>	                        
+	                        </field>					 -->
+	               		<field height="300" width="1500"
+	                        name="move_ids" nolabel="1"
+	                        attrs="{'invisible':['|',('type','!=','move'),('is_multi','=',True)]}"
+	                        domain="[('account_id.internal_type','in',['payable','receivable']),('move_id.state', '=', 'posted'),
+	                        		('partner_id','=',partner_id),('amount_residual','!=',0)]"> <!--('journal_id','!=',17) ('currency_id','=',currency_id) -->
+				                <tree string="Journal Items" create="true" >
+				                    <field name="date"/>
+				                    <field name="debit" sum="Total Debit"/>
+				                    <field name="credit" sum="Total Credit"/>
+				                    <field name="amount_residual" sum="Total residual"/>
+				                    <field name="amount_currency" readonly="True" groups="base.group_multi_currency"/>
+				                    <field name="move_id" required="0" groups="account.group_account_user"/>
+				                    <field name="journal_id" options='{"no_open":True}'/>
+				                    <field name="name"/>
+				                    <field name="ref"/>
+				                    <field name="statement_id" invisible="1"/>
+				                    <field name="partner_id"/>
+				                    <field name="account_id" options='{"no_open":True}' domain="[('company_id', '=', company_id)]" groups="account.group_account_user"/>
+				                    <field name="analytic_account_id" groups="account.group_account_user"/>
+				                    <field name="reconciled" />
+				                    <field name="full_reconcile_id"/>
+				                    <field name="currency_id" readonly="True" invisible="1" />
+				                    <field name="date_maturity"/>
+				                    <field name="company_currency_id" invisible="1"/>
+				                    <field name="company_id" invisible="1"/>
+				                </tree>	                        		
+	                     </field>		
+						<field height="400" width="1500" name="self_aml_line_ids" colspan="4" nolabel="1" 
+										attrs="{'invisible':['|',('type','!=','move'),('is_multi','=',True)]}">
+								<tree string="Lines" editable="bottom" >
+									<field name="amount" sum="нийт төлөгдөх дүн" string="Төлөгдөх дүн"/>
+				                    	<field name="residual" string="Үлдэгдэл" sum="Нийт"/>
+				                    <field name="currency_id" string="Валют" sum="Нийт"/>
+				                    	<field name="residual_currency" string="Валютаар үлд"/>
+				                    	<field name="amount_currency" string="Валютаар дүн"/>
+				                    <field name="rate" string="Ханш"/>
+									<field name="aml_ids" string="Гүйлгээнүүд" widget="many2many_tags" />
+				                    <field name="partner_id" string="Харилцагч"/>
+				                    <field name="account_id" string="Данс"/>
+				                    <field name="debit" string="Дебит" sum="Нийт"/>
+				                    <field name="credit" string="Кредит" sum="Нийт"/>
+<!-- 				                    <field name="number" string="Дугаар"/> -->
+<!-- 				                    <field name="origin" string="Эх баримт"/> -->
+<!-- 				                    	<field name="type"/> -->
+<!-- 				                    <field name="state" string="Төлөв"/> -->
+								</tree>
+						</field>
+						
+						<field height="400" width="1500" name="self_line_ids" colspan="4" nolabel="1" attrs="{'invisible':[('is_multi','=',False)]}">
+								<tree string="Lines" editable="bottom" >
+									<field name="amount" sum="нийт төлөгдөх дүн" string="Төлөгдөх дүн"/>
+									<field name="invoice_id" string="Нэхэмжлэх"/>
+				                    <field name="partner_id" string="Харилцагч" />
+				                    <field name="date_invoice" string="Огноо"/>
+				                    <field name="number" string="Дугаар"/>
+				                    <field name="origin" string="Эх баримт"/>
+				                    	<field name="residual" string="Үлдэгдэл"/>
+				                    	<field name="type"/>
+				                    <field name="state" string="Төлөв"/>
+								</tree>
+						</field>
+
+                    </group>
+                    <footer>
+                        <button string="Ok1"  name="populate_statement_line" attrs="{'invisible':[('is_line','!=',True)]}" type="object" class="btn-primary"/><!-- -->
+                        <button string="Ok2" attrs="{'invisible':['|','|',('type','!=','invoice'),('is_line','=',True),('to_line','=',True)]}" name="populate_statement_inv" type="object" class="btn-primary"/>
+                        <button string="Ok3" attrs="{'invisible':[('to_line','!=',True)]}" name="populate_statement_multi_inv" type="object" class="btn-primary"/>
+                        <button string="Ok4" attrs="{'invisible':['|','|',('type','!=','move'),('is_line','=',True),('to_line','=',True)]}" name="populate_statement_move" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+        <record id="action_import_bank_invoice" model="ir.actions.act_window">
+            <field name="name">Import Invoice</field>
+            <field name="res_model">import.bank.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_import_bank_invoice"/>
+            <field name="target">new</field>
+            <field name="context">{'line_id': active_id}</field>
+        </record>
+        
+    </data>
+</openerp>

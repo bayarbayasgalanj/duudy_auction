@@ -1,0 +1,3875 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mw_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20200729\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-05 07:29+0000\n"
+"PO-Revision-Date: 2020-10-05 07:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mw_account
+#: model_terms:ir.actions.act_window,help:mw_account.action_view_bank_statement_sale_tree
+msgid ""
+"A Cash Register allows you to manage cash entries in your cash\n"
+"                journals. This feature provides an easy way to follow up cash\n"
+"                payments on a daily basis. You can enter the coins that are in\n"
+"                your cash box, and then post entries when money comes in or\n"
+"                goes out of the cash box."
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: model:ir.model,name:mw_account.model_account_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__inc_exp_account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__account_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__account_id
+#: model:ir.model.fields,field_description:mw_account.field_mw_account_report__account_id
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__account_id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__account_id
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_pivot_search
+#, python-format
+msgid "Account"
+msgstr "Данс"
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_cashflow_report_new
+msgid "Account Cashflow Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__import_inv_id
+msgid "Account Invoice"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__import_bank_invoice__type__move
+#: model:ir.model.fields.selection,name:mw_account.selection__import_bank_invoice_line__type__move
+msgid "Account Move"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_move_print
+msgid "Account Move print"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_payable_aged_date_report
+msgid "Account Payable Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_sale_payment_report
+msgid "Account Payment Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_cash_payment_report
+msgid "Account Payment list Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_financial_html_report
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_financial_report_line_form
+msgid "Account Report"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_financial_report_line_tree
+msgid "Account Report line"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#: model:ir.model,name:mw_account.model_account_balance_sheet_report
+#: model:ir.model,name:mw_account.model_account_transaction_balance_report_new
+#, python-format
+msgid "Account Transaction Balance Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_account_type
+msgid "Account Type"
+msgstr "Дансны бүлэг"
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_account_type_form
+msgid "Account Types"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__import_aml_id
+msgid "Account aml"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_report
+msgid "Account bank report"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_report
+msgid "Account bank.reports"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_search
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_skip_conf_search
+msgid "Account cash move"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_statement_pivot
+msgid "Account cash pivot"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_chart
+msgid "Account chart"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_line_change
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_chart
+msgid "Account charts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_income_statement_report_new
+msgid "Account income statement Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__inv_ids
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__multi_inv_ids
+msgid "Account invoice"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_html_report__account_line_ids
+msgid "Account lines"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_move_many_confirm
+msgid "Account many confirm with print"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__aml_ids
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__move_ids
+msgid "Account move line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_payable_aged_date_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_payable_aged_date_report2
+msgid "Account payable report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_sale_reconcile_view
+msgid "Account sale report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_mw_account_report
+msgid "Account test report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_vat_report
+msgid "Account vat Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__from_account
+msgid "Account?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__account_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__account_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__chart_account_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__account_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__account_ids
+msgid "Accounts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_html_report__active
+#: model:ir.model.fields.selection,name:mw_account.selection__account_account_type__balance_type__active
+msgid "Active"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__type__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__type__all
+msgid "All"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_balance_sheet_report__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cashflow_report_new__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_chart__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_general_journal__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_report_new__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_account_detail__target_move__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_aged_date_report__target_move__all
+msgid "All Entries"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__condition__all
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__condition__all
+msgid "All Partner"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_balance_sheet_report__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cashflow_report_new__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_chart__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_general_journal__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_report_new__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_account_detail__target_move__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_aged_date_report__target_move__posted
+msgid "All Posted Entries"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid ""
+"All the account entries lines must be processed in order to close the "
+"statement."
+msgstr ""
+"Дансны хуулгыг хаах үед гүйлгээний мөрүүд бүгд баталгаажсан байх ёстой."
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__all
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__is_all
+msgid "All?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__aml_amount
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__amount
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__amount
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__inv_amount
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__amount
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__amount
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__amount
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__residual
+msgid "Amount"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#, python-format
+msgid "Amount MNT"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#, python-format
+msgid "Amount USD"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__amount_calc
+msgid "Amount calc"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__amount_currency
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__amount_currency
+msgid "Amount currency"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__amount_equalize
+msgid "Amount equalize"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement__out_total
+msgid "Amount ex"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement__in_total
+msgid "Amount in"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_view_pivot2
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_view_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_balance_view_pivot2
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_balance_view_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_pivot_pivot
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_pivot_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_sale_reconcile_view_pivot2
+#: model_terms:ir.ui.view,arch_db:mw_account.account_sale_reconcile_view_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_statement_pivot_report
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_pivot_pivot
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_pivot_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_view_pivot2
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_view_search
+msgid "Analysis"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_statement_pivot_search
+msgid "Analysis 1"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Шинжилгээний данс"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__analytic_account_id
+msgid "Analytic account"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__analytic_account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_account__analytic_account_ids
+msgid "Analytic accounts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__balance
+#: model:ir.model.fields.selection,name:mw_account.selection__account_financial_html_report__report_type__balance
+msgid "Balance"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_balance_sheet_report
+msgid "Balance Sheet"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account_type__balance_type
+msgid "Balance Type"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__balance_start
+msgid "Balance start"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__condition__balance
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__condition__balance
+msgid "Balanced"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Банкны дансууд"
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_statement
+msgid "Bank Statement"
+msgstr "Касс, харилцахын хуулга"
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_statement_cashbox
+msgid "Bank Statement Cashbox"
+msgstr "Кассын мөнгөний сав"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__data_file
+msgid "Bank Statement File"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_statement_line
+msgid "Bank Statement line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__bank_account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__bank_account_id
+msgid "Bank account"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_bank_statement_line__bank_account_id
+msgid "Bank account that was used in this transaction."
+msgstr "Энэ гүйлгээнд ашиглагдсан банкны данс."
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__bank_line_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__bank_line_id
+msgid "Bank line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__partner_id
+msgid "Bank partner"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_bank_statement_tree
+msgid "Bank statement"
+msgstr "Харилцах"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__bsl_id
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__bsl_id
+msgid "Bank statement line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_html_report__branch_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__branch_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__branch_id
+msgid "Branch"
+msgstr "Салбар"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__branch_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__branch_ids
+msgid "Branches"
+msgstr "Салбарууд"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_balance_sheet_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_bank_statement_import_file_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cashflow_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_many_print_form
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_aged_date_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_vat_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_line_change
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_statement_import_invoice
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bnk_stmt_wm_cashbox
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_chart
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_move_print
+#: model_terms:ir.ui.view,arch_db:mw_account.view_cash_details_wizard
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Cancel"
+msgstr "Цуцлах"
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#, python-format
+msgid ""
+"Cannot create unbalanced journal entry. 22 Ids: %s\n"
+"Differences debit - credit: %s"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_cash_box_out
+#: model:ir.model,name:mw_account.model_cash_box_tranfer
+msgid "Cash Box Out"
+msgstr "Мөнгө хорогдуулах"
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Cash Control"
+msgstr "Кассын хяналт"
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_report_cash_details
+#: model:ir.actions.report,name:mw_account.cash_details_report
+#: model:ir.ui.menu,name:mw_account.menu_report_cash_details
+#: model_terms:ir.ui.view,arch_db:mw_account.view_cash_details_wizard
+msgid "Cash Details"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_cash_move_check
+#: model:ir.ui.menu,name:mw_account.menu_action_account_cash_move_check
+msgid "Cash Move Check"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_cash_move_type
+#: model:ir.model,name:mw_account.model_account_cash_move_type
+#: model:ir.ui.menu,name:mw_account.menu_action_account_cash_move_type
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_tree
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_type_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_type_tree
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_skip_conf_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_skip_conf_tree
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_print_invoice_sign
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_print_invoice_sign_form
+msgid "Cash Move Type"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_cash_move_check
+msgid "Cash Move Type Check"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_cash_skip_conf
+msgid "Cash Move skip config"
+msgstr "Мөнгөн гүйлгээний алгасах журнал"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_line__cash_type_id
+msgid "Cash Type"
+msgstr "Мөнгөн гүйлгээний төрөл"
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_cash_bank_statement_tree
+msgid "Cash and bank"
+msgstr "Касс харилцах"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__financing_expense
+msgid "Cash flows expense from financing activities"
+msgstr "Санхүүгийн үйл ажиллагааны мөнгөн гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__investing_expense
+msgid "Cash flows expense from investing activities"
+msgstr "Хөрөнгө оруулалтын үйл ажиллагааны мөнгөн гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__activities_expense
+msgid "Cash flows expense from operating activities"
+msgstr "үйл ажиллагааны мөнгөн гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__financing_income
+msgid "Cash flows income from financing activities"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__investing_income
+msgid "Cash flows income from investing activities"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__activities_income
+msgid "Cash flows income from operating activities"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__cmtype_ids
+msgid "Cash move types"
+msgstr "Мөнгөн гүйлгээ"
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_view_bank_statement_tree
+msgid "Cash statement"
+msgstr "Касс"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__cash_type_id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__cash_type_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__cash_type_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__cash_type_id
+msgid "Cash type"
+msgstr "Мөнгөн гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_cashbox__cashbox_lines_ids
+msgid "Cashbox Lines"
+msgstr "Мөнгөн дэвсгэртийн мөр"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__tag_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__tag_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__categ_ids
+msgid "Category"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_bank_line_change
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_line_change
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Change"
+msgstr "Өөрчлөх"
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_form_mn
+msgid "Chart account"
+msgstr "Дансны төлөвлөгөө"
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_chart
+#: model:ir.ui.menu,name:mw_account.menu_action_account_tree2
+msgid "Chart of Accounts"
+msgstr "Дансны төлөвлөгөө"
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_account_chart_view
+msgid "Chart of account"
+msgstr "Дансны төлөвлөгөө"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_list_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_mw_account_report_general_journal_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_mw_account_report_partner_detail_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_mw_account_report_partner_ledger_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_mw_account_report_tran_balance_mn
+msgid "Chart of accounts"
+msgstr "Дансны төлөвлөгөө"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__check_balance_method
+msgid "Check balance method"
+msgstr "Дансны төрөл харгалзах"
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_currency_equalization__draft
+msgid ""
+"Check if this box, equalization entries to be generated draft state. Then "
+"you should valid them."
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_bank_statement_import_file_view
+msgid "Choose a file to import..."
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+msgid "Choose accounts"
+msgstr "Данс сонгох"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.analytic_account_form_inherit
+msgid "Choose product template"
+msgstr "Бараа сонгох"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.analytic_account_form_inherit
+msgid "Choose warehouse"
+msgstr "Агуулах сонгох"
+
+#. module: mw_account
+#: model_terms:ir.actions.act_window,help:mw_account.action_view_bank_statement_sale_tree
+msgid "Click to create a new cash log."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account_type__close_method
+msgid "Close Method"
+msgstr "Хаах төрөл"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__move_color
+msgid "Color"
+msgstr "Өнгө"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__inv_color
+msgid "Color2"
+msgstr "Өнгө2"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__company_id
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__company_id
+msgid "Company"
+msgstr "Компани"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__condition
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__condition
+msgid "Condition"
+msgstr "Нөхцөл"
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#, python-format
+msgid "Configuration Error!"
+msgstr "Тохиргооны алдаа"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_check__state__done
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bnk_stmt_wm_cashbox
+msgid "Confirm"
+msgstr "Батлах"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__create_uid
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__create_uid
+msgid "Created by"
+msgstr "Үүсгэсэн"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__create_date
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__create_date
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__create_date
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__create_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__create_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__create_date
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__create_date
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__create_date
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__create_date
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__create_date
+msgid "Created on"
+msgstr "Үүсгэсэн огноо"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__credit
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__credit
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__credit
+msgid "Credit"
+msgstr "Кредит"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__currency_id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__currency_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__currency_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__currency_id
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__currency
+msgid "Currency"
+msgstr "Валют"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__currency_amount
+msgid "Currency Amount"
+msgstr "Валютаар дүн"
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#: model:ir.model,name:mw_account.model_account_currency_equalization
+#, python-format
+msgid "Currency Rate Equalization"
+msgstr "Ханш тэгшитгэл"
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_currency_equalization_line
+msgid "Currency Rate Equalization line"
+msgstr "Ханш тэгшитгэл мөр"
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/models/account.py:0
+#, python-format
+msgid "Currency exchange rate difference"
+msgstr "Валют солилцооны ханшийн зөрүү"
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_partial_bank_confirm_line__currency
+msgid "Currency in which Unit cost is expressed"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__data
+msgid "Data"
+msgstr "Дата"
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__date
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__date
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__date
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__date_invoice
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__date
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__date
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_line_inherit_search
+#, python-format
+msgid "Date"
+msgstr "Огноо"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__date_from
+msgid "Date From"
+msgstr "Эхлэх огноо"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__date_to
+msgid "Date To"
+msgstr "Дуусах огноо"
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement_import.py:0
+#, python-format
+msgid ""
+"Date error %s row! \n"
+"                 format must 'YYYY-mm-dd'"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__debit
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__debit
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__debit
+msgid "Debit"
+msgstr "Дебит"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__department_id
+msgid "Department"
+msgstr "Хэлтэс"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_cashbox__desc
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__desc
+msgid "Desc"
+msgstr "Утга"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__is_detail
+msgid "Detail?"
+msgstr "Дэлгэрэнгүй?"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__display_name
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__display_name
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__display_name
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__display_name
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__display_name
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__display_name
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__display_name
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__display_name
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__display_name
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__display_name
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__display_name
+msgid "Display Name"
+msgstr "Нэр"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization__state__done
+msgid "Done"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__draft
+msgid "Draft Entry"
+msgstr "Ноорог гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__date_to
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__end_date
+#: model:ir.model.fields,field_description:mw_account.field_mw_account_report__date_to
+msgid "End Date"
+msgstr "Дуусах огноо"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__cashbox_end_id
+msgid "Ending Cashbox"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#, python-format
+msgid "Equalization Entries"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement_import.py:0
+#, python-format
+msgid "Error loading data file. \\ Please try again!"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_check_line__is_income__expense
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__is_income__expense
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization_line__type__expense
+msgid "Expense"
+msgstr "Зардал"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__export_data
+msgid "Export excel file"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_balance_sheet_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_aged_date_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_vat_report_view
+msgid "Filters"
+msgstr "Шүүлт"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__final_credit
+msgid "Final Credit"
+msgstr "Дуусах Кр"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__final_debit
+msgid "Final Debit"
+msgstr "Дуусах дт"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_follower_ids
+msgid "Followers"
+msgstr "Дагагчид"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move__from_ref
+msgid "From ref"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_general_journal
+msgid "General journal"
+msgstr "Ерөнхий журнал"
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_bank_statement_import_file__data_file
+msgid ""
+"Get you bank statements in electronic format from your bank and select them "
+"here."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__group_name
+msgid "Group"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_pivot_search
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_pivot_search
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_line_inherit_search
+msgid "Group By"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_transaction_balance_pivot
+msgid "Guilgee balance pivot"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__id
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__id
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__id
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__id
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__id
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__id
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__id
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__id
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__id
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__id
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__id
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__id
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__id
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__id
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__id
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__id
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__id
+msgid "ID"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_needaction
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_has_error
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_general_journal__partner_id
+#: model:ir.model.fields,help:mw_account.field_account_partner_ledger2__partner_id
+#: model:ir.model.fields,help:mw_account.field_account_partner_sales_ledger__partner_id
+#: model:ir.model.fields,help:mw_account.field_account_payable_account_detail__partner_id
+msgid "If empty, display all partners"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_currency_equalization__currency_id
+msgid ""
+"If you select any currency then system will do equalization on only selected"
+" currency."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_currency_equalization__partner_id
+msgid ""
+"If you select any partner then system will do equalization on only the "
+"selected partner balance."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_bank_statement_import_file
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_statement_import_invoice
+msgid "Import"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_import_bank_account_move_line
+msgid "Import Account move Line"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_bank_statement_import_file_view
+msgid "Import Bank Statements"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_statement_import_file
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Import File"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_import_bank_invoice
+#: model:ir.model,name:mw_account.model_account_bank_statement_import_invoice
+#: model:ir.model,name:mw_account.model_import_bank_invoice
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Import Invoice"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_import_bank_invoice_line
+msgid "Import Invoice Line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_view_account_bank_statement_import_invoice
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_statement_import_invoice
+msgid "Import Invoices"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_move_import
+#: model:ir.ui.menu,name:mw_account.menu_action_account_move_import
+msgid "Import account move"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__import_line_id
+msgid "Imported move"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_check_line__is_income__income
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__is_income__income
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization_line__type__income
+msgid "Income"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_income_statement_report
+#: model:ir.model.fields.selection,name:mw_account.selection__account_financial_html_report__report_type__is
+msgid "Income statement"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_income_statement_view
+msgid "Income statement report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__initial_credit
+msgid "Initial Credit"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__initial_debit
+msgid "Initial Debit"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__invoice_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__invoice_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__invoice_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__invoice_id
+#: model:ir.model.fields.selection,name:mw_account.selection__import_bank_invoice__type__invoice
+#: model:ir.model.fields.selection,name:mw_account.selection__import_bank_invoice_line__type__invoice
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_statement_import_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__invoice_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__invoice_date
+msgid "Invoice date"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__invoice_line_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__invoice_line_id
+msgid "Invoice line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__invoice_qty
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__invoice_qty
+msgid "Invoice qty"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_print_invoice_sign
+#: model:ir.ui.menu,name:mw_account.menu_action_print_invoice_sign
+msgid "Invoice sign"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__invoice_unit
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__invoice_unit
+msgid "Invoice unit"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__account_invoices
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__invoice_ids
+msgid "Invoices"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_date
+msgid "Is Date"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_html_report__is_mw
+msgid "Is MW?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__is_bold
+msgid "Is bold"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__is_categ
+msgid "Is category"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__is_currency
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__is_currency
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_currency
+msgid "Is currency"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_from_invoice
+msgid "Is from invoice"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__is_line
+msgid "Is line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__is_number
+msgid "Is number"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__is_parent
+msgid "Is parent"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__is_report
+msgid "Is report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__is_sale_return
+msgid "Is sale return?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__is_stock
+msgid "Is stock?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_tag
+msgid "Is tag"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__is_temporary
+msgid "Is temporary?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__journal_id
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__journal_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__journal_ids
+msgid "Journal"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_move
+msgid "Journal Entries"
+msgstr "Ажил гүйлгээ"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__move_id
+msgid "Journal Entry"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_move_line
+msgid "Journal Item"
+msgstr "Журналын бичилт"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Journal Items"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__journal_ids
+msgid "Journals"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_chart____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard____last_update
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report____last_update
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer____last_update
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard____last_update
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice____last_update
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm____last_update
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line____last_update
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account____last_update
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account____last_update
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign____last_update
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__write_uid
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_invoice__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_invoice_bank_statement__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__write_date
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__write_date
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__write_date
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__write_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__write_date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__write_date
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__write_date
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__write_date
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__write_date
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_cash_move_check_line
+#: model:ir.model,name:mw_account.model_account_cash_move_check_null_line
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__self_aml_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__self_line_ids
+msgid "Line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_bank_line_change
+msgid "Line change"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__import_aml_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__import_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__bank_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__bank_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__line_ids
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Lines"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization__type__liquidity
+msgid "Liquidity Accounts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__is_mnt
+msgid "MNT"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_mw_account_general_journal_report
+#: model:ir.actions.act_window,name:mw_account.action_mw_account_partner_detail_report
+#: model:ir.actions.act_window,name:mw_account.action_mw_account_partner_ledger_report
+#: model:ir.actions.act_window,name:mw_account.action_mw_account_tran_balance_report
+msgid "MW account report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Modify"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__line_id
+msgid "Move"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__aml_id
+msgid "Move line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__line_ids
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_import_form
+msgid "Moves"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.account_move_many_print_action
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_many_print_form
+msgid "Multi print"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_account__name
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__name
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__name
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__name
+#: model:ir.model.fields,field_description:mw_account.field_mw_account_report__name
+#: model:ir.model.fields,field_description:mw_account.field_print_invoice_sign__name
+#, python-format
+msgid "Name"
+msgstr "Нэр"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__name_en
+msgid "Name mn"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization__state__new
+msgid "New"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement_import.py:0
+#, python-format
+msgid "No active statement!"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement_import.py:0
+#, python-format
+msgid "No cashflow found matching '%s'."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_type__group_name__dummy
+msgid "Non affects in statements"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__condition__non-balance
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__condition__non-balance
+msgid "Non balanced"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#, python-format
+msgid "Not due"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__number
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__number
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__number
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__number
+msgid "Number"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__is_odoo
+msgid "Odoo?"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Ok1"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Ok2"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Ok3"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Ok4"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_account__is_recpay
+msgid "On partner report?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__only_bank
+msgid "Only bank?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_invoice_open
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_open
+msgid "Only open?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_cash_details_wizard
+msgid "Open Cash Details Report"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_chart
+msgid "Open Charts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__origin
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__origin
+msgid "Origin"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_cashbox__other
+#: model:ir.model.fields.selection,name:mw_account.selection__account_financial_html_report__report_type__other
+msgid "Other"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__po_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__po_id
+msgid "PO"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_purchase_stock_match
+#: model:ir.ui.menu,name:mw_account.menu_account_purchase_stock_match
+#: model:ir.ui.menu,name:mw_account.menu_account_purchase_stock_match_parent
+msgid "PO invoice check"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__parent_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__parent_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__parent_id
+msgid "Parent"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_partial_reconcile
+msgid "Partial Reconcile"
+msgstr "Хэсэгчлэн тулгах"
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_partial_bank_confirm
+msgid "Partial bank statement confirm Wizard"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Partial confirm"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__partner_print
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__partner_id
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_pivot_search
+msgid "Partner"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_currency_equalization__type__partner
+msgid "Partner Balances"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+msgid "Partner detail"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_partner_balance_view
+msgid "Partner ledger report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_account_type__balance_type__passive
+msgid "Passive"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__type__payable
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__type__payable
+msgid "Payable"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_payable_account_detail
+msgid "Payable Account Detail Report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_partner_ledger2
+msgid "Payable Account Ledger"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_partner_sales_ledger
+msgid "Payable Account Sales Ledger"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_cash_payment_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_cash_payment_report2
+msgid "Payment list report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_report_payment_account_pivot
+msgid "Payment pivot"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__period_length
+msgid "Period Length (days)"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/pos_box.py:0
+#, python-format
+msgid "Please check that the field 'Journal' is set on the Bank Statement"
+msgstr "Банкны хуулга дээрх 'Журнал' талбар тэмдэглэгдсэн эсэхийг шалгана уу."
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_move_import.py:0
+#, python-format
+msgid "Please define a sequence on the journal."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_view__state__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_view_wizard__state__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_sale_reconcile_view__state__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_sale_reconcile_view_wizard__state__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_transaction_balance_view__state__posted
+#: model:ir.model.fields.selection,name:mw_account.selection__account_transaction_balance_view_wizard__state__posted
+msgid "Posted"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_invoice.py:0
+#, python-format
+msgid ""
+"Posted journal entry must have an unique sequence number per company.{0}"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_view_account_move_print
+#: model_terms:ir.ui.view,arch_db:mw_account.account_balance_sheet_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cashflow_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_vat_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_move_print
+#: model_terms:ir.ui.view,arch_db:mw_account.view_cash_details_wizard
+msgid "Print"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_move_line_mw_account_tree
+msgid "Print invoice"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Print on %s"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_many_confirm__print_payment
+msgid "Print payment"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_partial_bank_confirm
+msgid "Process Picking"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__product_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__bank_lines
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__line_ids
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_line_list
+msgid "Product Moves"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_transaction_balance_view
+msgid "Product both income expense report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_analytic_account__product_ids
+msgid "Product templates"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#, python-format
+msgid ""
+"Programmation error: wizard action executed without active_model or "
+"active_ids in context."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__line_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__line_id
+msgid "Purchase line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__amount
+msgid "Quantity"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__rate
+#, python-format
+msgid "Rate"
+msgstr "Харьцаа"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__name
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__name
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__name
+msgid "Reason"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_ledger2__type__receivable
+#: model:ir.model.fields.selection,name:mw_account.selection__account_partner_sales_ledger__type__receivable
+msgid "Receivable"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__partner_id
+msgid "Receiving Partner"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__name
+msgid "Reference"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_income_statement_view_wizard.py:0
+#: code:addons/mw_account/wizard/account_partner_balance_view_wizard.py:0
+#: code:addons/mw_account/wizard/account_sale_reconcile_wizard.py:0
+#: code:addons/mw_account/wizard/account_transaction_balance.py:0
+#: code:addons/mw_account/wizard/account_transaction_balance_view_wizard.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__report_id
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__report_id
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__report_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__report_id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__report_id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_transfer_balance_account__report_id
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__report_id
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_financial_report_line_form
+#, python-format
+msgid "Report"
+msgstr "Тайлан"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_balance_sheet_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cashflow_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_aged_date_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_vat_report_view
+msgid "Report Options"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_html_report__report_type
+msgid "Report Type"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__report_id
+msgid "Report type"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__residual
+msgid "Residual"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__residual_currency
+msgid "Residual currency"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_move_line_mw_account_tree
+msgid "SUM"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_vat_report__is_sale
+msgid "Sale"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_bank_statement_import_file_view
+msgid "Select a bank statement file to import"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__is_multi_invoice_choose
+msgid "Select?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__sequence
+#: model:ir.model.fields,field_description:mw_account.field_account_financial_report_line__seq
+msgid "Sequence"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_line__set_cash_type
+msgid "Set cmt"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move__sign_id
+msgid "Sign"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_skip_conf__skip_journal_ids
+msgid "Skip Journal"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__is_split_branch
+msgid "Split branch?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__date
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__date
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__date_from
+#: model:ir.model.fields,field_description:mw_account.field_cash_details_wizard__start_date
+#: model:ir.model.fields,field_description:mw_account.field_mw_account_report__date_from
+msgid "Start Date"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__state
+msgid "State"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__income_statement_id
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm__statement_id
+msgid "Statement"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_line_mw_form
+msgid "Statement Line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__bsl_id
+msgid "Statement line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__state
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__state
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__state
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__state
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__state
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__state
+msgid "Status"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__stock_move_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__stock_move_id
+msgid "Stock"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_line_form
+msgid "Stock Picking Line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__stock_date
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__stock_date
+msgid "Stock date"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_form
+msgid "Stock partial Picking"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__stock_qty
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__stock_qty
+msgid "Stock qty"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__stock_unit
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__stock_unit
+msgid "Stock unit"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__is_income
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_type__is_income
+msgid "TYPE"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_balance_sheet_report__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_cashflow_report_new__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_general_journal__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_report_new__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__target_move
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_report_new__target_move
+msgid "Target Moves"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_import_file__desc
+msgid "Template"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.actions.act_window,help:mw_account.action_account_cash_move_check
+#: model_terms:ir.actions.act_window,help:mw_account.action_account_cash_move_type
+#: model_terms:ir.actions.act_window,help:mw_account.action_account_print_invoice_sign
+msgid ""
+"The cash move types is used to generate your statement of cash flows report "
+"from your cash statement orders or bank statements orders. You can manage "
+"your cash statement types and edit your statement of cash flows report "
+"template."
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#, python-format
+msgid ""
+"There is no expense currency rate account defined for this company : %s"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/wizard/account_currency_equalization.py:0
+#, python-format
+msgid "There is no income currency rate account defined for this company : %s"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_cash_move_type__sequence
+msgid ""
+"This sequence is used when generate statement of cash flows report. Sequence"
+" is ordered into the groups."
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bnk_stmt_wm_cashbox
+#, python-format
+msgid "Total"
+msgstr "Нийт"
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Total Credit"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Total Debit"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Total residual"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_transaction_balance_report
+msgid "Transaction Balance"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_form
+msgid "Transfer"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_form
+msgid "Transfer Products"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__transfer_line_id
+msgid "Transfer statement"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization__type
+#: model:ir.model.fields,field_description:mw_account.field_account_currency_equalization_line__type
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__type
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__type
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__type
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__type
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__type
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_search
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_skip_conf_search
+msgid "Type"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#, python-format
+msgid "Unknown Partner"
+msgstr "Үл мэдэх харилцагч"
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_view__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_income_statement_view_wizard__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_sale_reconcile_view__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_sale_reconcile_view_wizard__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_transaction_balance_view__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_transaction_balance_view_wizard__state__draft
+msgid "Unposted"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__user_id
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__user_id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__user_id
+msgid "User"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_payment_report__user_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_aged_date_report__user_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__user_ids
+msgid "Users"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#, python-format
+msgid "VAT"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#, python-format
+msgid "Vendor Account"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_report_view
+msgid "View"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_setup_bank_manual_config__is_print
+#: model:ir.model.fields,field_description:mw_account.field_res_partner_bank__is_print
+msgid "View on invoice?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_analytic_account__warehouse_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_ledger2__warehouse_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_sales_ledger__warehouse_id
+msgid "Warehouse"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.analytic_account_form_inherit
+msgid "Warehouse and Products setting"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__is_warehouse
+msgid "Warehouse?"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/models/account.py:0
+#, python-format
+msgid "Warning!"
+msgstr "Анхааруулга!"
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_move_import__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#: model:ir.model.fields,field_description:mw_account.field_partial_bank_confirm_line__wizard_id
+#, python-format
+msgid "Wizard"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/pos_box.py:0
+#: code:addons/mw_account/wizard/pos_box.py:0
+#, python-format
+msgid "You cannot put/take money in/out for a bank statement which is closed."
+msgstr ""
+"Та хаагдсан банк/кассын хуулганд мөнгө нэмэгдүүлэх/ хорогдуулах үйлдэл хийх "
+"боломжгүй."
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_bank_statement_import_file_view
+msgid "_Import"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_aml_bank_statement
+msgid "account aml bank statement"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_financial_report_line
+msgid "account financial report line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_income_statement_view_wizard
+msgid "account income statement view wizard"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_invoice_bank_statement
+msgid "account invoice bank statement"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_move_import
+msgid "account move import"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_partner_balance_view_wizard
+msgid "account partner balance view wizard"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_purchase_stock_match
+msgid "account purchase stock match"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_sale_reconcile_view_wizard
+msgid "account sale reconcile view wizard"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_statement_report
+msgid "account statement report"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_transaction_balance_view_wizard
+msgid "account transaction balance view wizard"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__account_ids
+msgid "accounts"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_account_type__close_method__balance
+msgid "balance"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_aml_bank_statement__currency_id
+msgid "currency aml"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__date_from
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__date_from
+msgid "date from"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__date_to
+#: model:ir.model.fields,field_description:mw_account.field_account_chart__date_to
+msgid "date to"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_account_type__close_method__none
+msgid "none"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.partial_bank_confirm_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_line_change
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_report
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_statement_import_invoice
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_chart
+msgid "or"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_partial_bank_confirm_line
+msgid "partial bank confirm line"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__picking_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__picking_id
+msgid "picking"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_pivot_report_payment_account
+msgid "pivot report payment account"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_pivot_report_transfer_balance_account
+msgid "pivot report transfer balance account"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__date
+msgid "print date"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_print_invoice_sign
+msgid "print invoice sign"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__created_id
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__user_id
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__created_id
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__user_id
+msgid "res.users"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__state
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_account_move_line__state
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice_line__state
+msgid "state"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_line__is_payable
+msgid "type"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_account_type__close_method__unreconciled
+msgid "unreconciled"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__get_amount
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__get_amount
+#, python-format
+msgid "Авах дүн"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__payd_amount
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__payd_amount
+#, python-format
+msgid "Авсан дүн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__origin
+msgid "Агуулах эх баримт"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__picking_date
+msgid "Агуулахын Огноо"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__picking_id
+msgid "Агуулахын гүйлгээ"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Ажил гүйлгээ импортолох"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+msgid "Ангилалаар"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "БЭЛЭН МӨНГӨ ХҮЛЭЭН АВАХ БАРИМТ ХЭВЛЭХ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_account_balance_sheet_report
+msgid "Баланс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_statement_pivot__state__confirm
+msgid "Баталсан"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__date_order
+msgid "Баталсан огноо"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_import_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Батлах"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#, python-format
+msgid "Борлуулагч"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__so_id
+msgid "Борлуулалт"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__amount_invoiced
+msgid "Борлуулалт нэхэмжилсэн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_sale_reconcile_view_wizard
+#: model:ir.ui.menu,name:mw_account.menu_action_account_sale_reconcile_view_wizard
+msgid "Борлуулалт санхүү тайлан"
+msgstr ""
+
+#. module: mw_account
+#: model:res.groups,name:mw_account.group_mn_sale_cash_and_bank
+msgid "Борлуулалтын касс харилцах"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Боруулагчийн ТТД"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Боруулагчийн нэр"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bnk_stmt_wm_cashbox
+msgid "Бусад зардалын утга"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_account_detail__state_invoice__all
+msgid "Бүгд"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Валют"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Валютаар дүн"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Валютаар үлд"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__move_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__move_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__move_id
+msgid "Гүйлгээ"
+msgstr ""
+
+#. module: mw_account
+#. openerp-web
+#: code:addons/mw_account/static/src/xml/custom_templates.xml:0
+#: model:ir.ui.menu,name:mw_account.menu_action_account_transaction_balance_report
+#, python-format
+msgid "Гүйлгээ баланс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_transaction_balance_view_wizard
+msgid "Гүйлгээ баланс шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_account_transaction_balance_view_wizard1
+msgid "Гүйлгээ шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_purchase_stock_match_invoice_line__type__no_stock
+msgid "Гүйлгээгүй"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__name
+msgid "Гүйлгээний утга"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_move_line_mw_account_tree
+msgid "Гүйлгээний утгаар"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_print__is_lebal
+msgid "Гүйлгээний утгаас авах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_bank_statement_line
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Гүйлгээнүүд"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__account_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__account_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_out__account_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__account_id
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Данс"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_balance_sheet_report_view
+msgid "Данс сонгох"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+msgid "Данс шинэчлэх"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_payable_account_detail
+#: model:ir.ui.menu,name:mw_account.menu_action_account_payable_account_detail
+msgid "Дансны дэлгэрэнгүй"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_move_import.py:0
+#, python-format
+msgid "Дараах харилцагч олон үүссэн байна {0}."
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Дд"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__debit
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__debit
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Дебит"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_cash_box_tranfer
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+msgid "Дотоод шилжүүлэг"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_line_change__ref
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__ref
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+#, python-format
+msgid "Дугаар"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+msgid "Дуусах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__date_end
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__date_end
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__end_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__date_end
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__date_end
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__date_end
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cashflow_report_view
+msgid "Дуусах огноо"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Дуусах огноо : %s "
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+msgid "Дуусгах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_move_import__state__done
+#: model:ir.model.fields.selection,name:mw_account.selection__account_purchase_stock_match__state__done
+msgid "Дууссан"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_line_mw_form
+msgid "Дэвсгэртлэх"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__amount
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__amount
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bnk_stmt_wm_cashbox
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+#, python-format
+msgid "Дүн"
+msgstr ""
+
+#. module: mw_account
+#. openerp-web
+#: code:addons/mw_account/static/src/xml/custom_templates.xml:0
+#: model:ir.actions.act_window,name:mw_account.action_account_general_journal2
+#: model:ir.ui.menu,name:mw_account.menu_action_account_general_journal2
+#, python-format
+msgid "Ерөнхий журнал"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_payment_report__user_get_so
+msgid "Жолоочийн тохиргоог SO с авах?"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__journal_id
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__journal_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__journal_id
+msgid "Журнал"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Журнал дээр дансы тохиргоогоо хийнэ үү1!"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Журнал дээр дансы тохиргоогоо хийнэ үү2!"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Журнал дээрх дансы банк сонгож өгнө үү!"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__amount_expense
+#: model:ir.model.fields.selection,name:mw_account.selection__cash_box_tranfer__type__expense
+msgid "Зарлага"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__validity_date
+msgid "Захиалсан огноо"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__zuruu
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__zuruu
+#, python-format
+msgid "Зөрүү"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_import_form
+msgid "Импортлох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__import_data
+msgid "Импортлох эксел"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_view_bank_statement_sale_tree
+#: model:ir.ui.menu,name:mw_account.menu_action_view_bank_statement_sale_tree
+msgid "Касс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_view_account_bnk_stmt_wm_cashbox
+msgid "Касс дэвсгэртлэх"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.sales_cash_root_menu
+msgid "Касс харилцах"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+msgid "Касс харилцах хооронд дотоод шилжүүлэг:"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.copy_statement
+#: model:ir.model,name:mw_account.model_account_bank_statement_copy
+msgid "Касс хуулбарлах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__statement_name
+msgid "Касс/Харилцах дугаар"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_statement_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_statement_report
+msgid "Касс/Харилцах шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__statement_id
+msgid "Кассын дугаар"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__statement_journal_id
+msgid "Кассын журнал"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Компани олдсонгүй!"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_cash_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payable_aged_date_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Компани:"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__credit
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__credit
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Кредит"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "МГ төрөл"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_cashflow_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_cashflow_report
+msgid "Мөнгөн гүйлгээний тайлан"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_cash_skip_conf
+#: model:ir.ui.menu,name:mw_account.menu_action_account_cash_skip_conf
+msgid "Мөнгөн гүйлгээний тохиргоо"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check__null_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__inv_line_ids
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__line_ids
+msgid "Мөр"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__is_line
+msgid "Мөрөөс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__income_line
+msgid "Мөрөөс дуудах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__to_line
+msgid "Мөрөөс мөрүү"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_view_tree_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_balance_view_tree_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_sale_reconcile_view_tree_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_view_tree_view
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Нийт"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_tree_inherit_mn_account
+msgid "Нийт зарлага"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#, python-format
+msgid "Нийт нээлттэй нэхэмжлэхүүдийн дүн шилжүүлгийн дүнд хүрэхгүй байна."
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_tree_inherit_mn_account
+msgid "Нийт орлого"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Ногдуулсан НӨТ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_cash_move_check__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_move_import__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_purchase_stock_match__state__draft
+#: model:ir.model.fields.selection,name:mw_account.selection__account_statement_pivot__state__draft
+msgid "Ноорог"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_import_form
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+msgid "Ноороглох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__name
+msgid "Нэр"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Нэхэмжлэх"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Нэхэмжлэх импортлох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__balance_start
+msgid "Нээлтийн үлдэгдэл"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_account_detail__state_invoice__open
+msgid "Нээлттэй"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_income_statement_view_wizard
+msgid "ОТ шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_statement_copy__date
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__date
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__date
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__date
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__date
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__date
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__date
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__date
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__date
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+#, python-format
+msgid "Огноо"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_move_import.py:0
+#, python-format
+msgid "Огноо оруулана уу."
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/pos_box.py:0
+#, python-format
+msgid "Огноо оруулна уу.!"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__is_multi
+msgid "Олон гүйлгээ"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Олон гүйлгээ импортлох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_import_bank_invoice__is_multi
+msgid "Олон гүйлгээ нийлүүлэх бол."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__amount_income
+#: model:ir.model.fields.selection,name:mw_account.selection__cash_box_tranfer__type__income
+msgid "Орлого"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_account_income_statement_report
+msgid "Орлогын тайлан"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_action_account_income_statement_view_wizard1
+msgid "Орлогын тайлан шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#, python-format
+msgid "Оруулсан"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#, python-format
+msgid "Падаан №"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__padaan
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__padaan
+msgid "Падааны дугаар"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__branch_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__branch_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_out__branch_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__branch_id
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+msgid "Салбар"
+msgstr ""
+
+#. module: mw_account
+#: model:res.groups,name:mw_account.group_mn_branch_account
+msgid "Салбарын санхүү"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__aml_date
+msgid "Санхүү Огноо"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__move_id
+msgid "Санхүү гүйлгээ"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__choose_type
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__choose_type
+#, python-format
+msgid "Сонгосон хэлбэр"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_financial_report_inherit_mn_form
+msgid "Тайлангийн төрөл"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__name
+msgid "Тайлбар"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/pos_box.py:0
+#, python-format
+msgid ""
+"Таны хийж буй гүйлгээний сар шилжүүлж буй касс эсвэл харилцахын сараас зөрж байна.!\n"
+" Тухайн сарын гүйлгээ тухайн сардаа хийгдэнэ."
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_aged_date_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+msgid "Татах"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_move_import_form
+msgid "Темплате Экспортлох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_line__parent_id
+#: model:ir.model.fields,field_description:mw_account.field_account_cash_move_check_null_line__parent_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__parent_id
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_line__parent_id
+msgid "Толгой"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_purchase_stock_match_invoice_line__type__qty
+msgid "Тоо зөрсөн"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+msgid "Тооцооллууд"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+msgid "Тооцоолол агуулах"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+msgid "Тооцоолол санхүү"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_purchase_stock_match_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+msgid "Тооцоолох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__balance_end
+msgid "Тооцоолсон баланс"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/pos_box.py:0
+#, python-format
+msgid ""
+"Тухайн сарын касс байхгүй байна.! \n"
+" Мөнгөн хөрөнгийн нягтланд хандана уу."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__balance_end_real
+msgid "Төгсгөлийн баланс"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#, python-format
+msgid "Төлсөн хэлбэр"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_move_import__state
+#: model:ir.model.fields,field_description:mw_account.field_account_payable_account_detail__state_invoice
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__state
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__state
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+#, python-format
+msgid "Төлөв"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields.selection,name:mw_account.selection__account_payable_account_detail__state_invoice__paid
+msgid "Төлөгдсөн"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Төлөгдөх дүн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_payment_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_payment_report
+msgid "Төлөлтийн тайлан"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_import_bank_invoice__sort_by_due
+msgid "Төлөх огноогоор сортлох"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view__type
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match_invoice_line__type
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Төрөл"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+msgid "Төрөл сонгоогой"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__name
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_cash_move_check_form
+msgid "Утга"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__ref_name
+msgid "Утга холбогдол"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_balance_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_sale_reconcile_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_view_wizard_view
+msgid "Хаах"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Ханш"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_income_statement_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_balance_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_aged_date_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payment_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_sale_reconcile_view_wizard_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_statement_report_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_transaction_balance_view_wizard_view
+msgid "Харах"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_out__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_tranfer__partner_id
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+#, python-format
+msgid "Харилцагч"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#, python-format
+msgid "Харилцагч сольж болохгүй!!."
+msgstr ""
+
+#. module: mw_account
+#. openerp-web
+#: code:addons/mw_account/static/src/xml/custom_templates.xml:0
+#, python-format
+msgid "Харилцагчийн гүйлгээний дэлгэрэнгүй тайлан"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Харилцагчийн дансны банк сонгоогүй байна!"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#, python-format
+msgid "Харилцагчийн дансны дугаараа сонгоно уу!"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_partner_ledger2
+#: model:ir.ui.menu,name:mw_account.menu_action_account_partner_ledger2
+msgid "Харилцагчийн дэвтэр"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_partner_sales_ledger2
+#: model:ir.ui.menu,name:mw_account.menu_action_account_partner_sales_ledger2
+msgid "Харилцагчийн тайлан /борлуулалт/"
+msgstr ""
+
+#. module: mw_account
+#. openerp-web
+#: code:addons/mw_account/static/src/xml/custom_templates.xml:0
+#, python-format
+msgid "Харилцагчийн товчоо"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_partner_balance_view_wizard
+#: model:ir.ui.menu,name:mw_account.menu_action_account_partner_balance_view_wizard1
+msgid "Харилцагчийн тооцоо шинжилгээ"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_pivot__account_id
+msgid "Харьцах данс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__ref
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__origin
+msgid "Холбогдол"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_vat_report
+#: model:ir.ui.menu,name:mw_account.menu_action_account_vat_report
+msgid "Худалдан авалтын дэвтэр"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Худалдан авсан нийт дүн (НӨТ-тэй)"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.copy_statement_view_form
+msgid "Хуулбарлах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.actions.act_window,name:mw_account.action_account_bank_report
+msgid "Хуулга хэвлэх"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_report
+#: model_terms:ir.ui.view,arch_db:mw_account.view_bank_statement_form_mn
+msgid "Хэвлэх"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#: code:addons/mw_account/models/account_bank_statement.py:0
+#: code:addons/mw_account/report/account_cash_report.py:0
+#, python-format
+msgid ""
+"Хэвлэх загварын тохиргоо хийгдээгүй байна, Системийн админд хандана уу!"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+msgid "Хүлээн авах касс/харилцах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,help:mw_account.field_account_income_statement_view__date
+#: model:ir.model.fields,help:mw_account.field_account_partner_balance_view__date
+#: model:ir.model.fields,help:mw_account.field_account_sale_reconcile_view__aml_date
+#: model:ir.model.fields,help:mw_account.field_account_sale_reconcile_view__picking_date
+#: model:ir.model.fields,help:mw_account.field_account_statement_pivot__date
+#: model:ir.model.fields,help:mw_account.field_account_transaction_balance_view__date
+msgid "Хөдөлгөөн хийсэн огноо"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+#: model_terms:ir.ui.view,arch_db:mw_account.view_account_bank_report
+msgid "Цуцлах"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__net_move
+msgid "Цэвэр гүйлгээ"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Цэвэр дүн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__aml_ids
+msgid "ШИнэчлэгдсэн гүйлгээнүүд"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#, python-format
+msgid "Шижүүлгийн дансууд бүгд ижил байх ёстой шалгана уу!!."
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cash_box_tranfere_form
+msgid "Шилжүүлэг хийх"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/import_bank_statement.py:0
+#, python-format
+msgid "Шилжүүлэх мөнгөн дүнгээ оруулана уу!!."
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__analytic_account_id
+#: model:res.groups,name:mw_account.group_mn_analytic_accountant
+msgid "Шинжилгээний данс"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.ui.menu,name:mw_account.menu_finance_legal_statement_xls
+msgid "Эксел тайлангууд"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Эх баримт"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.account_general_journal_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_partner_sales_ledger_view
+#: model_terms:ir.ui.view,arch_db:mw_account.account_payable_account_detail_view
+msgid "Эхлэх"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_income_statement_view_wizard__date_start
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view_wizard__date_start
+#: model:ir.model.fields,field_description:mw_account.field_account_purchase_stock_match__start_date
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view_wizard__date_start
+#: model:ir.model.fields,field_description:mw_account.field_account_statement_report__date_start
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view_wizard__date_start
+#: model_terms:ir.ui.view,arch_db:mw_account.account_cashflow_report_view
+msgid "Эхлэх огноо"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: code:addons/mw_account/wizard/account_vat_report.py:0
+#, python-format
+msgid "Эхлэх огноо : %s "
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__initial_debit
+msgid "Эхний дебит"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__initial_credit
+msgid "Эхний кредит"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__final_debit
+msgid "Эцсийн дебит"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_pivot__final_credit
+msgid "Эцсийн кредит"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__amount
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__amount
+msgid "дүн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model,name:mw_account.model_account_purchase_stock_match_invoice_line
+#: model:ir.model,name:mw_account.model_account_purchase_stock_match_line
+msgid "мөр"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "нийт төлөгдөх дүн"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_sale_reconcile_view__name
+msgid "нэр"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_cash_box_out__date
+msgid "огноо"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__type
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__type
+msgid "төлсөн хэлбэр"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_pivot_report_payment_account__state
+#: model:ir.model.fields,field_description:mw_account.field_report_payment_account_pivot__state
+msgid "төлөв"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/wizard/account_payment_report.py:0
+#: model:ir.model.fields,field_description:mw_account.field_account_partner_balance_view__partner_id
+#: model:ir.model.fields,field_description:mw_account.field_account_transaction_balance_view__partner_id
+#, python-format
+msgid "харилцагч"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.copy_statement_view_form
+msgid "Үгүй"
+msgstr ""
+
+#. module: mw_account
+#: model_terms:ir.ui.view,arch_db:mw_account.view_import_bank_invoice
+msgid "Үлдэгдэл"
+msgstr ""
+
+#. module: mw_account
+#: model:ir.model.fields,field_description:mw_account.field_account_bank_report__by_month
+msgid "Үлдэгдэл сараар"
+msgstr ""
+
+#. module: mw_account
+#: code:addons/mw_account/models/account.py:0
+#, python-format
+msgid "Өөр журналын гүйлгээг нэг зэрэг хэвэх боломжгүй!"
+msgstr ""

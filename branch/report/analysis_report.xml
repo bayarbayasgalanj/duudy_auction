@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- 
+    <record id="account.view_account_invoice_report_search" model="ir.ui.view">
+        <field name="name">account.invoice.report.search</field>
+        <field name="model">account.invoice.report</field>
+        <field name="arch" type="xml">
+            <search string="Invoices Analysis">
+                <field name="date"/>
+				<field name="branch_id"/>
+                <filter string="This Year" name="thisyear" domain="['|', ('date', '=', False), '&amp;',('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]" help="Journal invoices with period in current year"/>
+                <separator/>
+                <filter string="To Invoice" domain="[('state','=','draft')]" help = "Draft Invoices"/>
+                <filter string="Pro-forma" domain="['|', ('state','=','proforma'),('state','=','proforma2')]"/>
+                <filter string="Invoiced" name="current" domain="[('state','not in', ('draft','cancel','proforma','proforma2'))]"/>
+                <separator/>
+                <filter string="Customer" name="customer" domain="['|', ('type','=','out_invoice'),('type','=','out_refund')]"/>
+                <filter string="Vendor" name="supplier" domain="['|', ('type','=','in_invoice'),('type','=','in_refund')]"/>
+                <separator/>
+                <filter string="Invoice" domain="['|', ('type','=','out_invoice'),('type','=','in_invoice')]"/>
+                <filter string="Refund" domain="['|', ('type','=','out_refund'),('type','=','in_refund')]"/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="user_id" />
+                <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Partner" name="partner_id" context="{'group_by':'partner_id','residual_visible':True}"/>
+                    <filter string="Salesperson" name='user' context="{'group_by':'user_id'}"/>
+                    <filter string="Product Category" name="category_product" context="{'group_by':'categ_id','residual_invisible':True}"/>
+                    <filter string="Status" context="{'group_by':'state'}"/>
+                    <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <separator orientation="vertical" />
+                    <filter string="Date" context="{'group_by':'date'}"/>
+                    <filter string="Due Month" context="{'group_by':'date_due:month'}"/>
+					<filter name='group_by_branch'
+                        string="Branch"
+                        context="{'group_by':'branch_id'}"/>
+           
+                </group>
+            </search>
+        </field>
+    </record> -->
+</odoo>

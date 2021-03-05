@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_tax_report_option_manager,account.tax.report.option,model_account_tax_report_option,account.group_account_manager,1,1,1,0
+access_res_company_operation_manager,res.company.operation,model_res_company_operation,account.group_account_manager,1,1,1,0
+access_tax_ct30,tax.ct30,model_tax_ct30,account.group_account_manager,1,1,1,1
+access_tax_tt02,tax.tt02,model_tax_tt02,account.group_account_manager,1,1,1,1
+access_tax_ct30_table2,tax.ct30.table2,model_tax_ct30_table2,account.group_account_manager,1,1,1,1
+access_tax_ct30_table3,tax.ct30.table3,model_tax_ct30_table3,account.group_account_manager,1,1,1,1
+access_tax_ct30_table1,tax.ct30.table1,model_tax_ct30_table1,account.group_account_manager,1,1,1,1
+

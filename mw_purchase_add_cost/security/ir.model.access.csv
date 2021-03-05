@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_order_expenses_user,purchase.order.expenses,model_purchase_order_expenses,purchase.group_purchase_user,1,0,0,0
+access_purchase_order_expenses_manager,purchase.order.expenses,model_purchase_order_expenses,purchase.group_purchase_manager,1,1,1,1
+
+access_po_expenses_report_user,po.expenses.report,model_po_expenses_report,purchase.group_purchase_user,1,1,1,1

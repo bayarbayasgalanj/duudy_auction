@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_partner_sales_ledger_view" model="ir.ui.view">
+            <field name="name">account.partner.sales.ledger.view</field>
+            <field name="model">account.partner.sales.ledger</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+	                <group name="main_info">
+	                    <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+	                </group>
+                    <group colspan="4" col="4" >
+                    		<group colspan="4" >
+<!-- 	 	                   <field name="account_id" colspan="2" />
+		                   <field name="partner_id" colspan="2" /> -->
+		                   <field name="type" colspan="4" readonly="1" />
+		                   <field name="target_move" />
+<!-- 		                   <field name="is_currency" /> -->
+		                   </group>
+<!-- 		                   <field name="warehouse_id" string="Салбар агуулах"/> -->
+<!-- 		                   <group colspan="2" col="2" attrs="{'invisible':[('partner_id','&lt;&gt;',False)]}">
+		                       <field name="condition" invisible="'hide_account' not in context"/>
+		                   </group> -->
+                    		<group colspan="4" >
+                                <separator string="Огноо" colspan="4"/>
+                                <field name="date_from" colspan="4" string="Эхлэх"/>
+                                <field name="date_to" colspan="4" string="Дуусах"/>
+							</group>
+		                   
+<!-- 	                   <group col="2" colspan="4">
+	                        <notebook colspan="4">
+	                            <page string="Filters">
+	                            	<group>
+	                                <separator string="Огноо" colspan="4"/>
+	                                <field name="date_from" colspan="4" string="Эхлэх"/>
+	                                <field name="date_to" colspan="4" string="Дуусах"/>
+								</group>
+                            </page>
+	                        </notebook>
+	                   </group>
+	                   <separator colspan="4"/> -->
+<!-- 	                   <group colspan="4">
+	                        <button icon="gtk-cancel" special="cancel" string="Болих" colspan="2"/>
+	                        <button icon="gtk-print" name="check_report" string="Хэвлэх" type="object" colspan="2" default_focus="1" />
+	                   </group>
+ -->
+ 						<footer col="3" class="oe_right">
+	                        <button icon="fa-times" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="fa-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+        			       </footer>
+ 	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_partner_sales_ledger2" model="ir.actions.act_window">
+            <field name="name">Харилцагчийн тайлан /борлуулалт/</field>
+            <field name="res_model">account.partner.sales.ledger</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_partner_sales_ledger_view"/>
+            <field name="target">new</field>
+            <field name="context">{'report_type':'all'}</field>
+        </record>
+        <menuitem icon="STOCK_PRINT"
+                id="menu_action_account_partner_sales_ledger2"
+                action="action_account_partner_sales_ledger2"
+                parent="menu_finance_legal_statement_xls"/>
+    </data>
+</openerp>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ 	<!-- stock.move.lock -->
+    <record id="view_stock_move_lock_tree" model="ir.ui.view">
+        <field name="name">stock.move.lock.tree</field>
+        <field name="model">stock.move.lock</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_start"/>
+    			<field name="date_end"/>
+    			<field name="warehouse_ids" widget="many2many_tags"/>
+    		</tree>
+        </field>
+    </record>
+    <record id="view_stock_move_lock_form" model="ir.ui.view">
+        <field name="name">stock.move.lock.form</field>
+        <field name="model">stock.move.lock</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+            	<sheet>
+            		<group col="4">
+        				<field name="date_start"/>
+		    			<field name="date_end"/>
+			    	</group>
+                	<group string="Агуулах">
+                		<field name="warehouse_ids" widget="many2many_tags"/>
+                	</group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="stock_move_lock_filter" model="ir.ui.view">
+	<field name="name">stock.move.lock.filter</field>
+    <field name="model">stock.move.lock</field>
+    <field name="arch" type="xml">
+    	<search string="Search">
+    		<group expand="0" string="Group By...">
+        		<filter string="Өдөрөөр" name='group_day' context="{'group_by':'date_start:day'}"/>
+                <filter string="Жилээр" name='group_year' context="{'group_by':'date_start:year'}"/>
+                <filter string="Сараар" name='group_month' context="{'group_by':'date_start:month'}"/>
+            </group>
+       	</search>
+    </field>
+	</record>
+
+	<record id="action_stock_move_lock" model="ir.actions.act_window">
+        <field name="name">Агуулахын хөдөлгөөн цоожлох</field>
+        <field name="res_model">stock.move.lock</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+
+    <menuitem action="action_stock_move_lock"
+        id="mw_stock_move_lock_menu" 
+        parent="stock.menu_stock_config_settings" sequence="10" groups="mw_stock.group_stock_move_locker"/>
+
+</odoo>
+	    

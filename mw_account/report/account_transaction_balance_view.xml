@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Income, Expsne Both report -->
+        <record id="account_transaction_balance_view_tree_view" model="ir.ui.view">
+            <field name="name">account.transaction.balance.view.tree.view</field>
+            <field name="model">account.transaction.balance.view</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name="id" />
+                    <field name="date" />
+                    <field name="account_id" />
+                    <field name="journal_id"/>
+                    <field name="partner_id" />
+                    <field name="move_id" />
+                    <field name="origin" />
+                    <field name="analytic_account_id" />
+                    <field name="debit" sum="Нийт"/>
+                    <field name="credit" sum="Нийт"/>
+                    <field name="net_move" sum="Нийт"/>
+               </tree>
+            </field>
+        </record>
+
+        <record id="account_transaction_balance_view_form_view" model="ir.ui.view">
+            <field name="name">account.transaction.balance.view.form.view</field>
+            <field name="model">account.transaction.balance.view</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                <sheet>
+                    <group col="4">
+                        <field name="date" />
+                        <field name="account_id" />
+                        <field name="journal_id"/>
+	                    <field name="move_id" />
+	                    <field name="partner_id" />
+	                    <field name="analytic_account_id" />
+                        <field name="debit"/>
+                        <field name="credit"/>
+                        <field name="net_move"/>
+                    </group>
+                </sheet>
+               </form>
+            </field>
+        </record>
+
+        <record id="account_transaction_balance_view_pivot2" model="ir.ui.view">
+             <field name="name">account.transaction.balance.view.pivot</field>
+             <field name="model">account.transaction.balance.view</field>
+             <field name="arch" type="xml">
+                 <pivot string="Analysis">
+                     <field name="account_id" type="row"/>
+                     <field name="debit" type="measure"/>
+                     <field name="credit" type="measure"/>
+                     <field name="net_move" type="measure"/>
+                     <!-- <field name="end_credit" type="measure"/> -->
+                 </pivot>
+             </field>
+        </record>
+        
+        
+
+        <record id="account_transaction_balance_view_search" model="ir.ui.view">
+            <field name="name">account.transaction.balance.view.search</field>
+            <field name="model">account.transaction.balance.view</field>
+            <field name="arch" type="xml">
+                <search string="Analysis">
+                    <field name="date"/>
+<!--                     <filter name="today" string="Өнөөдөр" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="Энэ сар" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="Энэ жил" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Account" name="Данс" context="{'group_by':'account_id'}"/>
+                        <separator/>
+                        <filter string="Сараар" context="{'group_by':'date:month'}" help="Pppp"/>
+                        <filter string="Жилээр" context="{'group_by':'date:year'}" help="Жил жилээр"/>
+                    </group> -->
+                </search>
+            </field>
+        </record> 
+
+    </data>
+</openerp>
