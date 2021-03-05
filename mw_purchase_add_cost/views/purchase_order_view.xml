@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_mw_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.mw.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+        	<field name="date_order" position="after">
+        		<field name="date_currency"/>
+				<field name="current_rate"/>
+			</field>
+        	<xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+        		<field name="company_currency_id" invisible="1"/>
+        		<field name="price_unit_product" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+        		<field name="cost_unit" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+				<field name="total_cost_unit" sum="SUM" groups="mw_purchase_add_cost.group_purchase_add_cost_user" optional="hide"/>
+				<field name="price_unit_stock_move" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+            </xpath>
+		    <notebook position="inside">
+			    <page string="Зардал Нэмэх">
+			    	<field name="expenses_line" attrs="{'readonly':[('state','in',['done','cancel','purchase'])]}">
+			    		<tree>
+			    			<field name="product_id"/>
+			        		<field name="partner_id"/>
+						    <field name="amount"/>
+						    <field name="currency_id"/>
+						    <field name="current_cur"/>
+						    <field name="current_amount" sum="SUM"/>
+						    <field name="portion_method"/>
+						    <field name="date_cur"/>
+						   	<field name="is_without_cost"/>
+						    <field name="invoice_id"/>
+							<field name="invoice_ref"/>
+						    <field name="purchase_lines" widget="many2many_tags"/>
+						    <field name="taxes_id" widget="many2many_tags"/>
+						    <field name="notes"/>
+			    		</tree>
+			    	</field>
+			    	<group class="oe_subtotal_footer oe_right">
+			    		<field name="company_currency_id" invisible="1"/>
+	                    <field name="amount_expenses" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+						<field name="amount_expenses_in" widget="monetary" options="{'currency_field': 'company_currency_id'}"/>
+	                    <button name="make_expenses"
+                                    states="draft,to approve,sent" string="Зардал Хувиарлах" class="oe_highlight" type="object"/>
+                        <button name="create_expense_invoice"
+                                    states="purchase" string="Зардлын Нэхэмжлэл Үүсгэх" class="oe_highlight" type="object" attrs="{'invisible': [('amount_expenses', '=', 0)]}" />
+	                </group>
+			  	</page>
+		  	</notebook>
+		</field>
+	</record>
+
+	<record id="form_purchase_order_line_inherit_mw" model="ir.ui.view">
+        <field name="name">purchase.order.line.form.inherit.mw</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
+        <field name="arch" type="xml">
+        	<xpath expr='//field[@name="company_id"]' position="after">
+                <field name="cost_unit"/>
+            </xpath>
+        </field>
+    </record>
+	<record id="purchase_order_line_tree_inh_mw_add_cost" model="ir.ui.view">
+        <field name="name">purchase.order.line.tree.inh.mw.add.cost</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="price_unit" position="after">
+                <field name="price_unit_product" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+        		<field name="cost_unit" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+				<field name="total_cost_unit" sum="SUM" groups="mw_purchase_add_cost.group_purchase_add_cost_user" optional="hide"/>
+				<field name="price_unit_stock_move" groups="mw_purchase_add_cost.group_purchase_add_cost_user"/>
+            </field>
+        </field>
+    </record>
+
+	<record id="view_account_move_filter_mw_pur" model="ir.ui.view">
+        <field name="name">account.move.select.mw.pur</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_move_filter"/>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <filter string="PO нэмэгдэл зардлын бичилт" domain="[('purchase_order_expenses', '!=', False)]" name="add_cost_ok"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_account_move_line_filter_mw_pur" model="ir.ui.view">
+        <field name="name">account.move.line.search.mw.pur</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <filter string="PO нэмэгдэл зардлын бичилт" domain="[('move_id.purchase_order_expenses', '!=', False)]" name="add_cost_ok"/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

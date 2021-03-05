@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    	<record model="ir.module.category" id="module_mw_purchase_comparison">
+            <field name="name">Purchase Comparison</field>
+            <field name="sequence">20</field>
+	    </record>
+
+	    <record id="group_mw_purchase_comparison_user" model="res.groups">
+	        <field name="name">User</field>
+	        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+	        <field name="category_id" ref="mw_purchase_comparison.module_mw_purchase_comparison"/>
+	    </record>
+	    <record id="group_mw_purchase_comparison_manager" model="res.groups">
+	        <field name="name">Manager</field>
+	        <field name="implied_ids" eval="[(4, ref('mw_purchase_comparison.group_mw_purchase_comparison_user'))]"/>
+	        <field name="category_id" ref="mw_purchase_comparison.module_mw_purchase_comparison"/>
+	    </record>
+    </data>
+</odoo>

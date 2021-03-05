@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_partner_balance_view_wizard_view" model="ir.ui.view">
+            <field name="name">account.partner.balance.view.wizard wizard</field>
+            <field name="model">account.partner.balance.view.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                    <group col="4" colspan="4">
+<!--                         <label string="Эхлэх, дуусах хоёр өдөр тайлант хугацаанд орно!" colspan="4"/>
+ -->                        <newline/>
+                        <field name="date_start" />
+                        <field name="date_end" />
+                        <field name="partner_id" />
+                    </group>
+                    <group>
+                        <button icon="fa-times" special="cancel" string="Хаах"/>
+                        <button name="open_analyze_view" string="Харах" type="object" 
+                        icon="fa-file-excel-o"/>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_account_partner_balance_view_wizard" model="ir.actions.act_window">
+            <field name="name">Харилцагчийн тооцоо шинжилгээ</field>
+            <field name="res_model">account.partner.balance.view.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_partner_balance_view_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem icon="STOCK_PRINT"
+                name="Харилцагчийн тооцоо шинжилгээ"
+                action="action_account_partner_balance_view_wizard"
+                id="menu_action_account_partner_balance_view_wizard1"
+                parent="menu_finance_legal_statement_xls"
+                sequence="1"/>
+                
+    </data>
+</openerp>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_users_inherit_form_flost" model="ir.ui.view">
+        <field name="name">view.res.users.inherit.form.flow</field>
+        <field name="model">res.users</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <notebook position="inside">
+                    <page string="Батлах хэрэглэгчид">
+                        <group col="4" string="Warehouses">
+                            <field name="manager_user_ids" widget="many2many" nolabel="1"/>
+                        </group>
+                    </page>
+                </notebook>
+            </data>
+        </field>
+    </record>
+        <record id="dynamic_flow_search" model="ir.ui.view">
+            <field name="name">dynamic.flow.search</field>
+            <field name="model">dynamic.flow</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <filter string="Archive" name="archive" context="{}" domain="[('active','=',False)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Model" name="gr_model_id" context="{'group_by':'model_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="dynamic_flow_edit" model="ir.ui.view">
+            <field name="name">dynamic.flow.form</field>
+            <field name="model">dynamic.flow</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="1">
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence"/>
+                                <field name="is_amount"/>
+                                <field name="active"/>
+                            </group>
+                            <group>
+                                <field name="branch_ids" widget="many2many_tags"
+                                    options="{'no_create':True}"/>
+                                <field name="categ_ids" widget="many2many_tags"
+                                    options="{'no_create':True}"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+<!--                                 <field name="type"/> -->
+                                <field name="model_id"
+                                    options="{'no_create':True}"/>
+                            </group>
+                            <group>
+                                <field name="user_ids" widget="many2many_tags"
+                                    options="{'no_create':True}"/>
+                            </group>
+                        </group>
+                        <group >
+                            <field name="line_ids" nolabel="1" >
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="stage_id" required="1"/>
+                                    <field name="name" readonly="1" invisible="1"/>
+                                    <field name="state_type"/>
+                                    <field name="amount_price_min"/>
+                                    <field name="amount_price_max"/>
+                                    <field name="flow_line_back_id" readonly="1"/>
+                                    <field name="flow_line_next_id" readonly="1"/>
+                                    <field name="is_not_edit"/>
+                                    <field name="is_print"/>
+                                    <field name="is_mail"/>
+                                    <field name="type"/>
+                                    <field name="user_id" readonly="1" invisible="1"/>
+                                    <field name="check_type"/>
+                                    <field name="user_ids" widget="many2many_tags" attrs="{'readonly':[('type','in',['depart','group'])],'required':[('type','=','fixed')]}"/>
+                                    <field name="group_id" attrs="{'readonly':[('type','in',['depart','fixed'])],'required':[('type','=','group')]}"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="dynamic_flow_tree" model="ir.ui.view">
+            <field name="name">dynamic.flow.tree</field>
+            <field name="model">dynamic.flow</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="model_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_dynamic_flow_kanban" model="ir.ui.view">
+            <field name="name">dynamic.flow.kanban</field>
+            <field name="model">dynamic.flow</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <strong><t t-esc="record.name.value"/></strong>
+                                    </div>
+                                </div>
+                                <t t-if="record.description.value">
+                                    <hr class="mt8 mb8"/>
+                                    <t t-esc="record.description.value"/>
+                                </t>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="open_dynamic_flow_form" model="ir.actions.act_window">
+            <field name="name">Dynamic Flow</field>
+            <field name="res_model">dynamic.flow</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="dynamic_flow_tree"/>
+            <field name="context">{'search_default_gr_model_id':1}</field>
+        </record>
+
+        <menuitem action="open_dynamic_flow_form" id="menu_dynamic_flow" name="Dynamic Flow" parent="base.menu_users" sequence="33"/>
+
+        <record id="seq_dynamic_flow_line" model="ir.sequence">
+            <field name="name">Dynamic Flow line</field>
+            <field name="code">dynamic.flow.line</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval='False'/>
+        </record>
+</odoo>

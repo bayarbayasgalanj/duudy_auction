@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_line_form_mw_inheritddd" model="ir.ui.view">
+        <field name="name">view.move.line.tee.mw.inheritsdd</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_done" position="attributes">
+                <attribute name="sum">Total</attribute>
+            </field>
+            <field name="qty_done" position="before">
+                <field name="product_qty" readonly="1" sum="SUM"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_move_line_form_mw_inherit" model="ir.ui.view">
+        <field name="name">view_move_line_form.mw.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="move_id" readonly="1"/>
+                <field name="picking_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="stock_move_line_view_search_mw" model="ir.ui.view">
+        <field name="name">stock.move.line.search.mw</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="product_uom_id"/>
+            </field>
+            <field name="location_id" position="replace">
+                <field name="location_id" filter_domain="['|', ('location_id','ilike',self), ('location_dest_id','ilike',self)]" string="Орсон Гарсан Байрлалд" groups="stock.group_stock_multi_locations"/>
+                <field name="location_id" string="Source Location" groups="stock.group_stock_multi_locations"/>
+            </field>
+            <filter name="groupby_product_id" position="after">
+                <filter string="Хаанаас" name="gr_location_id" domain="[]" context="{'group_by': 'location_id'}" />
+                <filter string="Хүртэл" name="gr_location_dest_id" domain="[]" context="{'group_by': 'location_dest_id'}" />
+                <filter string="Хэмжих нэгж" name="gr_uom_id" domain="[]" context="{'group_by': 'product_uom_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+</odoo>

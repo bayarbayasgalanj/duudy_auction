@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="stock_location_form_inherit" model="ir.ui.view">
+        <field name="name">stock.location.form.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+        	<field name="usage" position="after">
+        		<field name="set_warehouse_id" attrs="{'required': [('usage','=','internal')]}"/>
+        		<button name="action_set_warehouse_id" string="Агуулах оноогдоогүйг оноох" group="bare.group_no_one" type="object"/>
+			</field>
+		</field>
+	</record>
+
+	<record id="stock_location_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.location.tree.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_tree2"/>
+        <field name="arch" type="xml">
+        	<field name="usage" position="after">
+        		<field name="set_warehouse_id"/>
+			</field>
+		</field>
+	</record>
+</odoo>

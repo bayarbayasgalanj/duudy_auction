@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Income, Expsne Both report -->
+        <record id="stock_report_detail_tree_view" model="ir.ui.view">
+            <field name="name">stock.report.detail.tree.view</field>
+            <field name="model">stock.report.detail</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name="product_id"/>
+                    <field name="categ_id"/>
+                    <field name="date_expected"/>
+                    <field name="picking_id"/>
+                    <field name="location_id"/>
+                    <field name="qty_first" sum="Нийт"/>
+                    <field name="total_price_first" sum="Нийт"/>
+                    <field name="qty_income" sum="Нийт"/>
+                    <field name="total_price_income" sum="Нийт"/>
+                    <field name="qty_expense" sum="Нийт"/>
+                    <field name="total_price_expense" sum="Нийт"/>
+                    <field name="qty_last" sum="Нийт"/>
+                    <field name="total_price_last" sum="Нийт"/>
+                    <field name="state" />
+               </tree>
+            </field>
+        </record>
+
+        <record id="stock_report_detail_pivot2" model="ir.ui.view">
+             <field name="name">stock.report.detail.pivot</field>
+             <field name="model">stock.report.detail</field>
+             <field name="arch" type="xml">
+                <pivot string="Analysis">
+                    <field name="categ_id" type="row"/>
+                    <field name="qty_first" type="measure"/>
+                    <field name="total_price_first" type="measure"/>
+                    <field name="qty_income" type="measure"/>
+                    <field name="total_price_income" type="measure"/>
+                    <field name="qty_expense" type="measure"/>
+                    <field name="total_price_expense" type="measure"/>
+                    <field name="qty_last" type="measure"/>
+                    <field name="total_price_last" type="measure"/>
+                </pivot>
+             </field>
+        </record>
+
+        <record id="stock_report_detail_search" model="ir.ui.view">
+            <field name="name">stock.report.detail.search</field>
+            <field name="model">stock.report.detail</field>
+            <field name="arch" type="xml">
+                <search string="Analysis">
+                    <field name="product_id"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="partner_id"/>
+                    <field name="picking_id"/>
+                    <field name="date_expected"/>
+                    <field name="warehouse_id"/>
+                    <field name="location_id"/>
+                    <field name="lot_id" groups="stock.group_production_lot"/>
+                    <field name="categ_id"/>
+                    <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                    <filter name="today" string="Өнөөдөр" domain="[('date_expected','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="Энэ сар" domain="[('date_expected','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="Энэ жил" domain="[('date_expected','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date_expected','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date_expected','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date_expected','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date_expected','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date_expected','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date_expected','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date_expected','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date_expected','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date_expected','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date_expected','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date_expected','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date_expected','like',time.strftime('%%Y-12'))]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Бараа" name="gr_product" context="{'group_by':'product_id'}"/>
+                        <filter string="Төлөв" name="gr_state" context="{'group_by':'state'}"/>
+                        <filter string="Ангилал" name="gr_categ" context="{'group_by':'categ_id'}"/>
+                        <filter string="Байрлал" name="gr_location_id" context="{'group_by':'location_id'}"/>
+                        <filter string="Агуулах" name="gr_warehouse" context="{'group_by':'warehouse_id'}"/>
+                        <filter string="Харилцагчаар" name="gr_partner_id" context="{'group_by':'partner_id'}"/>
+                        <filter string="Өдрөөр" name="gr_day" context="{'group_by':'date_expected:day'}" help="Pppp"/>
+                        <filter string="Сараар" name="gr_month" context="{'group_by':'date_expected:month'}" help="Pppp"/>
+                        <filter string="Жилээр" name="gr_year" context="{'group_by':'date_expected:year'}" help="Жил жилээр"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_stock_report_detail" model="ir.actions.act_window">
+            <field name="name">Эхний Орлого Зарлага Эцсийн</field>
+            <field name="res_model">stock.report.detail</field>
+            <field name="view_mode">tree,pivot</field>
+            <field name="view_id" ref="stock_report_detail_pivot2"/>
+            <field name="context">{'search_default_gr_categ': 1}</field>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Income, Expsne Both report -->
+        <record id="product_both_income_expense_report_tree_view" model="ir.ui.view">
+            <field name="name">product.both.income.expense.report.tree.view</field>
+            <field name="model">product.both.income.expense.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name="product_id"/>
+                    <field name="categ_id"/>
+                    <field name="date_expected"/>
+                    <field name="picking_id"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="qty_income" sum="Нийт"/>
+                    <field name="total_price_income" sum="Нийт"/>
+                    <field name="qty_expense" sum="Нийт"/>
+                    <field name="total_price_expense" sum="Нийт"/>
+                    <field name="state" />
+               </tree>
+            </field>
+        </record>
+
+        <record id="product_both_income_expense_report_pivot2" model="ir.ui.view">
+             <field name="name">product.both.income.expense.report.pivot</field>
+             <field name="model">product.both.income.expense.report</field>
+             <field name="arch" type="xml">
+                <pivot string="Analysis">
+                    <field name="categ_id" type="row"/>
+                    <field name="qty_income" type="measure"/>
+                    <field name="total_price_income" type="measure"/>
+                    <field name="qty_expense" type="measure"/>
+                    <field name="total_price_expense" type="measure"/>
+                </pivot>
+             </field>
+        </record>
+
+        <record id="product_both_income_expense_report_search" model="ir.ui.view">
+            <field name="name">product.both.income.expense.report.search</field>
+            <field name="model">product.both.income.expense.report</field>
+            <field name="arch" type="xml">
+                <search string="Analysis">
+                    <field name="product_id"/>
+                    <field name="product_tmpl_id"/>
+                    <field name="partner_id"/>
+                    <field name="picking_id"/>
+                    <field name="date_expected"/>
+                    <field name="warehouse_id"/>
+                    <field name="warehouse_dest_id"/>
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="lot_id" groups="stock.group_production_lot"/>
+                    <field name="categ_id"/>
+                    <field name="categ_id" filter_domain="[('categ_id', 'child_of', self)]"/>
+                    <filter name="today" string="Өнөөдөр" domain="[('date_expected','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="Энэ сар" domain="[('date_expected','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="Энэ жил" domain="[('date_expected','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date_expected','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date_expected','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date_expected','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date_expected','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date_expected','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date_expected','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date_expected','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date_expected','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date_expected','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date_expected','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date_expected','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date_expected','like',time.strftime('%%Y-12'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Бараа" name="gr_product" context="{'group_by':'product_id'}"/>
+                        <filter string="Төлөв" name="gr_state" context="{'group_by':'state'}"/>
+                        <filter string="Ангилал" name="gr_categ" context="{'group_by':'categ_id'}"/>
+                        <filter string="Гарах Байрлал" name="gr_location_id" context="{'group_by':'location_id'}"/>
+                        <filter string="Хүрэх Байрлал" name="gr_location_dest_id" context="{'group_by':'location_dest_id'}"/>
+                        <filter string="Гарах Агуулах" name="gr_warehouse" context="{'group_by':'warehouse_id'}"/>
+                        <filter string="Хүрэх Агуулах" name="gr_warehouse_dest_id" context="{'group_by':'warehouse_dest_id'}"/>
+                        <filter string="Харилцагчаар" name="gr_partner_id" context="{'group_by':'partner_id'}"/>
+                        <filter string="Өдрөөр" name="gr_day" context="{'group_by':'date_expected:day'}" help="Pppp"/>
+                        <filter string="Сараар" name="gr_month" context="{'group_by':'date_expected:month'}" help="Pppp"/>
+                        <filter string="Жилээр" name="gr_year" context="{'group_by':'date_expected:year'}" help="Жил жилээр"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_product_both_income_expense_report" model="ir.actions.act_window">
+            <field name="name">Орлого Зарлага Хамт</field>
+            <field name="res_model">product.both.income.expense.report</field>
+            <field name="view_mode">tree,pivot</field>
+            <field name="view_id" ref="product_both_income_expense_report_pivot2"/>
+            <field name="context">{'search_default_gr_categ': 1}</field>
+            <field name="target">current</field>
+        </record>
+</odoo>

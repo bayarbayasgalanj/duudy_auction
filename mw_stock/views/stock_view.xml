@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_barcode_print_form" model="ir.ui.view">
+        <field name="name">stock.barcode.print.form</field>
+        <field name="model">stock.barcode.print</field>
+        <field name="arch" type="xml">
+        	<form>
+                <group col="6">
+                    <field name="type_size"/>
+                    <field name="width"/>
+                    <field name="height"/>
+                    <field name="is_with_date" widget="boolean_toggle"/>
+                    <field name="is_with_time" widget="boolean_toggle" attrs="{'invisible':[('is_with_date','=',False)]}"/>
+                    <field name="is_with_partner" widget="boolean_toggle"/>
+                    <field name="is_many_print" widget="boolean_toggle"/>
+                    <field name="custom_date"
+                        attrs="{'invisible':[('is_with_date','=',False)], 'required':[('is_with_date','=',True)]}" widget="datetime"/>
+                    <field name="custom_partner" options="{'no_create':True}" 
+                        attrs="{'invisible':[('is_with_partner','=',False)]}"/>
+                </group>
+                <!-- <group col="2">
+                    <field name="product_ids" widget="many2many_tags" required="1"/>
+                </group> -->
+                <group col="1">
+                    <field name="line_ids" nolabel="1" >
+                        <tree string="Lines" editable="top">
+                            <field name="product_id" options="{'no_create':True}" required="1"/>
+                            <field name="qty"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="action_print" string="Print"
+                        type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+		</field>
+	</record>
+
+    <record id="action_stock_barcode_print" model="ir.actions.act_window">
+        <field name="name">Шошго Хэвлэх</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.barcode.print</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>            
+    </record>
+    <menuitem action="action_stock_barcode_print"
+            id="menu_stock_barcode_print"
+            parent="stock.menu_warehouse_report"
+            sequence="99"/>
+
+    <record model="ir.ui.menu" id="stock.stock_move_menu">
+        <field name="groups_id" eval="[(6, 0,  [ref('stock.group_stock_user')])]"/>
+    </record>
+
+</odoo>

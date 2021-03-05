@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+	    <record id="group_stock_reporter" model="res.groups">
+	        <field name="name">БМ тайлан харах</field>
+	        <field name="category_id" ref="base.module_category_operations_inventory"/>
+	    </record>
+	    <record id="group_stock_see_price_unit" model="res.groups">
+	        <field name="name">БМ тайлан өртөгтэй харах</field>
+	        <field name="category_id" ref="base.module_category_operations_inventory"/>
+	        <field name="implied_ids" eval="[(4, ref('group_stock_reporter'))]"/>
+	    </record>
+
+	</data>
+</odoo>

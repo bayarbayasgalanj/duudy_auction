@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="po_expenses_report_report_view_tree" model="ir.ui.view">
+            <field name="name">po.expenses.report.tree</field>
+            <field name="model">po.expenses.report</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="order_id"/>
+                    <field name="product_id"/>
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="currency_id"/>
+                    <field name="portion_method"/>
+                    <field name="notes"/>
+                    <field name="invoice_id"/>
+                    <field name="is_without_cost"/>
+                    <field name="date_cur"/>
+                    <field name="invoice_ref"/>
+                    <field name="po_amount"/>
+                    <field name="po_current_amount"/>
+                    <field name="qty_ordered"/>
+                    <field name="po_product_id"/>
+                    <field name="cost_unit"/>
+                    <field name="total_cost_unit"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="po_expenses_report_report_view_pivot" model="ir.ui.view">
+            <field name="name">po.expenses.report.pivot</field>
+            <field name="model">po.expenses.report</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="order_id" type="row"/>
+                    <field name="amount" type="measure"/>
+                    <field name="po_amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="po_expenses_report_report_view_search" model="ir.ui.view">
+            <field name="name">po.expenses.report.search</field>
+            <field name="model">po.expenses.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="order_id"/>
+                    <field name="partner_id"/>
+                    <field name="product_id"/>
+                    <field name="date"/>
+                    <field name="po_product_id"/>
+                    <filter name="today" string="Today" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="This Month" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="This Year" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Month" name='month' context="{'group_by':'date:month'}"/>
+                        <filter string="Year" name='year' context="{'group_by':'date:year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="po_expenses_report_report_action" model="ir.actions.act_window">
+           <field name="name">Нэмэгдэл Зардлын Тайлан</field>
+           <field name="res_model">po.expenses.report</field>
+           <field name="view_mode">pivot,tree</field>
+           <field name="context">{'search_default_this_month': True}</field>
+           <field name="domain">[]</field>
+       </record>
+
+       <menuitem id="purchase_report_expenses" parent="purchase.purchase_report" sequence="98"
+        groups="purchase.group_purchase_manager" action="po_expenses_report_report_action"/>
+</odoo>

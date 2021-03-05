@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+		<record id="purchase_order_form_inherit_mw_purchase" model="ir.ui.view">
+	        <field name="name">purchase.order.form.inherit.mw.purchase</field>
+	        <field name="model">purchase.order</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+	        <field name="arch" type="xml">
+                <data>
+                    <div name="button_box" position="inside">
+                        <button name="get_view_purchase_request" type="object" class="oe_stat_button" icon="fa-users"  string="Хүсэлт харах" attrs="{'invisible': [('pr_line_many_ids', '=', False)]}"/>
+                    </div>
+                <xpath expr='//form/header' position="replace">
+                    <header>
+                        <button name="action_next_stage" string="Батлах" class="btn-success" type="object" attrs="{'invisible': ['|',('state_type','=','done'),('flow_line_next_id', '=', False)]}"/>
+                        <button name="action_back_stage" string="Буцах" class="btn-warning" type="object" attrs="{'invisible': ['|',('flow_line_back_id', '=', False),('state_type', 'in',['done','cancel'])]}"/>
+                        <button name="create_invoice_hand" class="fa-pencil-square-o" string="Нэхэмжлэх үүсгэх" type="object" attrs="{'invisible': [('state_type', 'not in',['done','invoice'])]}"/>
+
+                        <field name="flow_line_id" widget="statusbar" domain="[('id','in',visible_flow_line_ids)]"/>
+                        <button name="action_cancel_stage" string="Цуцлах" class="btn-danger" type="object" attrs="{'invisible': ['|',('state_type', 'in',['cancel']),('flow_id','=',False)]}"/>
+                        <button name="action_draft_stage" string="Буцааж ноороглох" class="btn-danger" type="object" attrs="{'invisible': ['|',('state_type', '!=', 'cancel'),('flow_id','=',False)]}"/>
+                    </header>
+            	</xpath>
+                <field name="date_order" position="after">
+                    <field name="user_id"/>
+                    <field name="visible_flow_line_ids" widget="many2many_tags" invisible="1"/>
+                    <field name="po_type"/>
+                    <field name="pr_line_many_ids" invisible="1"/>
+                    <field name="is_not_edit" invisible="1"/>
+                </field>
+            	<xpath expr='//form/sheet/group[1]' position="before">
+            	    <group col="4">
+                        <field name="flow_id" options="{'no_create':True}" attrs="{'readonly': [('state_type', 'in',['done','cancel'])]}"/>
+                        <field name="state" readonly="1"/>
+                        <field name="state_type" invisible="1"/>
+                        <field name="flow_line_next_id" invisible="1"/>
+                        <field name="flow_line_back_id" invisible="1"/>
+                        <field name="categ_ids" readonly="1" invisible="1" />
+                    </group>
+            	</xpath>
+
+                <field name="partner_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+                <field name="date_order" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+                <field name="company_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+                <field name="currency_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+                <!-- <field name="date_planned" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field> -->
+                <field name="order_line" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+                <field name="picking_type_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('is_not_edit', '=', True)]}</attribute>
+                </field>
+
+                <notebook position="inside">
+                    <page string="Төлөвийн түүх">
+                        <field name="history_ids" readonly="1">
+                            <tree>
+                                <field name="user_id"/>
+                                <field name="date"/>
+                                <field name="flow_line_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+
+	            </data>
+	        </field>
+	    </record>
+
+
+        <record id="purchase_order_tree_inherit_mw_purchase" model="ir.ui.view">
+            <field name="name">purchase.order.tree.inherit.mw.purchase</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="replace">
+                    <field name="flow_id"/>
+                    <field name="state" groups="base.group_no_one"/>
+                    <field name="stage_id"/>
+                </field>
+            </field>
+        </record>
+
+
+
+        <record id="purchase_order_filter_inherit_mw_purchase" model="ir.ui.view">
+            <field name="name">purchase.order.filter.inherit.mw.purchase</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <filter string="Төлөв" name="gr_state" domain="[]" context="{'group_by':'stage_id'}"/>
+                    <filter string="Гадаад" name="po_type_gadaad" domain="[('po_type','=','foreign')]"/>
+                    <filter string="Дотоод" name="po_type_dotood" domain="[('po_type','=','internal')]"/>
+                </search>
+            </field>
+        </record>
+
+    <record id="purchase_order_line_search_mw" model="ir.ui.view">
+        <field name="name">purchase.order.line.search.mw</field>
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="flow_id"/>
+                <filter string="Урсгалаар" name="gr_flow_id" context="{'group_by':'flow_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    </data>
+</odoo>

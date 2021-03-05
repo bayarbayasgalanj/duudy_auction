@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_warehouse_create,stock.warehouse,stock.model_stock_warehouse,group_stock_wh_manager,1,1,1,1
+access_stock_location_create,stock.location,stock.model_stock_location,group_stock_wh_manager,1,1,1,1
+
+access_stock_picking_type_create,stock.picking.type,stock.model_stock_picking_type,group_stock_wh_manager,1,1,1,1
+
+
+access_stock_move_lock,stock.move.lock,mw_stock.model_stock_move_lock,stock.group_stock_user,1,0,0,0
+access_stock_move_lock_manager,stock.move.lock,mw_stock.model_stock_move_lock,mw_stock.group_stock_move_locker,1,1,1,0
+
+access_stock_inventory_edit_mw,stock.inventory,stock.model_stock_inventory,stock.group_stock_user,1,1,1,1
+access_stock_inventory_line_edit_mw,stock.inventory.line,stock.model_stock_inventory_line,stock.group_stock_user,1,1,1,1
+
+access_stock_quant_report_user,stock.quant.report,mw_stock.model_stock_quant_report,stock.group_stock_user,1,1,1,1

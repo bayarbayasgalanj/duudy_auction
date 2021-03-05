@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_inventory_print_form" model="ir.ui.view">
+        <field name="name">stock.inventory.print.form</field>
+        <field name="model">stock.inventory.print</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="4">
+                        <field name="filter_inv"/>
+                    </group>
+                    <group string="Байрлал">
+                        <field name="location_ids" widget="many2many_tags" nolabel="1"/>
+                    </group>
+                    <group string="Ангилал">
+                        <field name="many_categ_ids" nolabel="1" widget="many2many_tags" attrs="{'required': [('filter_inv','!=',False)], 'invisible': [('filter_inv','=',False)]}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_print" string="Хэвлэх"
+                        type="object" class="btn-primary"/>
+                    <button string="Болих" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_inventory_print" model="ir.actions.act_window">
+        <field name="name">Тооллогын Хуудас Хэвлэж Авах</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.inventory.print</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem action="action_stock_inventory_print"
+            id="menu_stock_inventory_print"
+            parent="stock.menu_stock_warehouse_mgmt"
+            sequence="99"/>
+
+</odoo>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="pr_report_view_tree" model="ir.ui.view">
+            <field name="name">pr.report.tree</field>
+            <field name="model">pr.report</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="request_id"/>
+                    <field name="pr_line_id"/>
+                    <field name="date"/>
+                    <field name="branch_id"/>
+                    <field name="product_id"/>
+                    <field name="stage_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="description"/>
+                    <field name="qty"/>
+                    <field name="qty_po"/>
+                    <field name="qty_received"/>
+                    <field name="po_id"/>
+                    <field name="po_user_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="pr_report_view_graph" model="ir.ui.view">
+            <field name="name">pr.report.graph</field>
+            <field name="model">pr.report</field>
+            <field name="arch" type="xml">
+                <graph stacked="True">
+                    <field name="branch_id" type="col"/>
+                    <field name="qty" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="pr_report_view_pivot" model="ir.ui.view">
+            <field name="name">pr.report.pivot</field>
+            <field name="model">pr.report</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="employee_id" type="row"/>
+                    <field name="qty" type="measure"/>
+                    <field name="qty_po" type="measure"/>
+                    <field name="qty_received" type="measure"/>
+                    <field name="actual_percent" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="pr_report_view_search" model="ir.ui.view">
+            <field name="name">pr.report.search</field>
+            <field name="model">pr.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="request_id"/>
+                    <field name="pr_line_id"/>
+                    <field name="date"/>
+                    <field name="branch_id"/>
+                    <field name="product_id"/>
+                    <field name="stage_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="description"/>
+                    <field name="qty"/>
+                    <field name="qty_received"/>
+                    <field name="po_id"/>
+                    <field name="po_user_id"/>
+
+                    <filter name="create_po" string="PO үүссэн" domain="[('po_id','!=',False)]"/>
+                    <separator/>
+                    <filter name="done_no_create_po" string="Хүсэлт батлагдсан PO үүсээгүй" domain="[('po_id','=',False),('state_type','=','done')]"/>
+                    <separator/>
+                    <filter name="done_po" string="PO батлагдсан" domain="[('state_type_po','=','done')]"/>
+                    <separator/>
+                    <filter name="today" string="Today" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="This Month" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="This Year" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Branch" name="branch_id" context="{'group_by':'branch_id'}"/>
+                        <separator/>
+                        <filter string="Month" name='month' context="{'group_by':'date:month'}"/>
+                        <filter string="Year" name='year' context="{'group_by':'date:year'}"/>
+                        <filter string="PO-оор" name='gr_po_id' context="{'group_by':'po_id'}"/>
+                        <filter string="PR-оор" name='gr_pr_id' context="{'group_by':'request_id'}"/>
+                        <filter string="Бараагаар" name='gr_product_id' context="{'group_by':'product_id'}"/>
+                        <filter string="Ажилтанаар" name='gr_employee_id' context="{'group_by':'employee_id'}"/>
+                        <filter string="Хэлтэсээр" name='gr_department_id' context="{'group_by':'department_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="pr_report_action" model="ir.actions.act_window">
+           <field name="name">Хүсэлтийн Тайлан</field>
+           <field name="res_model">pr.report</field>
+           <field name="view_mode">pivot,graph,tree</field>
+           <field name="domain">[]</field>
+           <field name="context">{'search_default_this_month': True}</field>
+       </record>
+
+
+
+</odoo>

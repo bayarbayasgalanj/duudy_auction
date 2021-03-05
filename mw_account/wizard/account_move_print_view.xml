@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_move_print" model="ir.ui.view">
+            <field name="name">account.move.print.form</field>
+            <field name="model">account.move.print</field>
+            <field name="arch" type="xml">
+                <form string="Print">
+                    <group>
+                         <group>
+                             <field name="date" />
+                             <field name="date_str" />
+                             <field name="is_lebal" />
+                             <field name="is_so_name" />
+                             <field name="is_ot_code" />
+                         </group>
+                         <group>
+                            <field name="account_ids" string="Дансууд"/>
+                         </group>
+                    </group>
+                    <footer>
+                        <button string='Print' name="print_moves" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_view_account_move_print" model="ir.actions.act_window">
+            <field name="name">Print</field>
+            <field name="res_model">account.move.print</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_account_move_print"/>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="account.model_account_move" />
+            <field name="binding_view_types">list</field>
+        </record>
+    </data>
+</odoo>

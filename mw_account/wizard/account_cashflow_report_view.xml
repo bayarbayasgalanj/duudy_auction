@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="account_cashflow_report_view" model="ir.ui.view">
+            <field name="name">Мөнгөн гүйлгээний тайлан</field>
+            <field name="model">account.cashflow.report.new</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <group colspan="4" col="2" expand="1">
+	                   <field name="company_id" widget='selection' />
+	                   <field name="from_account" />
+<!--	                   <field name="report_id" widget='selection'/>
+ 	                   <field name="chart_account_id" widget='selection'/> 
+	                   <field name="company_type"/>
+	                   <field name="fiscalyear_id" widget='selection'/>
+	                   <field name="target_move"/>-->
+	                   <group colspan="2" name='Filters'>
+<!-- 	                            <page string="Filters"> -->
+				                   <group colspan="2" name='Filters'>
+	                                <field name="date_from" string="Эхлэх огноо"/>
+	                                <field name="date_to" string="Дуусах огноо"/>
+	                               </group>
+<!-- 	                            </page>
+			                        <page name="accounts" string="Данс сонгох"> -->
+<!-- 			                            <field name="chart_account_ids" colspan="4" nolabel="1"/>
+			                        </page> -->
+	                    </group>
+	                    <separator colspan="2"/>
+	                    <group colspan="2">
+	                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+	                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+	                    </group>
+	                </group>
+               	</form>
+            </field>
+        </record>
+
+        <record id="action_account_cashflow_report" model="ir.actions.act_window">
+            <field name="name">Мөнгөн гүйлгээний тайлан</field>
+            <field name="res_model">account.cashflow.report.new</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_cashflow_report_view"/>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem icon="STOCK_PRINT"
+                name="Мөнгөн гүйлгээний тайлан"
+                action="action_account_cashflow_report"
+                id="menu_action_account_cashflow_report"
+                parent="menu_finance_legal_statement_xls"
+                sequence="5"/>
+    </data>
+</openerp>

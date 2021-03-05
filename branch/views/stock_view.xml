@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_warehouse_form_branch_extended" model="ir.ui.view">
+        <field name="name">stock.warehouse.form.branch.extended</field>
+        <field name="model">stock.warehouse</field>
+        <field name="inherit_id" ref="stock.view_warehouse"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="branch_id"/>
+                <field name="owner_partner_id"/>
+            </field>
+        </field>
+    </record>
+    
+
+    <record id="stock_picking_type_form_branch_extended" model="ir.ui.view">
+        <field name="name">stock.picking.type.form.branch.extended</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.view_picking_type_form"/>
+        <field name="arch" type="xml">
+            <field name="warehouse_id" position="after">
+                <field name="branch_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="stock_picking_form_branch_extended2" model="ir.ui.view">
+        <field name="name">stock.picking.form.branch.extended2</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="attributes">
+                <attribute name="domain">[('warehouse_id.branch_id.user_ids', 'in',[uid])]</attribute>
+            </xpath>
+            
+        </field>
+    </record>
+</odoo>

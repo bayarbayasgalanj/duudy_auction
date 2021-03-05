@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- <record id="action_excel_output_view" model="ir.ui.view">
+            <field name="name">action.excel.output.view</field>
+            <field name="model">report.excel.output</field>
+            <field name="arch" type="xml">
+	            <form string="Report Options" version="7.0">
+			<group colspan="4" col="4">
+			        <field name="name" colspan="4"/>
+			        <field name="data" nolabel="1" readonly="1" colspan="4" filename="name"/>
+			</group>
+	                <group colspan="4" col="10">
+	                    <button icon="gtk-close" special="cancel" string="Close" type="object" colspan="2"/>
+	                </group>
+	            </form>
+            </field>
+        </record>
+        
+        <record id="action_excel_output_tree_view" model="ir.ui.view">
+            <field name="name">action.excel.output.tree.view</field>
+            <field name="model">report.excel.output</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Report Options">
+                    <field name="name" select="1"/>
+                    <field name="data"/>
+                    <field name="date" select="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_report_excel_output" model="ir.actions.act_window">
+            <field name="name">Excel Report Output</field>
+            <field name="res_model">report.excel.output</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">new</field>
+        </record> -->
+    </data>
+</openerp>

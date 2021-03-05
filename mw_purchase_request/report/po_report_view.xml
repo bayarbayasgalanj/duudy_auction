@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="po_report_mw_view_tree" model="ir.ui.view">
+            <field name="name">po.report.mw.tree</field>
+            <field name="model">po.report.mw</field>
+            <field name="arch" type="xml">
+                <tree string="Drilling report" editable="bottom">
+                    <field name="po_date"/>
+                    <field name="branch_id"/>
+                    <field name="product_id"/>
+                    <field name="stage_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="qty_received"/>
+                    <field name="po_id"/>
+                    <field name="po_user_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="po_report_mw_view_graph" model="ir.ui.view">
+            <field name="name">po.report.mw.graph</field>
+            <field name="model">po.report.mw</field>
+            <field name="arch" type="xml">
+                <graph stacked="True">
+                    <field name="branch_id" type="col"/>
+                    <field name="qty_po" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="po_report_mw_view_pivot" model="ir.ui.view">
+            <field name="name">po.report.mw.pivot</field>
+            <field name="model">po.report.mw</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="po_user_id" type="row"/>
+                    <field name="qty_po" type="measure"/>
+                    <field name="qty_received" type="measure"/>
+                    <field name="qty_po_rec" type="measure"/>
+                    <field name="qty_invoiced" type="measure"/>
+                    <field name="qty_inv_rec" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="po_report_mw_view_search" model="ir.ui.view">
+            <field name="name">po.report.mw.search</field>
+            <field name="model">po.report.mw</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="po_date"/>
+                    <field name="branch_id"/>
+                    <field name="product_id"/>
+                    <field name="stage_id"/>
+                    <field name="warehouse_id"/>
+                    <field name="qty_received"/>
+                    <field name="po_id"/>
+                    <field name="po_user_id"/>
+                    <filter name="qty_inv_rec" string="Нэхэмжилсэн тоо зөрүүтэй" domain="[('qty_inv_rec','!=',0)]"/>
+                    <separator/>
+                    <filter name="qty_po_rec" string="Хүлээж авсан тоо зөрүүтэй" domain="[('qty_po_rec','!=',0)]"/>
+                    <separator/>
+                    <filter name="product_type" string="Бараа" domain="[('product_type','in',['product','consu'])]"/>
+                    <separator/>
+                    <filter name="today" string="Today" domain="[('po_date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="This Month" domain="[('po_date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="This Year" domain="[('po_date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+                    <filter name="january" string="January" domain="[('po_date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('po_date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('po_date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('po_date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('po_date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('po_date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('po_date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('po_date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('po_date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('po_date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('po_date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('po_date','like',time.strftime('%%Y-12'))]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Branch" name="branch_id" context="{'group_by':'branch_id'}"/>
+                        <separator/>
+                        <filter string="Month" name='month' context="{'group_by':'po_date:month'}"/>
+                        <filter string="Year" name='year' context="{'group_by':'po_date:year'}"/>
+                        <filter string="PO-оор" name='gr_po_id' context="{'group_by':'po_id'}"/>
+                        <filter string="Бараагаар" name='gr_product_id' context="{'group_by':'product_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="po_report_mw_action" model="ir.actions.act_window">
+           <field name="name">PO Зөрүүгийн Тайлан</field>
+           <field name="res_model">po.report.mw</field>
+           <field name="view_mode">pivot,graph,tree</field>
+           <field name="context">{'search_default_product_type': 1, 'search_default_this_month': True}</field>
+           <field name="domain">['|',('qty_inv_rec','!=',0),('qty_po_rec','!=',0)]</field>
+       </record>
+
+</odoo>

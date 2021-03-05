@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="product_detailed_income_expense_view" model="ir.ui.view">
+            <field name="name">product.detailed.income.expense wizard</field>
+            <field name="model">product.detailed.income.expense</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                    <group col="6">
+                        <field name="date_range_id" options="{'no_create':True, 'no_open':True}"/>
+                        <field name="date_start" />
+                        <field name="date_end" />
+                    </group>
+                    <group col="6">
+                        <field name="import_wh" widget="boolean_toggle"/>
+                        <field name="included_internal" widget="boolean_toggle"/>
+                        <field name="see_value" widget="boolean_toggle" attrs="{'invisible': [('move_type', '!=', 'income_expense')]}"/>
+                        <field name="no_category_total" widget="boolean_toggle" attrs="{'invisible': [('move_type', '!=', 'income_expense')]}"/>
+                        <field name="with_attribute" widget="boolean_toggle" attrs="{'invisible': [('move_type', '!=', 'income_expense')]}"/>
+                    </group>
+                    <group col="4">
+                        <field name="warehouse_id" colspan="4" widget="many2many_tags" options="{'no_create': True}" />
+                        <field name="location_ids" colspan="4" widget="many2many_tags" options="{'no_create': True}"
+                            domain="[('usage','=','internal'),('set_warehouse_id','in',warehouse_id)]"/>
+                        <field name="move_type" widget="radio" required="1"/>
+                        <field name="move_state" widget="radio" required="1"/>
+                    </group>
+                    <group col="4">
+                        <field name="product_ids" widget="many2many_tags" colspan="4" options="{'no_create': True}"/>
+                        <field name="categ_ids" colspan="4" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="product_tmpl_ids" colspan="4" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                    <footer>
+                        <group col="6">
+                            <button icon="fa-times" special="cancel" string="Хаах" class="btn-danger"/>
+                            <button name="open_analyze_view" string="Харах" type="object"  icon="fa-eye" class="btn-success"/>
+                            <button name="export_report" attrs="{'invisible': [('move_type', '!=', 'income_expense')]}" string="Татах" type="object"  icon="fa-file-excel-o" class="btn-success"/>
+                        </group>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_product_detailed_income_expense" model="ir.actions.act_window">
+            <field name="name">Бараа Материалын Дэлгэрэнгүй Тайлан</field>
+            <field name="res_model">product.detailed.income.expense</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="product_detailed_income_expense_view"/>
+            <field name="target">new</field>
+        </record>
+
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="mw_html_finance_report.AccountReportTest">
+	    <div id="grid_report" style="width: 100%;">
+		    <div id="grid"></div>
+	    	ЕРӨНХИЙ ЖУРНАЛ
+	    </div>
+    </t>
+</templates>
+

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mw_view_inventory_form_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="date" force_save="1" readonly="1"/>
+            </xpath>
+            <button name="action_validate" position="before">
+                <button name="do_print_inventory_sheet" type="object" string="Тооллогын хуудас хэвлэх" states="confirm" />
+            </button>
+
+            <button name="action_validate" position="attributes">
+                <attribute name="confirm">"Тооллогоо батлахдаа итгэлтэй байна уу !!"</attribute>
+            </button>
+
+            <button name= "action_view_related_move_lines" position="after">
+                <button string="Тооллогын Мөр Харах"
+                            type="object"
+                            name= "action_view_related_move_lines_mw"
+                            attrs="{'invisible':[('state', 'not in', ['done', 'cancel'])]}"
+                            class="oe_stat_button" icon="fa-moves"
+                            />
+            </button>
+            <field name="product_ids" position="after">
+                <field name="filter_inv" attrs="{'readonly': [('state','in',['confirm','done','cancel'])]}"/>
+                <field name="many_categ_ids" widget="many2many_tags" attrs="{'required': [('filter_inv','in',['category_child_of','category_many'])], 'invisible': [('filter_inv','not in',['category_child_of','category_many'])], 'readonly': [('state','in',['confirm','done','cancel'])]}"/>
+            </field>
+            <field name="product_ids" position="attributes">
+                <attribute name="force_save">1</attribute>
+                <attribute name="attrs">{'invisible': [('filter_inv','!=',False)]}</attribute>
+            </field>
+
+            <xpath expr="//group[1]" position="after">
+                <group col="6">
+	    			<field name="price_diff_total" groups="mw_stock.group_stock_inv_diff_view"/>
+                    <field name="price_diff_total_in" groups="mw_stock.group_stock_inv_diff_view"/>
+                    <field name="price_diff_total_out" groups="mw_stock.group_stock_inv_diff_view"/>
+                </group>
+	            <group col="2">
+                    <field name="is_barcode_reader" widget="boolean_toggle" attrs="{'readonly': [('state','in',['done','cancel'])]}"/>
+	    		</group>
+                <group col="5">
+                    <field name="import_data_ids" widget="many2many_binary" attrs="{'readonly': [('state','in',['done','cancel'])]}"/>
+                    <button name="action_print_inventory" string="Тооллого Экспортлох " type="object" icon="fa-file-excel-o" class="btn-warning" />
+                    <button name="action_import_inventory" string="Тооллого Импортлох" type="object" icon="fa-arrow-circle-down"  attrs="{'invisible': [('state', '!=', 'confirm')]}" class="btn-success" />
+                </group>
+                <group col="4">
+                    <button name="action_reset_product_qty_mw" states="confirm" confirm="Тооллого 0 болгохдоо итгэлтэй байна уу" string="⇒ Тооллогын тоо хэмжээг 0 болгох" type="object" class="btn-danger" groups="stock.group_stock_user"/>
+                    <button name="action_update_inventory" string="Тооллого Шинэчлэх" type="object" 
+                    confirm="Тооллого Шинэчлэхдээ итгэлтэй байна уу! Хэрэв тоолсон бол Өмнөх тоолсоны зөрүү нь Өөрчилөгдөх Магдалалтай!!!" 
+                    attrs="{'invisible': ['|',('outdated_mw', '=', False),('state','not in',['confirm'])]}"
+                    icon="fa-refresh" class="btn-danger"/>
+                    <field name="outdated_mw" invisible="1"/>
+                </group>
+                <group>
+                    <div class="alert alert-danger alert-dismissible text-left" role="alert" attrs="{'invisible': ['|',('warning_messages', '=', False),('state', '!=', 'confirm')]}">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                        <field name="warning_messages"/>
+                    </div>
+                </group>
+	        </xpath>
+	        
+            <xpath expr="//field[@name='location_ids']" position="attributes">
+                <attribute name="domain">[('usage','in', ['internal']), ('set_warehouse_id.access_user_ids', 'in',[uid])]</attribute>
+            </xpath>
+
+            <sheet position='after'>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </sheet>
+            
+        </field>
+    </record>
+
+    <record id="mw_view_inventory_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.tree.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="before">
+                <field name="price_diff_total" sum="SUM" groups="mw_stock.group_stock_inv_diff_view"/>
+                <field name="price_diff_total_in" sum="SUM" groups="mw_stock.group_stock_inv_diff_view"/>
+                <field name="price_diff_total_out" sum="SUM" groups="mw_stock.group_stock_inv_diff_view"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_inventory_filter_mw_inherit" model="ir.ui.view">
+        <field name="name">stock.inventory.filter.mw.inherit</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_filter"/>
+        <field name="arch" type="xml">
+            <field name="product_ids" position="after">
+                <filter string="Дуусаагүй" name="not_done" domain="[('state','not in',['done','cancel'])]"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="stock.action_inventory_form">
+        <field name="domain">['|',('location_ids.set_warehouse_id.access_user_ids', 'in',[uid]), ('line_ids.location_id.set_warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+
+
+    <record id="stock_inventory_line_search_mw" model="ir.ui.view">
+        <field name="name">stock.inventory.line.search</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="inherit_id" ref="stock.stock_inventory_line_search"/>
+        <field name="arch" type="xml">
+
+            <field name="product_id" position="before">
+                <filter string="Дуусаагүй" name="not_done" domain="[('inventory_id.state','not in',['done','cancel'])]"/>
+                <separator/>
+                <filter string="Зөрүүтэй" name="yes_diff" domain="[('difference_qty','!=',0)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Тооллогоор" name="gr_inv_id" domain="[]" context="{'group_by':'inventory_id'}"/>
+                    <filter string="Бараагаар" name="gr_pro_id" domain="[]" context="{'group_by':'product_id'}"/>
+                </group>
+            </field>
+            
+        </field>
+    </record>
+
+    <record id="stock_inventory_line_tree2_mw_real" model="ir.ui.view">
+        <field name="name">stock.inventory.line.tree2.mw</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+        <tree default_order="location_id,product_id" editable="top" string="Inventory Details" 
+                  decoration-danger="difference_qty &lt; 0"
+                  decoration-info="difference_qty &gt; 0"
+                  decoration-muted="product_qty == theoretical_qty"
+                  decoration-bf="is_editable">
+                <field name="company_id" invisible="1"/>
+                <field name="product_tracking" invisible="1"/>
+                <field name="is_editable" invisible="1"/>
+                <field name="outdated" invisible="1"/>
+                <field name="product_id" options="{'no_create': True}" width="1.6"
+                       readonly="context.get('default_product_id', False)"
+                       attrs="{'readonly': ['|',
+                            ('is_editable', '=', False),
+                            ('state', '!=', 'confirm')]}"/>
+                <field name="location_id" groups="stock.group_stock_multi_locations"
+                       options="{'no_create': True}"
+                       invisible="context.get('readonly_location_id', False)"
+                       readonly="context.get('readonly_location_id', False)"
+                       attrs="{'readonly': ['|',
+                            ('is_editable', '=', False),
+                            ('state', '!=', 'confirm')]}"/>
+                <field name="inventory_date" optional="hide" width="0.8"/>
+                <field name="prod_lot_id" groups="stock.group_production_lot" width="0.8"
+                       attrs="{'readonly': ['|', '|',
+                            ('product_tracking', '=', 'none'),
+                            ('is_editable', '=', False),
+                            ('state', '!=', 'confirm')]}"
+                       context="{'default_product_id': product_id, 'default_company_id': company_id}" optional="show"/>
+                <field name="package_id" groups="stock.group_tracking_lot" width="0.8"
+                       attrs="{'readonly': ['|',
+                            ('is_editable', '=', False),
+                            ('state', '!=', 'confirm')]}"
+                       string="Package" optional="show"/>
+                <field name="partner_id" groups="stock.group_tracking_owner"
+                       attrs="{'readonly': ['|',
+                            ('is_editable', '=', False),
+                            ('state', '!=', 'confirm')]}"/>
+                <field name="categ_id" readonly="1" optional="hide"/>
+                <field name="theoretical_qty" string="On Hand" width="0.5"
+                       force_save="1" readonly="1" optional="show"/>
+                <!-- <button name="action_refresh_quantity" string="Refresh quantity" title="Refresh quantity"
+                        icon="fa-refresh" type="object"
+                        attrs="{'invisible': [('outdated', '=', False)]}"/> -->
+                <field name="product_qty" attrs="{'readonly': [('state', '!=', 'confirm')]}"
+                       width="0.5" string="Counted" sum="SUM"/>
+                <field name="difference_qty" optional="show" width="0.5" sum="SUM"/>
+
+                <field name="diff_price_unit"/>
+                <field name="sum_qty_price_unit" sum="SUM"/>
+                <field name="price_diff_subtotal" sum="SUM"/>
+
+                <field name="product_uom_id" string="UoM" groups="uom.group_uom"
+                       width="0.3" force_save="1"/>
+                <field name="inventory_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_inventory_line_tree2_mw" model="ir.ui.view">
+        <field name="name">stock.inventory.line.tree2.mw</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="inherit_id" ref="stock.stock_inventory_line_tree2"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="decoration-danger">difference_qty &lt;0</attribute>
+                <attribute name="decoration-info">difference_qty &gt;0</attribute>
+                <attribute name="js_class"></attribute>
+            </tree>
+            <field name="theoretical_qty" position="attributes">
+                <attribute name="sum">"SUM"</attribute>
+            </field>
+            <field name="product_qty" position="attributes">
+                <attribute name="sum">"SUM"</attribute>
+            </field>
+            <field name="difference_qty" position="after">
+                <field name="diff_price_unit" groups="mw_stock.group_stock_inv_diff_view"/>
+                <field name="sum_qty_price_unit" sum="SUM" groups="mw_stock.group_stock_inv_diff_view"/>
+                <field name="price_diff_subtotal" sum="SUM" groups="mw_stock.group_stock_inv_diff_view"/>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="categ_id" readonly="1" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_stock_inventory_line_pivot" model="ir.ui.view">
+        <field name="name">stock.inventory.line.pivot</field>
+        <field name="model">stock.inventory.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Stock Level forecast" disable_linking="True">
+                <field name="product_id" type="row"/>
+                <field name="product_qty" type="measure"/>
+                <field name="difference_qty" type="measure"/>
+                <field name="diff_price_unit" type="measure"/>
+                <field name="sum_qty_price_unit" type="measure"/>
+                <field name="price_diff_subtotal" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="stock_action_inventory_line_mw" model="ir.actions.act_window">
+        <field name="name">Тооллогын Дэлгэрэнгүй</field>
+        <field name="res_model">stock.inventory.line</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="view_id" ref="mw_stock.stock_inventory_line_tree2_mw_real"/>
+        <field name="context">{'search_default_not_done':1, 'create':False, 'edit':False}</field>
+        <field name="domain">[('location_id.set_warehouse_id.access_user_ids', 'in',[uid])]</field>
+    </record>
+
+    <menuitem action="stock_action_inventory_line_mw" id="menu_stock_action_inventory_line_mw" parent="stock.menu_stock_warehouse_mgmt" sequence="31" groups="stock.group_stock_manager"/>
+</odoo>

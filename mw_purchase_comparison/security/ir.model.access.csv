@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_purchase_comparison,purchase.comparison,mw_purchase_comparison.model_purchase_comparison,purchase.group_purchase_user,1,1,1,1
+access_purchase_comparison_line,purchase.comparison.line,mw_purchase_comparison.model_purchase_comparison_line,purchase.group_purchase_user,1,1,1,1
+

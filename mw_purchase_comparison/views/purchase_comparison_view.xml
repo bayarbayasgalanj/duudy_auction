@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="purchase_comparison_tree_view">
+            <field name="name">purchase.comparison.tree</field>
+            <field name="model">purchase.comparison</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state in ['done','purchase']" decoration-danger="state in ['cancel']">
+                    <field name="partner_id"/>
+                    <field name="desc"/>
+                    <field name="state"/>
+                    <field name="amount_total" sum="SUM"/>
+                    <field name="currency_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_comparison_form_view">
+            <field name="name">purchase.comparison.form</field>
+            <field name="model">purchase.comparison</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="partner_id" required="1" options="{'no_create':True}"/>
+                            <field name="purchase_order_id" readonly="1"/>
+                            <field name="state" invisible="1"/>
+                        </group>
+                        <group col="2">
+                            <field name="desc"/>
+                            <field name="currency_id" readonly="0" required="1"/>
+                        </group>
+                        <!-- <group>
+                            <button name="action_create_po_line" type="object"  string="Ороогүй бараануудыг оруулах"/>
+                        </group> -->
+                        <notebook>
+                            <page string="Бараанууд">
+                                <field name="line_ids">
+                                    <tree delete="false" create="false" editable="bottom">
+                                        <field name="product_id" readonly="1"/>
+                                        <field name="product_uom" readonly="1"/>
+                                        <field name="product_qty" readonly="1" sum="Нийт"/>
+                                        <field name="taxes_id" widget="many2many_tags" readonly="1"/>
+                                        <field name="price_unit" sum="Нийт"/>
+                                        <field name="price_subtotal" widget="monetary" sum="Нийт"/>
+                                        <field name="desc"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline">
+                                        <label for="amount_total"/>
+                                    </div>
+                                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="purchase_comparison_line_pivot" model="ir.ui.view">
+            <field name="name">purchase.comparison.line.pivot</field>
+            <field name="model">purchase.comparison.line</field>
+            <field name="arch" type="xml">
+                <pivot string="Худалдан авалтын харьцуулалт" disable_linking="True">
+                    <field name="partner_id" type="col"/>
+                    <field name="product_id" type="row"/>
+                    <field name="product_qty" type="measure"/>
+                    <field name="price_unit" type="measure"/>
+                </pivot>
+             </field>
+        </record>
+
+        <record id="purchase_comparison_search" model="ir.ui.view">
+            <field name="name">purchase.comparison.search</field>
+            <field name="model">purchase.comparison</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="partner_id"/>
+                    <!-- <field name="date"/>
+                    <field name="product_id" string="Product"/>
+                    <filter name="today" string="Today" domain="[('date','like',time.strftime('%%Y-%%m-%%d'))]"/>
+                    <filter name="this_month" string="This Month" domain="[('date','like',time.strftime('%%Y-%%m'))]"/>
+                    <filter name="year" string="This Year" domain="[('date','like',time.strftime('%%Y'))]"/>
+                    <separator/>
+
+                    <filter name="january" string="January" domain="[('date','like',time.strftime('%%Y-01'))]"/>
+                    <filter name="february" string="February" domain="[('date','like',time.strftime('%%Y-02'))]"/>
+                    <filter name="march" string="March" domain="[('date','like',time.strftime('%%Y-03'))]"/>
+                    <filter name="April" string="April" domain="[('date','like',time.strftime('%%Y-04'))]"/>
+                    <filter name="may" string="May" domain="[('date','like',time.strftime('%%Y-05'))]"/>
+                    <filter name="june" string="June" domain="[('date','like',time.strftime('%%Y-06'))]"/>
+                    <filter name="july" string="July" domain="[('date','like',time.strftime('%%Y-07'))]"/>
+                    <filter name="august" string="August" domain="[('date','like',time.strftime('%%Y-08'))]"/>
+                    <filter name="september" string="September" domain="[('date','like',time.strftime('%%Y-09'))]"/>
+                    <filter name="octomber" string="Octomber" domain="[('date','like',time.strftime('%%Y-10'))]"/>
+                    <filter name="november" string="November" domain="[('date','like',time.strftime('%%Y-11'))]"/>
+                    <filter name="december" string="December" domain="[('date','like',time.strftime('%%Y-12'))]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Branch" name="branch_id" context="{'group_by':'branch_id'}"/>
+                        <separator/>
+                        <filter string="Month" name='month' context="{'group_by':'date:month'}"/>
+                        <filter string="Year" name='year' context="{'group_by':'date:year'}"/>
+                    </group> -->
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_purchase_comparison_tree_view">
+            <field name="name">Худалдан авалтын харьцуулалт</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.comparison</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="purchase_comparison_tree_view"/>
+        </record>
+
+        <record id="purchase_comparison_line_pivot_action_pivot" model="ir.actions.act_window" >
+            <field name="name">Худалдан авалтын харьцуулалт</field>
+            <field name="res_model">purchase.comparison.line</field>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="purchase_comparison_line_pivot"/>
+            <field name="domain">[('comparison_id.purchase_order_id','=', active_id)]</field>
+        </record>
+
+        <menuitem id="purchase_comparison_root_menu" name="Худалдан авалтын харьцуулалт" parent="purchase.menu_purchase_root" sequence="3"/>
+        <menuitem id="purchase_comparison_add_new_menu" name="Харьцуулалт" parent="purchase_comparison_root_menu" action="action_purchase_comparison_tree_view" sequence="1"/>
+
+        <record id="purchase_comparison_create_form" model="ir.ui.view">
+            <field name="name">purchase.comparison.create.form</field>
+            <field name="model">purchase.comparison.create</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="partner_id" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_done" string="Оруулах" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Цуцлах" type="object" class="btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="act_purchase_comparison_create_form" model="ir.actions.act_window">
+            <field name="name">RFQs and Purchases</field>
+            <field name="res_model">purchase.comparison.create</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        
+    </data>
+</odoo>

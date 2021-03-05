@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner,res.partner,product.model_res_partner,mw_base.group_mn_base_res_partner_editor,1,1,1,1

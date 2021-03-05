@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_product_create,product.product,product.model_product_product,group_stock_product_creating,1,1,1,1
+access_product_product_template,product.template,product.model_product_template,group_stock_product_creating,1,1,1,1
+access_product_product_category,product.category,product.model_product_category,group_stock_product_creating,1,1,1,1
+
+access_uom_uom_categ,uom.category,uom.model_uom_category,group_stock_product_creating,1,1,1,1
+access_uom_uom,uom.uom,uom.model_uom_uom,group_stock_product_creating,1,1,1,1
+
+access_new_product_request_user,new.product.request,model_new_product_request,base.group_user,1,1,1,1

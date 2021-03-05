@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_income_expense_report_user,product.income.expense.report,model_product_income_expense_report,stock.group_stock_user,1,1,1,1
+
+access_product_both_income_expense_report_user,product.both.income.expense.report,model_product_both_income_expense_report,stock.group_stock_user,1,1,1,1
+access_stock_report_detail_user,stock.report.detail,model_stock_report_detail,stock.group_stock_user,1,1,1,1
+
+access_product_balance_pivot_report_user,product.balance.pivot.report,model_product_balance_pivot_report,stock.group_stock_user,1,1,1,1
