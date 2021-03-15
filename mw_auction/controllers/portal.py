@@ -355,7 +355,7 @@ class CustomerPortalMW(CustomerPortal):
 #         print ('conditions ',conditions)
         values.update({
             'partner': partner,
-            'condition': conditions[0],
+            'condition': len(conditions) and conditions[0] or 'Empty conditions',
 #             'states': states,
 #             'has_check_vat': hasattr(request.env['res.partner'], 'check_vat'),
             'redirect': redirect,
