@@ -1,5 +1,5 @@
 <odoo>
-
+<!-- 
     <template id="blank_details" inherit_id="portal.portal_layout">
         <xpath expr="//t[@t-if='my_details']/div[hasclass('row')]" position="attributes">
             <attribute name="class">row max_width_1000 mx-auto justify-content-between mt-4</attribute>
@@ -80,17 +80,17 @@
         <xpath expr="//div[hasclass('o_portal')]/div[hasclass('row')]" position="attributes">
             <attribute name="class">row align-items-center bg-white no-gutters rounded-top mb16</attribute>
         </xpath>
-    </template>
+    </template> -->
 
     <!--========================== To add unique id to portal listview, change the heading ===============================-->
-    <template id="portal_home_gridview" inherit_id="portal.portal_my_home">
+<!--     <template id="portal_home_gridview" inherit_id="portal.portal_my_home">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="attributes">
             <attribute name="id">portal_grid</attribute>
         </xpath>
         <xpath expr="//div[hasclass('o_portal_my_home')]/h3" position="replace">
             <h3 class="page-header">My Dashboard</h3>
         </xpath>
-    </template>
+    </template> -->
 
     <!--===================== To changes style in portal entries, heading , numbers ===================================-->
     <template id="portal_docs_custom_entry" inherit_id="portal.portal_docs_entry">
@@ -168,7 +168,7 @@
             <attribute name="class">o_portal_submenu breadcrumb mb-0 py-2 flex-grow-1</attribute>
         </xpath>
     </template>
-
+<!-- 
     <template id="portal_my_details_custom" inherit_id="portal.portal_my_details">
 		<xpath expr="//form" position="before">
 			<span class="mb16 d-block text-danger">* are required fields</span>
@@ -182,7 +182,7 @@
         <xpath expr="//div[hasclass('o_portal_details')]/div/div/button" position="attributes">
             <attribute name="class">btn btn-primary float-right mb32 te_theme_button</attribute>
         </xpath>
-	</template>
+	</template> -->
 
     <!--========================== To add class for add heading of Quotation table in mobile view (Quotations Page) ===============================-->
     <template id="portal_my_quotations_ept" inherit_id="sale.portal_my_quotations">

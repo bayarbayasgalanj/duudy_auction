@@ -61,4 +61,27 @@
         </field>
     </record>
     
+
+    <record id="web_condition_form_view" model="ir.ui.view">
+        <field name="name">web.condition.form</field>
+        <field name="model">web.condition</field>
+        <field name="arch" type="xml">
+            <form string="content" >
+                <field name="name"/>
+                <field name="content"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="web_condition_action" model="ir.actions.act_window">
+        <field name="name">Web condition</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.condition</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem action="web_condition_action"
+        id="menu_web_condition_action"
+        parent="website_sale.menu_product_settings" sequence="11"/>
+            
 </odoo>
