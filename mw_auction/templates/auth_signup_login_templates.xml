@@ -78,28 +78,28 @@
                 <div class="wizard">
                     <div class="progress-wizard">
                         <a class="no-decoration" t-att-href="step&gt;=10 and '/my/condition' or '#'">
-                          <div id="wizard-step10" t-att-class="'progress-wizard-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
+                          <div id="wizard-step10" t-att-class="'progress-wizard-signup-step %s' % (step == 10 and 'active' or step&gt;10 and 'complete' or 'disabled')">
                             <div class="progress-wizard-bar d-none d-md-block"/>
                             <span class="progress-wizard-dot d-none d-md-inline-block"></span>
                             <div class="text-center progress-wizard-steplabel">Terms and Conditions</div>
                           </div>
                         </a>
                         <a class="no-decoration" t-att-href="step&gt;=20 and '/my/account' or '#'">
-                          <div id="wizard-step20" t-att-class="'progress-wizard-step %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
+                          <div id="wizard-step20" t-att-class="'progress-wizard-signup-step %s' % (step == 20 and 'active' or step&gt;20 and 'complete' or 'disabled')">
                             <div class="progress-wizard-bar d-none d-md-block"/>
                             <span class="progress-wizard-dot d-none d-md-inline-block"></span>
                             <div class="text-center progress-wizard-steplabel">Account information</div>
                           </div>
                         </a>
                         <a class="no-decoration" t-att-href="step&gt;=30 and '/my/idcard' or '#'">
-                          <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 30 and 'active' or step&gt;30 and 'complete' or 'disabled')">
+                          <div id="wizard-step40" t-att-class="'progress-wizard-signup-step %s' % (step == 30 and 'active' or step&gt;30 and 'complete' or 'disabled')">
                             <div class="progress-wizard-bar d-none d-md-block"/>
                             <span class="progress-wizard-dot d-none d-md-inline-block"></span>
                             <div class="text-center progress-wizard-steplabel">Upload ID</div>
                           </div>
                         </a>
                         <a class="no-decoration" t-att-href="step&gt;=40 and '/my/ccode' or '#'">
-                          <div id="wizard-step40" t-att-class="'progress-wizard-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
+                          <div id="wizard-step40" t-att-class="'progress-wizard-signup-step %s' % (step == 40 and 'active' or step&gt;40 and 'complete' or 'disabled')">
                             <div class="progress-wizard-bar d-none d-md-block"/>
                             <span class="progress-wizard-dot d-none d-md-inline-block"></span>
                             <div class="text-center progress-wizard-steplabel">Confirmation code</div>
