@@ -11,17 +11,22 @@
         'website_sale_wishlist',
         'website_sale_stock',
         'website_sale',
+        'auth_signup',
+        'emipro_theme_base',
+        'theme_clarico_vega',
+        'portal',
+        'crm'
     ],
     'data': [
         'security/ir.model.access.csv',
         'templates/shop.xml',
         'templates/assets.xml',
-        'views/auction_view.xml'
+        'views/auction_view.xml',
+        'views/res_users_view.xml',
+        'templates/auth_signup_login_templates.xml'
     ],
 
     'images': [
-        'static/description/main_poster.jpg',
-        'static/description/main_screenshot.gif',
     ],
 
     # Author

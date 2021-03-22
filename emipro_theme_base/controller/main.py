@@ -92,6 +92,7 @@ class EmiproThemeBase(http.Controller):
 
         qcontext = kw
         result = {}
+        print ('aaammmmmm1111 ')
 
         if 'error' not in qcontext and request.httprequest.method == 'POST':
             try:
