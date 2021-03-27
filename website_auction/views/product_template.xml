@@ -211,6 +211,12 @@
           <div t-if="website.publish_bid_unsubscribe" id="bid_unsubscribe" class="alert alert-info auction_error bid_unsubscribe" style="display:none">
             <t t-esc='website.publish_bid_unsubscribe_msz'/>
           </div>
+          
+
+           <div t-if="website.publish_deposit_error" id="error" class="alert alert-warning auction_error bid_error" style="display:none">
+           <t t-esc='website.publish_deposit_error_msz'/>
+          </div>          
+          
         </t>
     </template>
     <template id='website_auction.details_model' name='website auction details model' >

@@ -26,7 +26,8 @@
         'views/auction_view.xml',
         'views/res_users_view.xml',
         'templates/auth_signup_login_templates.xml',
-        "views/cron.xml"
+        "views/cron.xml",
+        'views/deposit_view.xml'
     ],
 
     'images': [
