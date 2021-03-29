@@ -172,20 +172,17 @@ class WkWebsiteAuction(models.Model):
                         if tmp:
                             win_bids.append(tmp)
 #                         amount_bids+=re['max']
-                print ('win_bids ',win_bids)
                 #Нийт тавьсан барьцаа DARAA DUUSGAH    
                 maxes=[]
                 for i in win_bids:
                     if i['partner_id']==partner_id:
                         maxes.append(i['auction_id'])
-                print ('maxes ',maxes)
                 account_where=''
                 if maxes and len(maxes)==1:
                     account_where += " and a.id  = %s " % maxes[0]
                 if maxes and len(maxes)>1:
                     account_where = " and a.id in ("+','.join(map(str,maxes))+") "
                                             
-                print ('account_where ',account_where)
                 
                 query1 = """
                                 select max(bid_offer),auction_fk 
@@ -195,7 +192,7 @@ class WkWebsiteAuction(models.Model):
                                                                     and a.state='running' {2}
                                                             group by auction_fk
                             """.format(partner_id,self.id,account_where)
-                print ('query1 ',query1)
+#                 print ('query1 ',query1)
                 self.env.cr.execute(query1)
                 query_result = self.env.cr.dictfetchall()
                 amount_bids=0
