@@ -148,34 +148,60 @@ class WkWebsiteAuction(models.Model):
                 self.env.cr.execute(query)
                 query_result = self.env.cr.dictfetchall()
                 amount_bids=0
-                win_bids={}
+                win_bids=[]
+                print ('query_result ',query_result)
+                max_tmp={}
                 if query_result:
                     for re in query_result:
-                        if win_bids.get('partner_id',False):
-                            if win_bids['max']<re['max']:
-                                win_bids['max']=re['max']
-                                win_bids['partner_id']=re['partner_id']
+                        tmp=False
+                        if max_tmp.get(re['auction_fk']):
+                            if max_tmp[re['auction_fk']]['max']<re['max']:
+                                tmp={'max':re['max'],
+                                     'partner_id':re['partner_id'],
+                                     'auction_id':re['auction_fk']}
+                                max_tmp[re['auction_fk']]={'max':re['max'],
+                                     'partner_id':re['partner_id'],
+                                     'auction_id':re['auction_fk']}
                         else:
-                            win_bids={'max':re['max'],
-                                      'partner_id':re['partner_id'],
-                                      'auction_fk':re['auction_fk'],
-                                      }
+                            max_tmp[re['auction_fk']]={'max':re['max'],
+                                     'partner_id':re['partner_id'],
+                                     'auction_id':re['auction_fk']}
+                            tmp={'max':re['max'],
+                                     'partner_id':re['partner_id'],
+                                     'auction_id':re['auction_fk']}
+                        if tmp:
+                            win_bids.append(tmp)
 #                         amount_bids+=re['max']
                 print ('win_bids ',win_bids)
-                #Нийт тавьсан барьцаа DARAA DUUSGAH         
+                #Нийт тавьсан барьцаа DARAA DUUSGAH    
+                maxes=[]
+                for i in win_bids:
+                    if i['partner_id']==partner_id:
+                        maxes.append(i['auction_id'])
+                print ('maxes ',maxes)
+                account_where=''
+                if maxes and len(maxes)==1:
+                    account_where += " and a.id  = %s " % maxes[0]
+                if maxes and len(maxes)>1:
+                    account_where = " and a.id in ("+','.join(map(str,maxes))+") "
+                                            
+                print ('account_where ',account_where)
+                
                 query1 = """
                                 select max(bid_offer),auction_fk 
                                                             from wk_auction_bidder b 
                                                                     left join wk_website_auction a on b.auction_fk=a.id 
-                                                            where a.id<>{1} and b.state='active' and partner_id={0} and a.state='running' group by auction_fk;
-                            """.format(partner_id,self.id)
-                 
+                                                            where a.id<>{1} and b.state='active' and partner_id={0} 
+                                                                    and a.state='running' {2}
+                                                            group by auction_fk
+                            """.format(partner_id,self.id,account_where)
+                print ('query1 ',query1)
                 self.env.cr.execute(query1)
                 query_result = self.env.cr.dictfetchall()
                 amount_bids=0
                 if query_result:
                     for re in query_result:
-#                         print ('re ',re)  
+#                         print ('re ',re)
                         amount_bids+=re['max']
 #                 bidders=bidder_pool.search([('partner_id','=',partner_id),
 #                                 ('state','=','active'),
