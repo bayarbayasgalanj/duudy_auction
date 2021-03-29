@@ -66,6 +66,14 @@
                                 </div>
 
 
+                                 <label for="default_default_publish_deposit_error"  string="Deposit Error"/>
+                                <div>
+                                    <field name='default_default_publish_deposit_error'/>
+                                    <field name="default_default_publish_deposit_error_msz" attrs="{'invisible':[('default_default_publish_deposit_error','!=',True)],
+                                        'required':[('default_default_publish_deposit_error','==',True)]}"/>
+                                </div>
+
+
                                  <label for="default_publish_min_bid_error"  string="Minimum Bid Error"/>
                                 <div>
                                     <field name='default_publish_min_bid_error'/>

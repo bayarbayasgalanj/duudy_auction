@@ -15,7 +15,9 @@
         'emipro_theme_base',
         'theme_clarico_vega',
         'portal',
-        'crm'
+        'crm',
+        'website_auction',
+        'website_sale_wishlist'
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -23,7 +25,9 @@
         'templates/assets.xml',
         'views/auction_view.xml',
         'views/res_users_view.xml',
-        'templates/auth_signup_login_templates.xml'
+        'templates/auth_signup_login_templates.xml',
+        "views/cron.xml",
+        'views/deposit_view.xml'
     ],
 
     'images': [

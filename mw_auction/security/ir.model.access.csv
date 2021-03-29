@@ -4,3 +4,9 @@ access_product_make_public,product.make.category.public,mw_auction.model_product
 ,,,,,,,
 access_web_condition,web.condition.public,mw_auction.model_web_condition,,1,0,0,0
 access_web_condition_admin,web.condition.public.admin,mw_auction.model_web_condition,website.group_website_designer,1,1,1,1
+,,,,,,,
+access_web_deposit,web.deposit.public,mw_auction.model_web_deposit,,1,0,0,0
+access_web_deposit_admin,web.deposit.public.admin,mw_auction.model_web_deposit,website.group_website_designer,1,1,1,1
+,,,,,,,
+access_web_deposit_line,web.deposit_line.public,mw_auction.model_web_deposit_line,,1,0,0,0
+access_web_deposit_line_admin,web.deposit_line.public.admin,mw_auction.model_web_deposit_line,website.group_website_designer,1,1,1,1
