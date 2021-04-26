@@ -1263,7 +1263,7 @@ odoo.define('theme_clarico_vega.theme_script', function(require) {
                 e.preventDefault();
                 var email = $form.find('#login').val();
                 var name = $form.find('#name').val();
-                var password = $form.find('#password').val();
+                var password = $form.find('#password');//.val();
                 var confirm_password = $form.find('#confirm_password').val();
                 ajax.jsonRpc('/web/signup_custom', 'call', {'login':email,'name':name,'password':password,'confirm_password':confirm_password,'redirect':'','token':''}).then(function(data) {
                     if(!data.is_success){

@@ -248,19 +248,22 @@ class WkWebsiteAuction(models.Model):
     def _validate_bid(self,bid_type,bid_offer):
         result = dict(message='',err_type=None)
         auto_bidder,next_bid =self.get_bid_related_entity()
-        # _logger.info("111===%r====%r"%(auto_bidder,next_bid))
+        _logger.info("111===auto_bidder: %r====next_bid: %r"%(auto_bidder,next_bid))
+        _logger.info("111===bid_offer: %r====%r"%(bid_offer,next_bid))
         if bid_type=='simple' and bid_offer  < next_bid :
             result['message'] = 'Your Bid %s Not Satisfying the  Minimum Bid Amount Criteria .\n It should be at-least %s.' % (bid_offer,next_bid)
             raise MinimumBidException(result['message'])
         elif bid_type=='auto':
             auto_bid_offer = auto_bidder and auto_bidder.bid_offer or next_bid
             auto_bid_increment = auto_bid_offer+self._get_next_autobid_increment()
-            # _logger.info("2222===%r====%r==%r"%(auto_bid_offer,
-            # bid_offer,auto_bid_increment))
+            _logger.info("2222===auto_bid_offer: %r====bid_offer: %r==auto_bid_increment: %r"%(auto_bid_offer,
+            bid_offer,auto_bid_increment))
             if  auto_bid_offer>=bid_offer:
+                print ('--------------------1')
                 result['message'] = "You auto bid amount range [{0}] is already opt by some other bidder.\nPlease Increase your auto bid range to a large extent.".format(bid_offer)
                 raise AutoBidException(result['message'])
             elif  bid_offer< auto_bid_increment:
+                print ('--------------------2')
                 result['message'] = 'Your Bid Not Satisfying the  Minimum Auto Bid Amount Criteria .\n It should be at-least %s' % (next_bid)
                 raise MinimumBidException(result['message'])
 

@@ -69,6 +69,12 @@ class WkWebsiteAuction(WkWebsiteAuction):
 				'notify_l_auction_completed' : auction_config_values.default_notify_l_auction_completed,
 				'notify_ab_bid_placed' : auction_config_values.default_notify_ab_bid_placed,
 				'notify_ab_bid_overbid' : auction_config_values.default_notify_ab_bid_overbid,
+                
+                
+
+                'publish_deposit_error' : auction_config_values.default_publish_deposit_error,
+                'publish_deposit_error_msz' : auction_config_values.default_publish_deposit_error_msz,
+    
 			}
 		else:
 			res = {
@@ -119,6 +125,10 @@ class WkWebsiteAuction(WkWebsiteAuction):
 				'notify_l_auction_completed' : 1,
 				'notify_ab_bid_placed' : 1,
 				'notify_ab_bid_overbid' : 1,
+                
+                'publish_deposit_error' : 1,
+                'publish_deposit_error_msz' : u'Барьцааны лимит хэтэрсэн байна.',
+                
 			}
 		return res
 

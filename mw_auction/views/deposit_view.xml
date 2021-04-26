@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <record id="view_web_deposit_tree" model="ir.ui.view">
+            <field name="name">web.deposit.tree</field>
+            <field name="model">web.deposit</field>
+            <field name="arch" type="xml">
+                <tree string="Statements">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="balance"/>
+                </tree>
+            </field>
+        </record>
+<!-- 
+        <record id="view_web_deposit_search" model="ir.ui.view">
+            <field name="name">web.deposit.search</field>
+            <field name="model">web.deposit</field>
+            <field name="arch" type="xml">
+                <search string="Search deposits">
+                    <field name="name" string="deposit"/>
+                    <field name="partner_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Date" name="date" context="{'group_by': 'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record> -->
+
+        <record id="view_web_deposit_form" model="ir.ui.view">
+            <field name="name">web.deposit.form</field>
+            <field name="model">web.deposit</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <form string="Bank Statement">
+                <sheet>
+                    <div class="oe_title oe_inline">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="purchase_limit" />
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Transactions" name="line_ids">
+                            <field name="line_ids" >
+                                <tree editable="bottom" string="Lines" >
+                                    <field name="date" />
+                                    <field name="name" />
+                                    <field name="in_amount" />
+                                    <field name="ex_amount" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                        <div class="oe_subtotal_footer_separator oe_inline">
+                            <label for="balance" />
+                        </div>
+                        <field name="balance" nolabel="1" class="oe_subtotal_footer_separator"/>
+                    </group>
+                    <div class="oe_clear"/>
+                </sheet>
+                <div class="o_attachment_preview"/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+        
+
+    <record id="web_condition_action" model="ir.actions.act_window">
+        <field name="name">Web condition</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">web.condition</field>
+        <field name="view_mode">tree,form</field>
+    </record>        
+
+        <record id="action_web_deposit_tree" model="ir.actions.act_window">
+            <field name="name">Deposits</field>
+            <field name="res_model">web.deposit</field>
+            <field name="view_mode">tree,form</field>
+<!--             <field name="search_view_id" ref="view_web_deposit_search"/> -->
+        </record>
+
+    <menuitem action="action_web_deposit_tree"
+        id="menu_action_web_deposit_tree"
+        parent="website_sale.menu_product_settings" sequence="12"/>
+            
+</odoo>
