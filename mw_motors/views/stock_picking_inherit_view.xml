@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="repair_order_parts_request_line_tree" model="ir.ui.view">
+        <field name="name">repair.order.parts.request.line.tree</field>
+        <field name="model">repair.order.parts.request.line</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="is_pm_material==True" decoration-bf="is_ordered==True">
+                <field name="parent_id"/>
+                <field name="product_id" options="{'no_create':True}"/>
+                <field name="default_code" optional="hide"/>
+                <field name="qty" sum="Нийт"/>
+                <field name="available_qty" sum="Нийт" optional="show"/>
+                <field name="available_qty_template" sum="Нийт" optional="hide"/>
+                <field name="price_unit" sum="Нийт"/>
+                <field name="sub_total" sum="Нийт"/>
+                <field name="is_available" optional="hide"/>
+                <field name="eta_date" optional="hide"/>
+                <field name="stock_move_state" optional="show"/>
+                <field name="po_state" optional="hide"/>
+                <field name="is_ordered" optional="hide"/>
+                <field name="is_pm_material" invisible="1"/>
+                <field name="delivered_qty" groups="base.group_no_one" optional="hide" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="repair_order_parts_request_line_form" model="ir.ui.view">
+        <field name="name">repair.order.parts.request.line.form</field>
+        <field name="model">repair.order.parts.request.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="default_code" optional="hide"/>
+                        <field name="qty" sum="Нийт"/>
+                        <field name="available_qty" sum="Нийт" optional="show"/>
+                        <field name="available_qty_template" sum="Нийт" optional="hide"/>
+                        <field name="price_unit" sum="Нийт"/>
+                        <field name="sub_total" sum="Нийт"/>
+                        <field name="is_available" optional="hide"/>
+                        <field name="eta_date" optional="hide"/>
+                        <field name="stock_move_state" optional="show"/>
+                        <field name="po_state" optional="show"/>
+                        <field name="is_ordered" optional="hide"/>
+                        <field name="delivered_qty"/>
+                        <field name="is_pm_material" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page>
+                            <separator string="БМ хөдөлгөөн"/>
+                            <field name="stock_move_ids"/>
+                            <separator string="БМ хөдөлгөөн"/>
+                            <field name="po_line_many_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Inherit picking -->
+    <record id="view_picking_form_workorder_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.form.view.workorder</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+          <data>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="car_repair_order_id" options="{'no_create': True}" 
+                attrs="{'invisible':[('car_repair_order_id','=',False)]}" force_save="1"/>
+                <field name="car_id" readonly="1" 
+                    attrs="{'invisible':[('car_id','=',False)]}" force_save="1"/>
+            </xpath>
+          </data>
+        </field>
+    </record>
+    <!-- Inherit move -->
+    <record id="stock_move_form_repairorder_inherit" model="ir.ui.view">
+        <field name="name">stock.move.form.repairorder.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="car_repair_order_id" readonly="1"/>
+                <field name="car_id" readonly="1"/>
+            </field>
+        </field>
+    </record>
+    <record id="stock_move_tree_repairorder_inherit" model="ir.ui.view">
+        <field name="name">stock.move.tree.repairorder.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_tree"/>
+        <field name="arch" type="xml">
+            <field name="product_uom" position="after">
+                <field name="car_repair_order_id" readonly="1" optional="hide"/>
+                <field name="car_id" readonly="1" optional="hide"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_move_search_repairorder_inherit" model="ir.ui.view">
+        <field name="name">view.move.search.repairorder.inherit</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_search"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="car_id" readonly="1"/>
+            </field>
+            <filter name="by_product" position="after">
+                <filter string="RO" name="car_repair_order_id_ok" domain="[('car_repair_order_id','!=',False)]"/>
+                <filter string="Тээврийн хэрэгсэл" name="by_car" 
+                    context="{'group_by':'car_id'}"/>
+                <filter string="RO" name="gr_car_repair_order_id" context="{'group_by':'car_repair_order_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="purchase_order_inh" model="ir.ui.view">
+        <field name="name">purchase.order.inh</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//form//notebook" position="inside">
+                <page string="RO part lines">
+                    <field name="ro_part_line_many_ids"/>
+                </page>
+            </xpath>
+            <div class="oe_button_box" name="button_box">
+                <button class="oe_stat_button" name="view_ro" icon="fa-cogs" type="object" attrs="{'invisible':[('ro_count','=',0)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="ro_count"/></span>
+                        <span class="o_stat_text">RO's</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>

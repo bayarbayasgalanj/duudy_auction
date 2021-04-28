@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Maintenance Expense report -->
+        <record id="car_inspection_pivot_report_tree_view" model="ir.ui.view">
+            <field name="name">car.inspection.pivot.report.tree.view</field>
+            <field name="model">car.inspection.pivot.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name="inpection_id" />
+                    <field name="date_inspection" />
+                    <field name="car_id" />
+                    <field name="category" />
+                    <field name="name" />
+                    <field name="is_check" />
+               </tree>
+            </field>
+        </record>
+        <record id="car_inspection_pivot_report_form_view" model="ir.ui.view">
+            <field name="name">car.inspection.pivot.report.form.view</field>
+            <field name="model">car.inspection.pivot.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+               <form>
+                <sheet>
+                    <group col="4">
+                        <field name="inpection_id" />
+                        <field name="date_inspection" />
+                        <field name="car_id" />
+                        <field name="category" />
+                        <field name="name" />
+                        <field name="is_check" />
+
+                        <field name="user_id" />
+                        <field name="customer_id" />
+                        <field name="customer_note" />
+                        <field name="maintenance_note" />
+                    </group>
+                </sheet>
+               </form>
+            </field>
+        </record>
+        <record id="car_inspection_pivot_report_pivot" model="ir.ui.view">
+             <field name="name">car.inspection.pivot.report.pivot</field>
+             <field name="model">car.inspection.pivot.report</field>
+             <field name="arch" type="xml">
+                 <pivot string="Analysis">
+                     <field name="car_id" type="row"/>
+                     <field name="is_check" type="row"/>
+                 </pivot>
+             </field>
+        </record>
+        <record id="car_inspection_pivot_report_search" model="ir.ui.view">
+            <field name="name">car.inspection.pivot.report.search</field>
+            <field name="model">car.inspection.pivot.report</field>
+            <field name="arch" type="xml">
+                <search string="Analysis">
+                    <field name="car_id"/>
+                    <field name="name"/>
+                    <filter name="this_month" string="Энэ сар" 
+                        domain="[('date_inspection','like',time.strftime('%%Y-%%m'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Үзлэгээр" context="{'group_by':'name'}"
+                            name="name"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model='ir.actions.act_window' id='action_car_inspection_pivot_report'>
+            <field name="name">Technic inspection pivot</field>
+            <field name="res_model">car.inspection.pivot.report</field>
+            <field name="view_mode">pivot,form</field>
+            <field name="view_id" ref="car_inspection_pivot_report_pivot"/>
+            <field name="context">{"search_default_this_month":True}</field>
+        </record>
+
+    </data>
+</openerp>

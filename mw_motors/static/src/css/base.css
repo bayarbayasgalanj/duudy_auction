@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+/* Tire position widget */
+table#tire_position_parent{
+  margin: 0 auto;
+}
+.tire_to_open{
+  cursor: pointer;
+}
+img.empty_tire {
+    opacity: 0.55;
+    filter: alpha(opacity=55); /* For IE8 and earlier */
+}
+tr.tire_position_line {
+  padding-bottom: 30px !important;
+}
+td.right_tires {
+  text-align: right !important;
+  padding-left: 25px !important;
+}
+/* ======== RO div css ========= */
+/* MAINTENANCE COLOR */
+div.ro_express_maintenance_color{
+  background-color: #5489FD;
+}
+div.warning_ro{
+  border-bottom: 6px solid red;
+}
+div.ro_general_repair_color{
+  background-color: #64cd0f;
+}
+div.ro_body_and_paint_color{
+  background-color: #E454FD;
+}
+div.ro_tuning_and_upgrade_color{
+  background-color: #FF5733;
+}
+div.ro_diagnosis_color{
+  background-color: #fccc35;
+}
+
+/*=========================================*/
+tr.db_header {
+    background-color: #009879;
+    color: #ffffff;
+}
+td.db_column_td {
+  border-left: 2px solid #89c1ad;
+}
+/*========= Appointment Preparation board =====*/
+div.repair_order_card{
+  max-width: 130px !important;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin: auto !important;
+  margin-top: 4px !important;
+  padding: 2px;
+}
+
+/*========= Appointment Scheduling board =====*/
+div#adb_left_side {
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px 2px #888888;
+  height:100%;
+  text-align:center !important;
+  /* margin: 5px; */
+}
+div.repair_order_card{
+  max-width: 130px !important;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  margin-top: 2px;
+  padding: 7px;
+}
+th.times_cell{
+  width: 105px !important;
+}
+
+/*   CELL   */
+.cell_clickable:hover{
+  cursor: pointer;
+}
+.example_td{
+  min-width: 20px !important;
+}
+.td_cell_empty{
+  background-color: #00F8DC;
+  width: 20px !important;
+}
+.td_cell_ordered{
+  background-color: #ffff1f;
+  width: 20px;
+  font-size: 9.5pt !important;
+  line-height: 1;
+}
+.td_cell_blank{
+  background-color: rgba(200, 200, 200, 0.5);
+  width: 20px;
+}
+/*   LINE   */
+.tr_line{
+  height: 35px;
+}
+.tr_line:hover{
+  background-color: rgba(208, 255, 243, 0.5);
+}
+/*   V-line   */
+#vline{
+  position: fixed;
+  height: 100%;
+  width: 0px;
+  border: 1px solid red;
+  top: 0;
+  left: 0;
+  z-index: 1000000
+}
+/* TOOLTIPS */
+[data-tooltip]:before {
+    /* needed - do not touch */
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    /* customizable */
+    transition: all 0.15s ease;
+    padding: 9px;
+    font-size: 11pt;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px silver;    
+}
+
+[data-tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+    /* customizable */
+    z-index: 1000;
+    background: rgb(133, 146, 158) !important;
+    margin-top: -40px;
+    margin-left: 20px;   
+    color: white; 
+    font-weight: bold;
+}
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
+}

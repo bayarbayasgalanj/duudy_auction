@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ASB FORM -->
+	<record id="appointment_preparation_board_form_view" model="ir.ui.view">
+		<field name="name">appointment.preparation.board.form</field>
+		<field name="model">appointment.preparation.board</field>
+		<field name="arch" type="xml">
+            <form>
+                <group col="4" string="APPOINTMENT PREPARATION BOARD">
+                    <field name="date_required"/>
+                </group>
+                <widget name="apb_board_widget"/>
+			</form>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_appointment_preparation_board'>
+        <field name="name">Appointment Scheduling Board</field>
+        <field name="res_model">appointment.preparation.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="target">inline</field>
+        <field name="view_id" ref="appointment_preparation_board_form_view"/>
+    </record>
+
+</odoo>

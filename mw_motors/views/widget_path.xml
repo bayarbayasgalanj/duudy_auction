@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:
+-->
+<openerp>
+    <data>
+        <template id="assets_common_motors" name="motors's assets common" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" 
+                    href="/mw_motors/static/src/css/base.css"/>
+                <link rel="stylesheet" 
+                    href="/mw_motors/static/src/css/odometer-theme-car.css"/>
+                <script type="text/javascript" src="mw_motors/static/src/js/odometer.js"></script>
+            </xpath>
+        </template>
+        <template id="assets_backend_motors" name="motors's assets backend"   
+            inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/mw_motors/static/src/js/widget.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

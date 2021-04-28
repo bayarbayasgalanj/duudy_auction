@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Sequences for Inspection -->
+        <record id="seq_car_repair_order" model="ir.sequence">
+            <field name="name">Repair Order</field>
+            <field name="code">car.repair.order</field>
+            <field name="prefix">RO%(y)s%(month)s-</field>
+            <field name="padding">5</field>
+        </record>
+
+        <!-- ##############  Repair Order   #################### -->
+        <!-- Calendar -->
+        <record  id="car_repair_order_calendar_view" model="ir.ui.view">
+            <field name="name">car.repair.order.calendar</field>
+            <field name="model">car.repair.order</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar
+                        date_start="date_reception"
+                        color="car_id"
+                        mode="month"
+                        quick_add="False">
+                    <field name="name"/>
+                    <field name="car_id"/>
+                    <field name="odometer_value"/>
+                </calendar>
+            </field>
+        </record>
+        <record id="view_car_repair_order_form" model="ir.ui.view">
+            <field name="name">Repair Order Form</field>
+            <field name="model">car.repair.order</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_to_open" states="draft" string="Нээх"
+                            type="object"  class="oe_highlight"/>
+
+                        <button name="action_to_3days" type="object"
+                            attrs="{'invisible':[('days_state','!=','normal')]}"
+                            class="btn-success" string="To 3-days"/>
+                        <button name="action_to_2days" type="object"
+                                attrs="{'invisible':[('days_state','!=','3days')]}"
+                                class="btn-swarning" string="To 2-days"
+                                help="Сэлбэгийн захиалга үүсгэх"/>
+                        <button name="action_to_1days" type="object"
+                            attrs="{'invisible':[('days_state','!=','2days')]}"
+                            class="btn-warning" string="To 1-day"/>
+                        decoration-warning="is_nemelt==True"
+                        <button name="action_to_waiting_service"
+                            states="open" type="object"
+                            class="oe_highlight" string="To waiting service"/>
+                        <button name="action_to_start_service"
+                            states="waiting_for_service" type="object"
+                            class="oe_highlight" string="Start"/>
+                        <button name="action_to_finish_service"
+                            states="being_serviced" type="object"
+                            class="btn-success" string="Finish"/>
+
+                        <button name="action_to_cancel" string="Цуцлах" class="btn-danger"
+                            states="open,waiting_for_service,being_serviced"
+                            type="object" icon="fa-ban"/>
+
+                        <button name="action_to_invoice" icon="fa-thumbs-up"
+                            states="waiting_for_inspection,waiting_for_washing"
+                            class="oe_highlight" string="To done" type="object" />
+                        <button name="action_to_back" icon="fa-undo"
+                            groups="mw_motors.group_car_module_engineer"
+                            class="btn-danger" string="Буцаах" type="object" confirm="Буцаахдаа итгэлтэй байна уу!!"/>
+                        <button name="action_to_paid"
+                            states="waiting_for_invoicing" type="object"
+                            class="oe_highlight" string="Paid"/>
+                        <button name="action_to_psfu" states="waiting_for_delivery"
+                            string="To PSFU" type="object" class="oe_highlight"/>
+                        <button name="action_to_close" states="psfu"
+                            string="Close" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"
+            statusbar_visible="draft,open,waiting_for_service,being_serviced,waiting_for_inspection,waiting_for_invoicing,psfu,cancelled,closed" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" class="oe_inline"/>
+                            </h1>
+                        </div>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="view_po" icon="fa-files-o" type="object" attrs="{'invisible':[('po_count','=',0)]}">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value"><field name="po_count"/></span>
+                                    <span class="o_stat_text">Худалдан авалт</span>
+                                </div>
+                            </button>
+                            <button class="oe_stat_button" name="view_picking" icon="fa-files-o" type="object" attrs="{'invisible':[('picking_count','=',0)]}">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value"><field name="picking_count"/></span>
+                                    <span class="o_stat_text">Шилжүүлэгийн баримт</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible text-left"
+                            role="alert" colspan="2"
+                            attrs="{'invisible': [('warning_messages','=',False)]}">
+                            <a href="#" class="close" data-dismiss="alert"
+                                aria-label="close">x</a>
+                            <field name="warning_messages"/>
+                        </div>
+                        <group col="4" string="Ерөнхий мэдээлэл">
+                            <field name="origin"/>
+                            <field name="branch_id" options="{'no_create':True}"/>
+                            <field name="company_id" options="{'no_create':True}" readonly="1" force_save="1" groups="base.group_multi_company"/>
+                            <!-- <field name="total_price"/>
+                            <field name="pm_priority"
+                attrs="{'invisible':[('maintenance_type','!=','express_maintenance')]}"/> -->
+                        </group>
+                        <group col="4" string="Төлөвлөсөн цаг">
+                            <field name="scheduled_date"/>
+                            <field name="scheduled_time" widget="float_time"/>
+                            <field name="stall_id" options="{'no_create':True}"/>
+                            <field name="spend_time" widget="float_time"/>
+
+                            <field name="repairman_ids" widget="many2many_tags"
+                                options="{'no_create':True}" required="1"/>
+                            <field name="group_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <group string="Reception">
+                                <field name="reception_type"/>
+                                <field name="date_reception" required="1"/>
+                                <field name="assigned_user_id"
+                                    options="{'no_create':True}"/>
+                                <field name="group_engineer_id" invisible="1"/>
+                            </group>
+                            <group string="Delivery">
+                                <field name="delivery_type"/>
+                                <field name="date_delivery" required="1"/>
+                                <field name="pause_type" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Үйлчлүүлэгийн мэдээлэл">
+                                <field  name="customer_id" required="1"/>
+                                <field name='pricelist_id' options="{'no_create':True}" force_save="1"/>
+                                <field  name="customer_address"/>
+                                <field  name="customer_phone"/>
+                                <field  name="receive_partner_type"/>
+                                <field  name="cancel_type"/>
+                                <field  name="cancel_reason"/>
+                            </group>
+                            <group string="ТХ-ийн мэдээлэл">
+                                <field  name="car_id" required="1" context="{'partner_id': customer_id}"/>
+                                <field  name="odometer_value"/>
+                                <field  name="car_state_number"/>
+                                <field  name="car_start_date"/>
+                                <field  name="car_model_id"/>
+                                <field  name="car_vin_number"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="maintenance_type"/>
+                            <field name="days_state" readonly="1"/>
+                        </group>
+                        <separator string="Үйлчилгээ"/>
+                            <field name="parts_request_service_line"  nolabel="1" colspan="4">
+                                <tree editable="bottom" decoration-warning="is_nemelt==True">
+                                    <field name="product_id" style="max-width:300px" options="{'no_create':True}" domain="[('type','=','service')]" string="Үйлчилгээний нэр"/>
+                                    <field name="qty" sum="Нийт" widget="float_time" string="Зарцуулах цаг"/>
+                                    <field name="price_unit" sum="Нийт" force_save="1"/>
+                                    <field name="sub_total" sum="Нийт" force_save="1"/>
+                                    <field name="is_nemelt" invisible="1"/>
+
+                                </tree>
+                            </field>
+                        <notebook>
+                            <page string="Customer Order Form" style="font-size:14pt;">
+                                <group>
+                                    <group string="Customer's requests">
+                                        <field name="is_appointment"/>
+                                        <field name="is_maintenance"/>
+                                        <field name="is_internal"/>
+                                        <field name="is_walk_in"/>
+                                        <field name="is_general_repair"/>
+                                        <field name="is_warranty"/>
+                                        <field name="is_customer_waiting"/>
+                                        <field name="is_repeat_repair"/>
+                                    </group>
+                                    <group string="Job details">
+                                        <field name="job_details"/>
+                                        <field name="date_estimated" invisible="1"/>
+                                        <field name="estimation" widget="float_time"/>
+                                        <field name="cost_changed"/>
+                                        <field name="date_appointment_offering_1"/>
+                                        <field name="date_appointment_offering_2"/>
+                                        <field name="date_appointment"/>
+                                        <field name="appointment_user_id"/>
+                                    </group>
+                                </group>
+                                <separator string="Сэлбэг захиалга"/>
+                                <button name="compute_available_button" type="object" class="btn-success" string="Үлдэгдэл шалгах" icon="fa-refresh"/>
+                                <button name="create_purchase_order" type="object" class="btn-warning" string="Худалдан авалт үүсгэх" groups="base.group_no_one"/>
+                                <button name="action_to_expense_parts" icon="fa-wrench" type="object" class="btn-success" string="Хүсэлт үүсгэх" attrs="{'invisible':[('is_nemelt_baraa','=',False)]}"/>
+                                <field name="is_nemelt_baraa" groups="base.group_no_one" invisible="1"/>
+                                <field name="parts_request_line" nolabel="1" colspan="4">
+                                    <tree editable="bottom" decoration-info="is_pm_material==True" decoration-warning="is_nemelt==True" decoration-bf="is_ordered==True" decoration-success="stock_move_state in 'state'">
+                                        <field name="product_id" style="max-width:300px" options="{'no_create':True}" domain="[('type','!=','service')]"/>
+                                        <field name="default_code" optional="hide"/>
+                                        <field name="qty" sum="Нийт"/>
+                                        <field name="available_qty" sum="Нийт" optional="show"/>
+                                        <field name="available_qty_template" sum="Нийт" optional="hide"/>
+                                        <field name="price_unit" sum="Нийт" force_save="1"/>
+                                        <field name="sub_total" sum="Нийт" force_save="1"/>
+                                        <field name="is_available" optional="hide"/>
+                                        <field name="eta_date" optional="hide"/>
+                                        <field name="stock_move_state" optional="show"/>
+                                        <field name="po_state" optional="hide"/>
+                                        <field name="is_ordered" optional="hide"/>
+                                        <field name="is_pm_material" invisible="1"/>
+                                        <field name="is_nemelt" invisible="1"/>
+                                        <field name="delivered_qty" groups="base.group_no_one" optional="hide" invisible="1"/>
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_price_service"/>
+                                    <field name="total_price_part"/>
+                                    <field name="total_price"/>
+                                </group>
+                                <group col="4">
+                                    <field name="date_parts" readonly="1"/>
+                                    <field name="parts_user_id" readonly="1"/>
+                                    <field name="is_draft_po" widget="boolean_toggle"/>
+                                    
+                                </group>
+                                <group>
+                                    <group string="Walk-around, Confirmation">
+                                        <field name="is_additional_job_confirmation"/>
+                                        <field name="is_valuables"/>
+                                        <field name="is_present_estimate_explanation"/>
+                                        <field name="car_wash"/>
+                                        <field name="replaced_parts_keep"/>
+                                        <field name="memo"/>
+                                    </group>
+                                    <group string="Courtesy Items">
+                                        <field name="seat_cover"/>
+                                        <field name="floar_mat"/>
+                                        <field name="payment_method"/>
+                                        <field  name="odometer_value_2"/>
+                                        <field name="date_confirmation"/>
+                                        <field name="reception_user_id"
+                                            options="{'no_create':True}"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <h2>
+                                        <field name="digital_signature" widget="signature"/>
+                                    </h2>
+                                    <h2>
+                                        <field name="digital_signature_from_file" widget="image"/>
+                                    </h2>
+                                </group>
+                            </page>
+                            <page string="Diagnosis" style="font-size:14pt;">
+                                <group string="Шинж тэмдэг илрэх үеийн нөхцөл" col="4">
+                                    <field  name="diagnosis_description" colspan="4"/>
+
+                                    <field  name="from_where"/>
+                                    <field  name="frequency"/>
+
+                                    <field  name="road_type"/>
+                                    <field  name="road_type_2"/>
+
+                                    <field  name="warning_flashing"/>
+                                    <field  name="condition_type_1"/>
+
+                                    <field  name="condition_speed"/>
+                                    <field  name="condition_type_2"/>
+
+                                    <field  name="condition_rpm"/>
+                                    <field  name="condition_type_3"/>
+
+                                    <field  name="condition_passanger_count"/>
+                                    <field  name="condition_cargo_weight"/>
+
+                                    <field  name="condition_caravan_weight"/>
+                                    <field  name="condition_weather"/>
+
+                                    <field  name="outside_temprature"/>
+                                    <field  name="ac_temprature"/>
+
+                                    <field  name="ac_fan_speed"/>
+                                    <field  name="air_blast_setting"/>
+
+                                    <field  name="air_blast_setting_2"/>
+                                </group>
+                                <group string="Оношилгоо" col="4">
+                                    <field  name="performance_description"/>
+                                    <field  name="main_damaged_reason"/>
+
+                                    <field  name="maintenance_guidance"/>
+                                    <field  name="is_warranty"/>
+                                </group>
+                            </page>
+                            <page string="Job Instruction" style="font-size:14pt;">
+                                <group col="4">
+                                    <field name="stall_number" readonly="1" force_save="1"/>
+                                    <field name="date_estimated_completion"/>
+                                    <!-- <field name="parts_replaced_line" nolabel="1"
+                                        colspan="4">
+                                        <tree editable="bottom"
+                                            decoration-info="is_ordered==True"
+                                            decoration-success="is_out==True">
+                                            <field name="job_description_id" required="1" options="{'no_create':True}"/>
+                                            <field name="product_id" options="{'no_create':True}"/>
+                                            <field name="default_code" force_save="1" invisible="0"/>
+                                            <field name="qty" sum="Нийт"/>
+                                            <field name="is_out" readonly="1"
+                                                string="Out?"/>
+                                            <field name="result"/>
+                                            <field name="user_id"
+                                                domain="[('id','in',parent.repairman_ids)]"
+                                                options="{'no_create':True}"/>
+                                            <field name="is_ordered" invisible="1"/>
+                                        </tree>
+                                    </field> -->
+                                </group>
+                                <group col="5">
+                                    
+                                    <field name="warehouse_id" invisible="1" options="{'no_create':True}"/>
+                                    <field name="dest_warehouse_id" invisible="1" options="{'no_create':True}"/>
+                                </group>
+                                <group col="4" string="Засварын цаг">
+                                    <field name="ji_date_start"/>
+                                    <field name="ji_date_end"/>
+
+                                    <field name="performance_start_time" widget="float_time"/>
+                                    <field name="performance_spend_time" widget="float_time"/>
+                                    <field name="performance_date_start"
+                                        groups="base.group_no_one"/>
+                                    <newline/>
+                                    <label for="employee_timesheet_line"
+                                        colspan="4" string="Job Time"/>
+                                    <field name="employee_timesheet_line" nolabel="1"
+                                        colspan="4">
+                                        <tree editable="bottom">
+                                            <field name="employee_id"/>
+                                            <field name="notes"/>
+                                            <field name="date_start"/>
+                                            <field name="date_end"/>
+                                            <field name="spend_time" sum="Нийт"/>
+                                        </tree>
+                                    </field>
+                                    <field name="other_findings_advice"/>
+                                </group>
+                                <group states="waiting_for_delivery,psfu,closed">
+                                    <group string="Job Result Explanation">
+                                        <field name="is_job_details_explanation"/>
+                                        <field name="is_fee_explanation"/>
+                                        <field name="is_result_confirmation_customer"/>
+                                        <field name="is_fixed"/>
+                                        <field name="is_level_up"/>
+                                        <field name="is_no_fixed"/>
+                                        <field name="is_psfu_plan"/>
+                                    </group>
+                                    <group string="P.S.F.U">
+                                        <field name="date_psfu_plan"/>
+                                        <field name="psfu_contact_telephone"/>
+                                        <field name="psfu_contact_email"/>
+                                        <field name="psfu_contact_other"/>
+                                        <field name="date_psfu_actual"/>
+                                        <field name="close_zasagdsan"/>
+                                        <field name="close_ergen_holboo"/>
+                                        <field name="close_zasagdaagui"/>
+                                    </group>
+                                </group>
+                                <group string="Та манай бүтээгдэхүүн үйлчилгээг гэр бүл найз нөхөддөө санал болгох уу? /0-10 оноогоор хариулна уу. 0-Огт санал болгохгүй, 10- заавал санал болгоно/">
+                                        <field name="onoo" nolabel="1" widget="radio" options="{'horizontal': true}"/>
+                                </group>
+                            </page>
+                            <page string="Захиалга" style="font-size:14pt;">
+                                <separator string="Худалдан авалтын мөр"/>
+                                <field name="pol_line_ids" readonly="1">
+                                    <tree>
+                                        <field name="order_id" optional="hide"/>
+                                        <field name="product_id"/>
+                                        <field name="product_uom"/>
+                                        <field name="product_qty" sum="SUM"/>
+                                        <field name="price_unit"/>
+                                        <field name="price_subtotal" sum="SUM"/>
+                                        <field name="price_total" sum="SUM"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                                <field name="po_ids" readonly="1" groups="base.group_no_one"/>
+                            </page>
+                            <page string="Invoicing" style="font-size:14pt;" name="invoice">
+                            </page>
+                            <page string="Бусад мэдээлэл"
+                                style="font-size:14pt;">
+                                <group col="4" string="Өмнөх засварын мэдээлэл">
+                                    <field name="before_repair_order_line" nolabel="1"
+                                        colspan="4">
+                                        <tree>
+                                            <field name="scheduled_date"/>
+                                            <field name="name"/>
+                                            <field name="maintenance_type"/>
+                                            <field name="assigned_user_id"/>
+                                            <field name="date_confirmation" />
+                                            <field name="performance_spend_time"
+                                                widget="float_time"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_car_repair_order_tree" model="ir.ui.view">
+            <field name="name">Repair Order tree</field>
+            <field name="model">car.repair.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Check List"
+                    decoration-muted="state in ['cancelled','closed']"
+                    decoration-info="state=='open'"
+                    decoration-danger="is_warning==True"
+                    decoration-primary="state=='being_serviced'"
+                    decoration-warning="state=='waiting_for_invoicing'"
+                    decoration-success="state=='waiting_for_delivery'">
+                    <field name="name"/>
+                    <field name="branch_id" optional="hide"/>
+                    <field name="assigned_user_id"/>
+                    <field name="maintenance_type"/>
+                    <field name="scheduled_date" optional="show"/>
+                    <field name="scheduled_time" widget="float_time" optional="show"/>
+                    <field name="spend_time" widget="float_time" optional="hide"/>
+                    <field name="performance_spend_time" widget="float_time" optional="hide"/>
+                    <field name="stall_id" options="{'no_create':True}" optional="show"/>
+                    <field name="car_id"/>
+                    <field name="customer_id"/>
+                    <field name="delivery_type"/>
+                    <field name="date_reception"/>
+                    <field name="date_delivery"/>
+                    <field name="reception_user_id"/>
+                    <field name="state"/>
+                    <field name="cancel_type" optional="hide"/>
+                    <field name="days_state" optional="hide"/>
+                    <field name="is_warning" invisible="1"/>
+                    <field name="repairman_ids" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_car_repair_order_search" model="ir.ui.view">
+            <field name="name">Car RO search</field>
+            <field name="model">car.repair.order</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <group string="Filters">
+                        <field name="name"/>
+                        <field name="assigned_user_id"/>
+                        <field name="scheduled_date"/>
+                        <field name="date_reception"/>
+                        <field name="car_id"/>
+                        <field name="customer_id"/>
+                        <field name="branch_id"/>
+                        <field name="stall_id"/>
+                        <field name="cancel_reason"/>
+                        <filter string="Төлбөр хийгдсэн" name="waiting_for_delivery"
+                            domain="[('state','=','waiting_for_delivery')]" />
+                        <filter name="this_month" string="Энэ сар"
+                            domain="[('scheduled_date','like',time.strftime('%%Y-%%m'))]"/>
+                    </group>
+                    <group expand="0" string="Group by...">
+                        <filter string="Жилээр"
+                            context="{'group_by':'date_reception:year'}" name="year"/>
+                        <filter string="Сараар" context="{'group_by':'date_reception:month'}"
+                            name="month" />
+                        <filter string="Өдрөөр" context="{'group_by':'date_reception:day'}"
+                            name="day"/>
+                        <filter string="Засварын төрөл" name="maintenance_type"
+                            context="{'group_by':'maintenance_type'}" />
+                        <filter string="Төлөв" icon="terp-stage" domain="" context="{'group_by':'state'}" name="state"/>
+                        <filter string="Цуцласан шалтгаан" name="cancel_type"
+                            context="{'group_by':'cancel_type'}"/>
+                        <filter string="Preparation" name="days_state"
+                            context="{'group_by':'days_state'}" />
+                        <filter string="Тээврийн хэрэгсэлээр" domain="" context="{'group_by':'car_id'}"
+                            name="car"/>
+                        <filter string="Үйлчлүүлэгчээр" name="customer_id"
+                            context="{'group_by':'customer_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_car_repair_order" model="ir.actions.act_window">
+            <field name="name">Repair Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.repair.order</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{'search_default_this_month':1}</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('view_car_repair_order_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('view_car_repair_order_form')})]"/>
+        </record>
+
+        <!-- Walk around -->
+        <record id="view_ro_walk_around_form" model="ir.ui.view">
+            <field name="name">Repair Order Form</field>
+            <field name="model">car.repair.order</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+            statusbar_visible="draft,open,waiting_for_service,being_serviced,waiting_for_inspection,waiting_for_invoicing,waiting_for_delivery,closed" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" class="oe_inline"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Ерөнхий мэдээлэл">
+                            <field name="origin"/>
+                            <field name="branch_id"
+                                options="{'no_create':True}"/>
+
+                            <field name="maintenance_type"/>
+                            <field name="days_state" readonly="1"/>
+
+                            <field name="parts_request_service_line" options="{'no_create':True}"
+                                widget="many2many_tags" colspan="4"/>
+
+                            <field name="total_price_service"/>
+                            <field name="pm_priority"
+                attrs="{'invisible':[('maintenance_type','!=','express_maintenance')]}"/>
+
+                            <field name="scheduled_date" required="1"/>
+                            <field name="scheduled_time" widget="float_time"/>
+                            <field name="stall_id" options="{'no_create':True}"/>
+                            <field name="spend_time" widget="float_time"/>
+
+                            <field name="repairman_ids" widget="many2many_tags"
+                                options="{'no_create':True}" required="1"/>
+                            <field name="group_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <group string="Walk-around, Confirmation">
+                                <field name="is_additional_job_confirmation"/>
+                                <field name="is_valuables"/>
+                                <field name="is_present_estimate_explanation"/>
+                                <field name="car_wash"/>
+                                <field name="replaced_parts_keep"/>
+                                <field name="memo"/>
+                            </group>
+                            <group string="Courtesy Items">
+                                <field name="seat_cover"/>
+                                <field name="floar_mat"/>
+                                <field name="payment_method"/>
+                                <field name="date_confirmation"/>
+                                <field name="reception_user_id"
+                                    options="{'no_create':True}"/>
+                            </group>
+                        </group>
+                        <group col="4" string="Гаднах зургууд">
+                            <field name="front_image" widget='image'
+                                options='{"zoom": true, "preview_image":"front_image"}'/>
+                            <field name="rear_image" widget='image'
+                                options='{"zoom": true, "preview_image":"rear_image"}'/>
+                            <field name="left_image" widget='image'
+                                options='{"zoom": true, "preview_image":"left_image"}'/>
+                            <field name="right_image" widget='image'
+                                options='{"zoom": true, "preview_image":"right_image"}'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--  -->
+        <record id="action_ro_walk_around" model="ir.actions.act_window">
+            <field name="name">RO walk-around</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.repair.order</field>
+            <field name="domain">[('state','=','waiting_for_service')]</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{'search_default_this_month':1}</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('view_car_repair_order_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('view_ro_walk_around_form')})]"/>
+        </record>
+
+        <!-- CRONs -->
+        <!-- Бэлтгэл ажил хоцрогдолтой RO шалгах, мэдээллэх -->
+        <record id="cron_check_warning_ros_view" model="ir.cron">
+            <field name="name">Бэлтгэл ажил хоцрогдолтой RO шалгах, мэдэгдэх - КРОН</field>
+            <field name="model_id" ref="model_car_repair_order"/>
+            <field name="state">code</field>
+            <field name="user_id" ref="base.user_root" />
+            <field name="code">model._check_warning_ros()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="priority">9</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+
+</odoo>

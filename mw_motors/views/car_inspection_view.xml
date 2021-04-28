@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Sequences for Inspection -->
+        <record id="seq_car_inspection" model="ir.sequence">
+            <field name="name">Car inspection</field>
+            <field name="code">car.inspection</field>
+            <field name="prefix">INS%(y)s%(month)s-</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!-- Car inspection -->
+        <record id="view_car_inspection_setting_tree" model="ir.ui.view">
+            <field name="name">Car inspection setting tree</field>
+            <field name="model">car.inspection.setting</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Check setting">
+                    <field name="name"/>
+                    <field name="item_line"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_car_inspection_setting_form" model="ir.ui.view">
+            <field name="name">Car inspection setting form</field>
+            <field name="model">car.inspection.setting</field>
+            <field name="arch" type="xml">
+                 <form string="Inspect setting">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="attachment_id" filename="file_name"/>
+                            <field name="file_name" invisible="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Үзлэг хийх жагсаалт">
+                                <field name="item_line" colspan="4" nolabel="1" context="{'group_by':'category'}">
+                                    <tree string="Items">
+                                        <field name="category"/>
+                                        <field name="number"/>
+                                        <field name="name"/>
+                                        <field name="is_important" widget="boolean_toggle"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_car_inspection_setting" model="ir.actions.act_window">
+            <field name="name">Car inspection setting action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.inspection.setting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_car_inspection_setting_tree"/>
+        </record>    
+        
+        <!-- ##############  Inspection Item #################### -->
+        <record id="view_car_inspection_item_tree" model="ir.ui.view">
+            <field name="name">Car inspection item tree</field>
+            <field name="model">car.inspection.item</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Inspection setting">
+                    <field name="category"/>
+                    <field name="number"/>
+                    <field name="name"/>
+                    <field name="is_important" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_car_inspection_item_form" model="ir.ui.view">
+            <field name="name">Car inspection item form</field>
+            <field name="model">car.inspection.item</field>
+            <field name="arch" type="xml">
+                <form string="Form">
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field  name="category"/>
+                            <field name="is_important" widget="boolean_toggle"/>
+                            <field name="image" widget="image"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_car_inspection_item_search" model="ir.ui.view">
+            <field name="name">Car inspection item search</field>
+            <field name="model">car.inspection.item</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <group string="Шүүлт">
+                        <field name="name"/>
+                        <field name="category"/>
+                    </group>
+                    <group expand="1" string="Group by category">
+                        <filter string="Ангилалаар" name="groupby_category" domain="" 
+                            context="{'group_by':'category'}"/>
+                        <filter string="Чухал эсэх" domain="" 
+                            context="{'group_by':'is_important'}" name="important"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_car_inspection_item" model="ir.actions.act_window">
+            <field name="name">Үзлэгийн жагсаалт</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.inspection.item</field>
+            <field name="context">{"search_default_groupby_category" : True}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_car_inspection_item_tree"/>
+        </record>    
+        
+        <!-- ##############  Car inspection   #################### -->
+        <record id="view_car_inspection_tree" model="ir.ui.view">
+            <field name="name">Car inspection tree</field>
+            <field name="model">car.inspection</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Check List" 
+                    decoration-muted="state=='cancelled'"
+                    decoration-info="state=='open'"
+                    decoration-success="state=='done'">
+                    <field name="name"/>
+                    <field name="branch_id"/>
+                    <field name="inspection_type"/>
+                    <field name="date_inspection"/>
+                    <field name="car_id"/>
+                    <field name="customer_id"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Calendar -->
+        <record  id="car_inspection_calendar_view" model="ir.ui.view">
+            <field name="name">car.inspection.calendar</field>
+            <field name="model">car.inspection</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar 
+                        date_start="date_inspection" 
+                        color="car_id"
+                        mode="month"
+                        quick_add="False">
+                    <field name="name"/>
+                    <field name="car_id"/>
+                    <field name="odometer_value"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record id="view_car_inspection_form" model="ir.ui.view">
+            <field name="name">Car inspection form</field>
+            <field name="model">car.inspection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_to_draft" string="Ноороглох" type="object"/>
+                        <button name="action_to_open" states="draft" string="Нээх" 
+                            type="object"  class="oe_highlight"/>
+                        <button name="action_to_done" states="open" type="object" 
+                            class="oe_highlight" string="Дууссан"/>
+                        <button name="action_to_cancel" states="open" 
+                            string="Цуцлах" type="object"/>
+                        
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,done" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h2>
+                                <field name="name" class="oe_inline"/>
+                            </h2>
+                        </div>
+                        <group col="4">
+                            <field name="branch_id"
+                                options="{'no_create':True}"/>
+                            <newline/>
+
+                            <field name="date_inspection"/>
+                            <field name="inspection_type"/>
+                            
+                            <field  name="car_id" options="{'no_create':True}"/>
+                            <field  name="odometer_value"/>
+
+                            <field  name="user_id" options="{'no_create':True}"/>
+                            <field name="customer_id"
+                                options="{'no_create':True}"/>
+
+                        </group>
+                        <group col="4">
+                            <field name="attachment_ids" widget="many2many_binary" />
+                        </group>
+                        <notebook>      
+                            <page string="Үзлэгийн жагсаалт">
+                                <group col="4">
+                                    <field name="inspection_line" nolabel="1" >
+                                        <tree string="Lines" editable="bottom" delete="false" create="false"
+                                            decoration-danger="is_check==False">
+                                            <field name="category" readonly="1"/>
+                                            <field name="number"/>
+                                            <field name="check_name" readonly="1"/>
+                                            <field name="is_check" 
+                                                attrs="{'readonly':[('state','=','done')]}"/>
+                                            <field name="description"/>
+                                            <field name="state" invisible="1"/>
+                                            <!-- widget="boolean_toggle" -->
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Тэмдэглэлүүд">
+                                    <div class="oe_clear">
+                                        <label for="previous_customer_note"/>
+                                    </div>
+                                    <field name="previous_customer_note"/>
+                                    
+                                    <div class="oe_clear">
+                                        <label for="customer_note"/>
+                                    </div>
+                                    <field name="customer_note"/>
+
+                                    <div class="oe_clear">
+                                        <label for="maintenance_note"/>
+                                    </div>
+                                    <field name="maintenance_note"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_car_inspection_search" model="ir.ui.view">
+            <field name="name">Car inspection search</field>
+            <field name="model">car.inspection</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <group string="Filters">
+                        <field name="name"/>
+                        <field name="date_inspection"/>
+                        <field name="car_id"/>
+                        <field name="branch_id"/>
+                        <field name="inspection_type"/>
+                        <filter string="Дууссан" domain="[('state','=','done')]" name="done"/>
+                    </group>
+                    <group expand="0" string="Group by..."> 
+                        <filter string="Жилээр" context="{'group_by':'date_inspection:year'}"
+                            name="year"/>
+                        <filter string="Сараар" context="{'group_by':'date_inspection:month'}"
+                            name="month" />
+                        <filter string="Өдрөөр" context="{'group_by':'date_inspection:day'}"
+                            name="day"/>
+                        <filter string="Төлөв" icon="terp-stage" domain="" context="{'group_by':'state'}" name="state"/>
+                        <filter string="Тээврийн хэрэгсэлээр" domain="" context="{'group_by':'car_id'}"
+                            name="car"/>
+                        <filter string="Үзлэгийн төрлөөр" name="inspection_type"
+                            context="{'group_by':'inspection_type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_car_inspection" model="ir.actions.act_window">
+            <field name="name">Тээврийн хэрэгслийн үзлэг</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.inspection</field>
+            <field name="context">{"search_default_groupby_date":True,
+                                   "search_default_groupby_day":True}</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_id" ref="view_car_inspection_tree"/>
+        </record>    
+    
+</odoo>

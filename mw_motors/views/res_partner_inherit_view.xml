@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_inherit_motors_form_" model="ir.ui.view">
+        <field name="name">res.partner.form.motors</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="partner_car_ids" widget="many2many_tags"/>
+            </xpath>
+            <notebook position="inside">
+                <page string="Машин">
+                    <field name="car_ids" nolabel="1" widget="many2many" context="{'partner_id':id}"/>
+                </page>
+                <page string="Засвар">
+                    <field name="ro_ids" nolabel="1"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+<!--     <record id="res_partner_inherit_motors_form_inh" model="ir.ui.view">
+        <field name="name">res.partner.form.motors_inh</field>
+        <field name="inherit_id" ref="mw_crm.view_partner_form_mw_crm"/>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_type1_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_type2_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='owner_type']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page name='other' string="Бусад">
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='other']" position="inside">
+                <group  attrs="{'invisible':[('company_type','!=','company')]}">
+                    <field name="activity_type1_id"/>
+                    <field name="activity_type2_id"/>
+                    <field name="owner_type"/>
+                </group>
+            </xpath>
+        </field>
+    </record> -->
+
+    <record model='ir.actions.act_window' id='action_car_partner'>
+        <field name="name">Харилцагчид</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('car_ids','!=',False)]</field>
+    </record>
+
+    <record model="ir.ui.view" id="res_partner_kanban_view_mw_crm_motors">
+        <field name="name">res.partner.kanban.mw.crm.motors</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_kanban_details')]/ul" position="inside">
+                <li t-if="record.model_display.raw_value" class="o_text_overflow"><field name="model_display"/></li>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_mw_motors" model="ir.ui.view">
+        <field name="name">res.partner.select.mw.motors</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <search position="inside">
+                <field name="model_display" string="Улсын дугаар болон загварт"/>
+                <filter name="filter_car_ids" string="Техник бүртгэлтэй" domain="[('car_ids','!=',False)]"/>
+                <filter name="filter_car_ids2" string="Техник бүртгэлгүй" domain="[('car_ids','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_partner_tree_mw_motors" model="ir.ui.view">
+        <field name="name">res.partner.tree.mw.motors</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field name="partner_car_ids" widget='many2many_tags'/>
+            </tree>
+        </field>
+    </record>
+
+    
+
+</odoo>

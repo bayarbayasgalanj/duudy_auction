@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Setting -->
+    <record model='ir.ui.view' id='stall_order_setting_form_view'>
+        <field name="name">motors.stall.order.setting.form</field>
+        <field name="model">motors.stall.order.setting</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_to_draft" string="To draft" 
+                        type="object"/>
+                    <button name="action_to_confirm" string="Батлах" class="oe_highlight" 
+                        states="draft" type="object" icon="fa-table" />
+                    <field name="state" widget="statusbar" nolabel="1"
+                        statusbar_visible="draft,confirmed" />
+                </header>
+                <sheet>
+                    <div class="pull-left">
+                        <label for="name" class="oe_inline" />
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="branch_id" options="{'no_create':True}"/>
+                        <field name="setting_date" required="1"/>
+
+                        <field name="src_warehouse_id" options="{'no_create':True}"/>
+                        <field name="dest_warehouse_id" options="{'no_create':True}"/>
+
+                        <field name="start_time" widget="float_time"/>
+                        <field name="end_time" widget="float_time"/>
+                        
+                        <field name="lunch_time" widget="float_time"/>
+                        <field name="multipler_time" widget="float_time"/>
+                        
+                        <field name="line_ids" colspan="4" nolabel="1"
+                            context="{'start_time':start_time,'end_time':end_time,'lunch_time':lunch_time}">
+                            <tree>
+                                <field name="sequence"/>
+                                <field name="stall_id" />
+                                <field name="total_work_time" sum="Нийт" widget="float_time"/>
+                                <field name="total_lunch_time" sum="Нийт" widget="float_time"/>
+                            </tree> 
+                            <form>
+                                <group col="4">
+                                    <field name="sequence"/>
+                                    <field name="stall_id" 
+                                        options="{'no_create':True}"/>
+
+                                    <field name="total_work_time"/>
+                                    <field name="total_lunch_time" />
+                                </group>
+                                <group col="4">
+                                    <field name="employee_ids" options="{'no_create':True}"
+                                        widget="many2many_tags" colspan="4"/>
+                                </group>
+                                <group col="4">
+                                    <field name="line_ids" colspan="4" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="day" />
+                                            <field name="start_time" widget="float_time"/>
+                                            <field name="end_time" widget="float_time"/>
+                                            <field name="work_time" sum="Нийт" widget="float_time"/>
+                                            <field name="lunch_time" sum="Нийт" widget="float_time"/>
+                                            <field name="description" />
+                                        </tree> 
+                                    </field>
+                                </group>
+                            </form> 
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="stall_order_setting_search_view" model="ir.ui.view">
+        <field name="name">motors.stall.order.setting.search</field>
+        <field name="model">motors.stall.order.setting</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name"/>
+                <field name="setting_date"/>
+            </search>
+        </field>
+    </record>
+    <record id="stall_order_setting_tree_view" model="ir.ui.view">
+        <field name="name">motors.stall.order.setting.tree</field>
+        <field name="model">motors.stall.order.setting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="branch_id" />
+                <field name="setting_date"/>
+                <field name="name"/>
+                <field name="multipler_time" widget="float_time"/>
+                <field name="validator_id"/>
+                <field name="src_warehouse_id"/>
+                <field name="dest_warehouse_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record model='ir.actions.act_window' id='action_stall_order_setting'>
+        <field name="name">Ажиллах цагийн хуваарь</field>
+        <field name="res_model">motors.stall.order.setting</field>
+        <field name="search_view_id" ref="stall_order_setting_search_view"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

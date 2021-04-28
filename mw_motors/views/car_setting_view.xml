@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- BRAND -->
+	<record id="car_brand_form_view" model="ir.ui.view">
+		<field name="name">motors.car.brand.form</field>
+		<field name="model">motors.car.brand</field>
+		<field name="arch" type="xml">
+			<form>
+		   		<sheet>
+					<field name="image_medium" widget="image" class="oe_avatar"/>
+					<div class="oe_title">
+						<label for="name" class="oe_edit_only"/>
+						<h1>
+							<field name="name" placeholder="e.g. Model S"/>
+						</h1>
+					</div>
+					<field name="description" placeholder="Тайлбар"/>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="car_brand_tree_view" model="ir.ui.view">
+		<field name="name">motors.car.brand.tree</field>
+		<field name="model">motors.car.brand</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="description"/>
+			</tree>
+		</field>
+	</record>
+	<record model='ir.ui.view' id='car_brand_kanban'>
+		<field name="name">Brand kanban</field>
+		<field name="model">motors.car.brand</field>
+		<field name="arch" type="xml">
+			<kanban>
+				<field name="id"/>
+				<field name="name" />
+				<field name="image" />
+				<templates>
+					<t t-name="kanban-box">
+						<div class="oe_kanban_details">
+							<h4 class="oe_partner_heading">
+								<a type="open" class="o_kanban_record_title">
+									<field name="image_medium" widget="image" style="width:200px"/>
+									<field name="name"/>
+								</a>
+							</h4>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+	<record id="car_brand_filter_view" model="ir.ui.view">
+		<field name="name">motors.car.brand.filter</field>
+		<field name="model">motors.car.brand</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="name"/>
+				<field name="description"/>
+			</search>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_car_brand'>
+		<field name="name">Үйлдвэрлэгч, Brand</field>
+		<field name="res_model">motors.car.brand</field>
+		<field name="view_mode">kanban,tree,form</field>
+		<field name="help" type="html">
+		  <p class="oe_view_nocontent_create">
+			Click to create a new brand.
+		  </p>
+		</field>
+	</record>
+
+	<!-- Model -->
+	<record model='ir.ui.view' id='car_model_form'>
+		<field name="name">Model form</field>
+		<field name="model">motors.car.model</field>
+		<field name="arch" type="xml">
+			<form string="Model">
+				<sheet>
+					<field name="image" widget='image' class="oe_left oe_avatar"/>
+					<div class="oe_title">
+						<label for="brand_id" class="oe_edit_only"/>
+						<h2>
+							<field name="brand_id" options="{'no_create':True}"/>
+						</h2>
+						<label for="modelname" class="oe_edit_only"/>
+						<h1>
+							<field name="modelname" />
+						</h1>
+					</div>
+					<group col="4">
+						<field name="car_setting_id" />
+						<field name="car_type" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record model='ir.ui.view' id='car_model_tree'>
+		<field name="name">Model tree</field>
+		<field name="model">motors.car.model</field>
+		<field name="arch" type="xml">
+			<tree string="Models">
+				<field name="brand_id" />
+				<field name="modelname" />
+				<field name="car_type" />
+			</tree>
+		</field>
+	</record>
+	<record model='ir.ui.view' id='car_model_search'>
+		<field name="name">Model search</field>
+		<field name="model">motors.car.model</field>
+		<field name="arch" type="xml">
+			<search string="Model search" >
+				<field name="brand_id" />
+				<field name="modelname" />
+				<group expand="1" string="Group By...">
+					<filter name="groupby_brand" context="{'group_by':'brand_id'}"
+						string="Үйлдвэрлэгчээр"/>
+				</group>
+			</search>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_car_model'>
+		<field name="name">Model, Загвар</field>
+		<field name="res_model">motors.car.model</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{"search_default_groupby_brand" : True,}</field>
+		<field name="help" type="html">
+		  <p class="oe_view_nocontent_create">
+			Click to create a new model.
+		  </p><p>
+			You can define several models (e.g. A3, A4) for each brand (Audi).
+		  </p>
+		</field>
+	</record>
+
+	<!-- ########  Тээврийн хэрэгслийн тохиргоо ######## -->
+	<record model='ir.ui.view' id='car_setting_tree_view'>
+		<field name="name">Setting tree</field>
+		<field name="model">motors.car.setting</field>
+		<field name="arch" type="xml">
+			<tree string="Setting">
+				<field name="name" />
+				<field name="car_type" />
+				<field name="odometer_unit" />
+				<field name="transmission" />
+				<field name="fuel_type" />
+				<field name="report_order" />
+			</tree>
+		</field>
+	</record>
+	<record model='ir.ui.view' id='car_setting_form_view'>
+		<field name="name">Setting form</field>
+		<field name="model">motors.car.setting</field>
+		<field name="arch" type="xml">
+			<form string="Setting form">
+				<sheet>
+					<group col="4" string="Ерөнхий мэдээлэл">
+						<field name="model_id" options="{'no_create':True}"/>
+						<field name="name" />
+
+						<field name="car_type" />
+						<field name="odometer_unit" />
+
+						<field name="doors" />
+						<field name="seats"/>
+
+						<field name="fuel_type" />
+						<field name="report_order" />
+
+						<field name="rubber_tired" />
+						<field name="work_time_per_month" />
+
+						<field name="receive_inspection_id" 
+							options="{'no_create':True}"/>
+						<field name="simple_inspection_id" 
+							options="{'no_create':True}"/>
+					</group>
+					<group>
+						<group string="Хөдөлгүүрийн мэдээлэл">
+							<field name="engine_type" />
+							<field name="engine_mark" />
+							<field name="engine_capacity" />
+							<field name="fuel_tank_capacity" />
+						</group>
+						<group string="Оврын мэдээлэл">
+							<field name="body_length" />
+							<field name="body_width" />
+
+							<field name="body_height" />
+							<field name="weight" />
+						</group>
+						
+						<group string="Хурдны хайрцагны мэдээлэл">
+							<field name="transmission_mark" />
+							<field name="transmission_type" />
+							<field name="transmission" />
+						</group>
+						<group string="Баталгааны мэдээлэл">
+							<field name="warranty_period" />
+							<field name="warranty_odometer" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="car_setting_search_view">
+		<field name="name">Setting search view</field>
+		<field name="model">motors.car.setting</field>
+		<field name="arch" type="xml">
+			<search string="Search">
+				<field name="name"/>
+				<field name="model_id"/>
+				<group expand="1" string="Group By...">
+					<filter  context="{'group_by' : 'odometer_unit'}"
+						string="Гүйлтийн нэгж" name="unit"/>
+					<filter name="groupby_type" context="{'group_by' : 'car_type'}"
+						string="Тээврийн хэрэгслийн төрөл"/>
+				</group>
+		   </search>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_car_setting'>
+		<field name="name">Тээврийн хэрэгслийн тохиргоо, норм</field>
+		<field name="res_model">motors.car.setting</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- PM material config -->
+	<record model='ir.ui.view' id='car_pm_material_config_form_view'>
+		<field name="name">car.pm.material.config.form</field>
+		<field name="model">car.pm.material.config</field>
+		<field name="arch" type="xml">
+			<form string="Model">
+				<sheet>
+					<group col="4">
+                        <field name="maintenance_type_id"
+                            options="{'no_create':True}"/>
+                        <field name="interval" />
+
+                        <field name="engine_type"/>
+                        <field name="work_time" widget="float_time"/>
+
+                        <field name="total_amount" />
+                        <field name="total_man_hours" widget="float_time"/>
+
+                        <field name="reference_product_id"
+                            options="{'no_create':True}"/>
+                        <field name="inspection_setting_id"
+                            options="{'no_create':True}"/>
+
+                        <field name="fuel_type" />
+                        <field name="is_main_pm"/>
+
+                        <field name="priority"/>
+                    </group>
+                    <group col="4" string="Хэрэглэх материал">
+                        <field name="pm_material_line" nolabel="1">
+                             <tree editable="bottom">
+                                <field name="material_id" options="{'no_create':True}"/>
+                                <field name="is_depend_season" />
+                                <field name="price_unit" />
+                                <field name="qty" />
+                                <field name="amount" sum="Total"/>
+                                <field name="warehouse_id" required="0"
+                                    options="{'no_create':True}"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group col="4" string="Ажиллах хүн цагийн мэдээлэл">
+                        <field name="employee_man_hour_line" nolabel="1">
+                             <tree editable="bottom">
+                                <field name="job_id" options="{'no_create':True}"/>
+                                <field name="qty" sum="Нийт"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model='ir.ui.view' id='car_pm_material_config_tree_view'>
+		<field name="name">car.pm.material.config.form</field>
+		<field name="model">car.pm.material.config</field>
+		<field name="arch" type="xml">
+            <tree>
+                <field name="engine_type"/>
+                <field name="maintenance_type_id"/>
+                <field name="interval" />
+                <field name="work_time" widget="float_time"/>
+                <field name="total_man_hours" widget="float_time"/>
+                <field name="total_amount" sum="Total"/>
+                <field name="inspection_setting_id"/>
+                <field name="is_main_pm" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="car_pm_material_config_search_view">
+		<field name="name">car.pm.material.config.search</field>
+		<field name="model">car.pm.material.config</field>
+		<field name="arch" type="xml">
+			<search string="Search">
+				<field name="engine_type"/>
+				<field name="maintenance_type_id"/>
+				<group expand="1" string="Group By...">
+					<filter  context="{'group_by' : 'maintenance_type_id'}"
+						string="Засварын төрөл" name="maintenance_type_id"/>
+				</group>
+		   </search>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_car_pm_material_config'>
+		<field name="name">PM материалын тохиргоо</field>
+		<field name="res_model">car.pm.material.config</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+		                           
+</odoo>
