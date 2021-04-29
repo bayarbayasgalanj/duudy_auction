@@ -237,7 +237,7 @@ class account_statement_import_invoice(models.TransientModel):
                     bank_account_id = partner_bank.id
                     
                 statement_line_obj.create({
-                    'name': move_line.name or '?',
+                    'name': move_line.name or ' ?',
                     'amount': amount,
                     'partner_id': move_line.partner_id.id,
                     'bank_account_id': bank_account_id,

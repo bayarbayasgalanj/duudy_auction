@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ASB FORM -->
+	<record id="job_planning_board_form_view" model="ir.ui.view">
+		<field name="name">job.planning.board.form</field>
+		<field name="model">job.planning.board</field>
+		<field name="arch" type="xml">
+            <form>
+                <group col="4" string="JOB PLANNING BOARD">
+                    <field name="date_required"/>
+                    <field name="branch_id" options="{'no_create':True}"/>
+                </group>
+                <widget name="jpb_board_widget"/>
+			</form>
+		</field>
+	</record>
+	<record model='ir.actions.act_window' id='action_job_planning_board'>
+        <field name="name">Job Planning Board</field>
+        <field name="res_model">job.planning.board</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="target">inline</field>
+        <field name="view_id" ref="job_planning_board_form_view"/>
+    </record>
+
+</odoo>

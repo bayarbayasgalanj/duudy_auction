@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_repairman_repair_order_form" model="ir.ui.view">
+            <field name="name">Repair Order Form</field>
+            <field name="model">car.repair.order</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_to_start_service" 
+                            states="waiting_for_service,paused" type="object" icon="fa-play"
+                            groups="mw_motors.group_car_module_repairman"
+                            confirm="Ажил эхлүүлэхэд итгэлтэй байна уу?"
+                            class="oe_highlight" string="Start"/>
+                        <button name="action_to_pause" 
+                            states="being_serviced" type="object" 
+                            groups="mw_motors.group_car_module_repairman"
+                            class="btn-info" string="Pause" icon="fa-pause"/>
+                        <button name="action_to_finish_service" 
+                            states="being_serviced" type="object" icon="fa-stop"
+                            groups="mw_motors.group_car_module_repairman"
+                            confirm="Ажил дуусгахад итгэлтэй байна уу?"
+                            class="btn-success" string="Finish"/>
+
+                        <button name="action_to_invoice" icon="fa-thumbs-up"
+                            states="waiting_for_inspection,waiting_for_washing" 
+                            groups="mw_motors.group_car_module_engineer"
+                            class="oe_highlight" string="To done" type="object" />
+                        <button name="action_to_back" icon="fa-undo"
+                            states="waiting_for_inspection" 
+                            groups="mw_motors.group_car_module_engineer"
+                            class="btn-danger" string="Буцаах" type="object" />
+
+                        <field name="state" widget="statusbar" 
+            statusbar_visible="waiting_for_service,being_serviced,paused,waiting_for_inspection,waiting_for_invoicing" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field  name="car_id" class="oe_inline" readonly="1"
+                                    options="{'no_open':True}"/>
+                            </h1>
+                        </div>
+                        <group col="4" string="Ерөнхий мэдээлэл">
+                            <field name="assigned_user_id" readonly="1"/>
+                            <field name="stall_number" readonly="1" force_save="1"/>
+                            
+                            <field name="repairman_ids" widget="many2many_tags" readonly="1"
+                                options="{'no_create':True}" required="1"/>
+                            <field name="group_id" invisible="1"/>
+                            <newline/>
+
+                            <field  name="customer_id" readonly="1" 
+                                options="{'no_open':True}"/>
+                            <field name="car_wash" readonly="1"/>
+
+                            <field  name="car_model_id" options="{'no_open':True}"/>
+                            <field name="date_reception" readonly="1"/>
+                            
+                            <field  name="car_vin_number"/>
+                            <field name="date_delivery" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Засвар"
+                                style="font-size:14pt;">
+                                <button name="send_additional_job_info" 
+                                        icon="fa-send" type="object"
+                                        class="oe_highlight" string="Илгээх" attrs="{'invisible':[('is_nemelt_baraa','=',False)]}"/>
+                                <div>
+                                    <group>
+                                        <field name="pause_type" string="Түр зогсох шалтгаан"/>
+                                    </group>
+                                    
+                                </div>
+                                
+                                <separator string="Үйлчилгээ"/>
+                                <field name="parts_request_service_line" nolabel="1" colspan="4" context="{'is_nemelt': True}">
+                                    <tree editable="bottom" decoration-warning="is_nemelt==True">
+                                        <field name="product_id" style="max-width:300px" options="{'no_create':True}" domain="[('type','=','service')]" string="Үйлчилгээний нэр"/>
+                                        <field name="qty" sum="Нийт" widget="float_time" string="Зарцуулах цаг"/>
+                                        <field name="price_unit" sum="Нийт" force_save="1"/>
+                                        <field name="sub_total" sum="Нийт" force_save="1"/>
+                                        <field name="is_nemelt" invisible="1"/>
+                                    </tree>
+                                </field>
+                                <button name="action_to_expense_parts" icon="fa-wrench" type="object" class="btn-success" string="Хүсэлт үүсгэх" attrs="{'invisible':[('is_nemelt_baraa','=',False)]}"/>
+                                <field name="is_nemelt_baraa" groups="base.group_no_one" invisible="1"/>
+                                <field name="parts_request_line" nolabel="1" colspan="4">
+                                    <tree editable="bottom" decoration-info="is_pm_material==True" decoration-bf="is_ordered==True" context="{'is_nemelt': True}" decoration-warning="is_nemelt==True" decoration-success="stock_move_state in 'state'" >
+                                        <field name="product_id" style="max-width:300px" options="{'no_create':True}" domain="[('type','!=','service')]"/>
+                                        <field name="default_code" optional="hide"/>
+                                        <field name="qty" sum="Нийт"/>
+                                        <field name="available_qty" sum="Нийт" optional="show"/>
+                                        <field name="available_qty_template" sum="Нийт" optional="hide"/>
+                                        <field name="price_unit" sum="Нийт" force_save="1"/>
+                                        <field name="sub_total" sum="Нийт" force_save="1"/>
+                                        <field name="is_available" optional="hide"/>
+                                        <field name="eta_date" optional="hide"/>
+                                        <field name="stock_move_state" optional="show"/>
+                                        <field name="po_state" optional="hide"/>
+                                        <field name="is_ordered" optional="hide"/>
+                                        <field name="is_pm_material" invisible="1"/>
+                                        <field name="delivered_qty" groups="base.group_no_one" optional="hide" invisible="1"/>
+                                        <field name="is_nemelt" invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Зөвлөгөө"
+                                style="font-size:14pt;">
+                                <group col="4">
+                                    <field name="repair_suggestion_line" nolabel="1" 
+                                        colspan="4">
+                                        <tree editable="bottom">
+                                            <field name="parent_system_id" 
+                                                options="{'no_create':True}"/>
+                                            <field name="system_id" 
+                                                options="{'no_create':True}"/>
+                                            <field name="suggestion_type"/>
+                                            <field name="status"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Хүлээлгэн өгөх өмнөх шалгалт">
+                                    <label for="is_clean_external" style="min-width:215px"
+                                        string="Гадна цэвэрхэн" />
+                                    <field name="is_clean_external" widget="boolean_toggle"
+                                        nolabel="1"/>
+                                    
+                                    <field name="location_mirror_seat"
+                                         widget="boolean_toggle"/>
+                                    <field name="is_clean_internal" widget="boolean_toggle"/>
+                                    <field name="is_prevention" widget="boolean_toggle"/>
+                                    <field name="set_radio_time" widget="boolean_toggle"/>
+                                    <field name="included_old_parts" widget="boolean_toggle"/>
+                                </group>
+                                <!-- <group col="4" string="Хэрэглэсэн сэлбэг материал"
+                                    groups="base.group_no_one">
+                                    <field name="wo_move_lines" colspan="4" nolabel="1">
+                                        <tree string="Lines"
+                                            decoration-success="state == 'done'">
+                                            <field name="picking_id"/>
+                                            <field name="product_id"/>
+                                            <field name="product_uom_qty"/>
+                                            <field name="quantity_done"/>
+                                            <field name="state"/>
+                                            <field name="origin_returned_move_id" 
+                                                invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group> -->
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_repairman_repair_order_tree" model="ir.ui.view">
+            <field name="name">Repair Order tree</field>
+            <field name="model">car.repair.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Check List" 
+                    decoration-muted="state in ['cancelled','closed']"
+                    decoration-info="state=='open'"
+                    decoration-danger="is_warning==True"
+                    decoration-primary="state=='being_serviced'"
+                    decoration-warning="state=='waiting_for_invoicing'"
+                    decoration-success="state=='waiting_for_delivery'">
+                    <field name="name"/>
+                    <field name="branch_id" optional="hide"/>
+                    <field name="assigned_user_id"/>
+                    <field name="maintenance_type"/>
+                    <field name="scheduled_date" optional="show"/>
+                    <field name="scheduled_time" widget="float_time" optional="show"/>
+                    <field name="spend_time" widget="float_time" optional="hide"/>
+                    <field name="performance_spend_time" widget="float_time" optional="hide"/>
+                    <field name="stall_id" options="{'no_create':True}" optional="show"/>
+                    <field name="car_id"/>
+                    <field name="customer_id"/>
+                    <field name="state"/>
+                    <field name="days_state" optional="hide"/>
+                    <field name="is_warning" invisible="1"/>
+                    <field name="repairman_ids" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_car_repair_order_repairman" model="ir.actions.act_window">
+            <field name="name">Job Instruction RO</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.repair.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'create':False,'search_default_this_month':1}</field>
+            <field name="domain">[('repairman_ids','in',[uid]),
+                ('state','in',['waiting_for_service','being_serviced','paused','waiting_for_inspection'])]</field>
+            <field name="view_ids" 
+                   eval="[(5,0,0),(0,0,{'view_mode':'tree', 
+                            'view_id': ref('view_repairman_repair_order_tree')}),
+                          (0,0,{'view_mode':'form', 
+                            'view_id': ref('view_repairman_repair_order_form')})]"/>
+        </record>    
+</odoo>

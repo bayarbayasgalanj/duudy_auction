@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem name="DMS модуль" web_icon="mw_motors,static/description/icon.png"
+		groups="group_car_module_user"
+		id="root_car_equipment_menu" sequence="4" />
+		
+		<menuitem name="Boards" parent="root_car_equipment_menu" 
+			id="boards_menu" sequence="1"/>
+			<menuitem name="Appointment Preparation Board" parent="boards_menu" 
+				id="apb_menu" sequence="8" 
+				action="action_appointment_preparation_board" />
+			<menuitem name="Appointment Scheduling Board" parent="boards_menu" 
+				id="asb_menu" sequence="10" 
+				action="action_appointment_scheduling_board" />
+			<menuitem name="Job Planning Board" parent="boards_menu" 
+				id="jpb_menu" sequence="12" 
+				action="action_job_planning_board" />
+			<menuitem name="Job Progress Control Board" parent="boards_menu" 
+				id="jpcb_menu" sequence="15" 
+				action="action_job_progress_contral_board" />
+
+		<menuitem name="Засвар" parent="root_car_equipment_menu" 
+			id="car_repair_order_menu" sequence="10"/>
+			
+			<menuitem name="Repair Order" parent="car_repair_order_menu" 
+				id="repair_order_menu" sequence="4" action="action_car_repair_order" />
+			<menuitem name="Walk-around" parent="car_repair_order_menu" 
+				id="ro_walk_around_menu" sequence="6" action="action_ro_walk_around" />
+			<!-- <menuitem name="Оношилгоо" parent="car_repair_order_menu" 
+				id="car_diagnosis_menu" sequence="10" action="action_car_diagnosis" /> -->
+
+		<menuitem name="Тээврийн хэрэгсэл" parent="root_car_equipment_menu" 
+			id="car_management_menu" sequence="15"/>
+			
+			<menuitem name="Тээврийн хэрэгсэлүүд" parent="car_management_menu" 
+				id="car_menu" sequence="1" action="action_car_view" />
+
+			<menuitem name="Тээврийн хэрэгслийн үзлэг" parent="car_management_menu" 
+				id="car_inspection_menu" sequence="7" action="action_car_inspection" />
+
+			<menuitem name="Харилцагчид" parent="car_management_menu" 
+				id="partner_menu" sequence="10" action="action_car_partner" />
+
+		<menuitem name="Төлөвлөлт" parent="root_car_equipment_menu" 
+			id="motors_forecast_menu" sequence="17"
+			groups="group_car_module_engineer"
+			action="action_car_forecast_generator"/>
+
+		<menuitem name="Тайлан" parent="root_car_equipment_menu" 
+			id="motors_report_menu" sequence="25"/>
+			<menuitem name="Тээврийн хэрэгслийн үзлэг" parent="motors_report_menu" 
+				id="car_inspection_report_menu" sequence="5" 
+				action="action_car_inspection_pivot_report" />
+			<!-- <menuitem name="Баталгааны тайлан" parent="technic_report_menu" 
+				id="equipment_warrenty_report_menu" sequence="25" 
+				action="action_equipment_warrenty_report" /> -->
+		
+		<menuitem name="Тохиргоо" parent="root_car_equipment_menu" 
+			id="car_configuration_menu" sequence="30"/>
+			<menuitem name="Үйлдвэрлэгч" parent="car_configuration_menu" 
+				id="car_brand_menu" sequence="9" action="action_car_brand" />
+			<menuitem name="Модель загвар" parent="car_configuration_menu" 
+				id="car_model_menu" sequence="10" action="action_car_model" />
+			
+			<menuitem name="Тээврийн хэрэгслийн тохиргоо, норм" parent="car_configuration_menu" 
+				id="car_setting_menu" sequence="11" action="action_car_setting" />
+			<menuitem name="PM материалын тохиргоо" parent="car_configuration_menu" 
+				id="car_pm_material_config_menu" sequence="12" 
+				action="action_car_pm_material_config" />
+			
+			<menuitem name="Тээврийн хэрэгслийн систем" parent="car_configuration_menu"
+				id="motors_damaged_type_menu" sequence="13" 
+				action="action_motors_damaged_type" />
+			<menuitem name="Эвдрэлийн шалтгаан" parent="car_configuration_menu"
+				id="motors_damaged_reason_menu" sequence="15" 
+				action="action_motors_damaged_reason" />
+			<menuitem name="Засварын төрөл" parent="car_configuration_menu"
+				id="motors_maintenance_type_menu" sequence="17" 
+				action="action_motors_maintenance_type" />
+
+			<menuitem name="Үзлэгийн жагсаалт" parent="car_configuration_menu" 
+				id="car_inspection_item_menu" sequence="21" action="action_car_inspection_item" />
+			<menuitem name="Үзлэгийн тохиргоо" parent="car_configuration_menu" 
+				id="car_inspection_setting_menu" sequence="22" 
+				action="action_car_inspection_setting" />
+
+			<menuitem name="Stall бүртгэл" parent="car_configuration_menu" 
+				id="motors_maintenance_stall_menu" sequence="25" 
+				action="action_motors_maintenance_stall" />
+			<menuitem name="Stall тохиргоо" parent="car_configuration_menu" 
+				id="stall_order_setting_menu" sequence="28" 
+				action="action_stall_order_setting" />
+
+			<menuitem name="Засварын ажлын бүртгэл" parent="car_configuration_menu" 
+				id="repair_job_description_menu" sequence="29" 
+				action="action_repair_job_description" />
+
+	<menuitem name="DMS Засварчин" web_icon="mw_motors,static/description/icon.png"
+		groups="group_car_module_repairman"
+		id="root_car_repairman_menu" sequence="4" />
+		
+		<!-- <menuitem name="Boards" parent="root_car_repairman_menu" 
+			id="repairman_boards_menu" sequence="1"
+			action="action_asb_repairman" /> -->
+		<menuitem name="Repair Order" parent="root_car_repairman_menu" 
+			id="repairman_repair_order_menu" sequence="4" 
+			action="action_car_repair_order_repairman" />
+
+</odoo>

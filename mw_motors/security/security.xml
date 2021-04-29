@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">     
+        <!-- Группын ангилал -->
+        <record model="ir.module.category" id="car_motors_module_category">
+                <field name="name">Car motors модуль</field>
+                <field name="sequence">9</field>
+        </record>
+        <!-- Групп нэр -->
+        <record id="group_car_module_user" model="res.groups">
+            <field name="name">Модуль хэрэглэгч</field>
+            <field name="comment">Тээврийн хэрэгсэл засварын бичлэгүүдийг харах эрхтэй хэрэглэгчид</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_car_module_repairman" model="res.groups">
+            <field name="name">Засварчин, Tech</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('mw_motors.group_car_module_user'))]"/>
+        </record>
+        <record id="group_car_module_lead_repairman" model="res.groups">
+            <field name="name">Lead Tech</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('mw_motors.group_car_module_repairman'))]"/>
+        </record>
+        <record id="group_car_module_engineer" model="res.groups">
+            <field name="name">Инженер, SA</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" 
+                eval="[(4, ref('mw_motors.group_car_module_lead_repairman'))]"/>
+        </record>
+        <record id="group_car_module_parts_advisor" model="res.groups">
+            <field name="name">Parts Advisor</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('mw_motors.group_car_module_user'))]"/>
+        </record>
+
+        <record id="group_car_module_odometer_user" model="res.groups">
+            <field name="name">Гүйлт гараар нэмэх</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_car_inspection_user" model="res.groups">
+            <field name="name">Үзлэгийн хэрэглэгч</field>
+            <field name="comment">Үзлэгийн эрхтэй хэрэглэгчид</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_car_module_admin" model="res.groups">
+            <field name="name">Модулийн админ</field>
+            <field name="comment">Тохиргоо засах эрхтэй хэрэглэгчид</field>
+            <field name="category_id" ref="mw_motors.car_motors_module_category"/>
+            <field name="implied_ids" eval="[(4, ref('mw_motors.group_car_module_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

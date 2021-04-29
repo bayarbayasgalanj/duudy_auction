@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+	<t t-name="odometer_widget">
+		<div id="odometer_div" class="odometer_divs"/>
+	</t>
+
+	<t t-name="mw_motors.TireInspectionWidget">
+		<div id="tire_inspection_div" style="width: 100%;height: 300px">
+			SSSS-
+		</div>
+	</t>
+
+	<t t-name="mw_motors.TirePositionWidget">
+		<table id="tire_position_parent">
+			<tbody id="tire_position" >
+				<tr>
+					<th width="50%" align="center">Зүүн</th>
+					<th width="50%" align="center">Баруун</th>
+				</tr>
+			</tbody>
+		</table>
+	</t>
+
+	<!-- Appointment Preparation Board -->
+	<t t-name="mw_motors.APBoardWidget">
+		<table style="width:100%;">
+			<tr>
+				<td style="width:15%; vertical-align: top;">
+					<div id="adb_left_side" style="vertical-align:top;align:center;">
+						<div class="text-center" 
+							style="padding:3px;"> 
+							Appointment Cabinet</div>
+						<t t-if="widget.all_repair_orders">
+		                    <div t-foreach="widget.all_repair_orders" t-as="t_line"
+		                    	t-att-class="t_line.color_class" 
+	                        	t-att-data-id="t_line.id"
+	                        	t-att-data-tooltip="t_line.description">
+	                        	<t t-esc="t_line.name"/>
+	                        </div>
+	                    </t>
+                    </div>
+                </td>
+			<td style="width:45%;">
+				<table style="border-radius: 2px;box-shadow: 3px 3px 2px #888888; background-color: #becef8; width:100%;">
+			    	<thead>
+			    		<tr class="text-center">
+			                <th style="padding:3px;font-size:12pt">3-days before</th>
+			                <th style="padding:3px;font-size:12pt">2-days before</th>
+			                <th style="padding:3px;font-size:12pt">1-days before</th>
+			                <th style="padding:3px;font-size:12pt">Ordered parts</th>
+							<th style="padding:3px;font-size:12pt">Delivered parts</th>
+		                </tr>
+		            </thead>
+		            <tbody class="ui-sortable">
+		            	<tr class="text-center">
+		            		<!-- 3-days -->
+		            		<td rowspan="2" style="width:20%;padding:2px;vertical-align:top;">
+		            			<t t-if="widget.days3_repair_orders">
+		            				<div t-foreach="widget.days3_repair_orders" t-as="line" 
+		            					t-att-class="line.color_class" 
+		            					t-att-data-id="line.id">
+				            			<t t-esc="line.name"/>
+			        				</div>
+		        				</t>
+		            		</td>
+		            		<!-- 2-days -->
+		            		<td rowspan="2" style="width:20%;padding:2px;vertical-align:top;">
+		            			<t t-if="widget.days2_repair_orders">
+		            				<div t-foreach="widget.days2_repair_orders" t-as="line" 
+		            					t-att-class="line.color_class" 
+		            					t-att-data-id="line.id">
+				            			<t t-esc="line.name"/>
+			        				</div>
+		        				</t>
+		            		</td>
+		            		<!-- 1-days -->
+		            		<td rowspan="2" style="width:20%;padding:2px;vertical-align:top;">
+		            			<t t-if="widget.days1_repair_orders">
+		            				<div t-foreach="widget.days1_repair_orders" t-as="line" 
+		            					t-att-class="line.color_class" 
+		            					t-att-data-id="line.id">
+				            			<t t-esc="line.name"/>
+			        				</div>
+		        				</t>
+		            		</td>
+		            		<!-- Ordered parts -->
+		            		<td style="width:20%;padding:2px;vertical-align:top;">
+		            			<t t-if="widget.ordered_repair_orders">
+		            				<div t-foreach="widget.ordered_repair_orders" t-as="line" 
+		            					t-att-class="line.color_class" 
+		            					t-att-data-id="line.id">
+				            			<t t-esc="line.name"/>
+			        				</div>
+		        				</t>
+		            		</td>
+							<td style="width:20%;padding:2px;vertical-align:top;">
+		        				<t t-if="widget.delivered_repair_orders">
+		            				<div t-foreach="widget.delivered_repair_orders" t-as="line" 
+		            					t-att-class="line.color_class" 
+		            					t-att-data-id="line.id">
+				            			<t t-esc="line.name"/>
+			        				</div>
+		        				</t>
+		            		</td>
+		                </tr>
+		            </tbody>
+		        	<tfoot></tfoot>
+		        </table>
+	    	</td>
+	    	<td style="width:15%; vertical-align: top;">
+	    		<div id="adb_left_side" style="vertical-align:top;align:center;">
+					<div class="text-center" 
+						style="padding:3px;vertical-align:top;"> 
+						Today's Appointment</div>
+					<t t-if="widget.today_repair_orders">
+	                    <div t-foreach="widget.today_repair_orders" t-as="t_line"
+	                    	t-att-class="t_line.color_class" 
+                        	t-att-data-id="t_line.id"
+                        	t-att-data-tooltip="t_line.description">
+                        	<t t-esc="t_line.name"/>
+                        </div>
+                    </t>
+                </div>
+    		</td>
+			<td style="width:15%; vertical-align: top;">
+	    		<div id="adb_left_side" style="vertical-align:top;align:center;">
+					<div class="text-center" 
+						style="padding:3px;vertical-align:top;"> 
+						Today's PSFU</div>
+					<t t-if="widget.today_psfu">
+	                    <div t-foreach="widget.today_psfu" t-as="t_line"
+	                    	t-att-class="t_line.color_class" 
+                        	t-att-data-id="t_line.id"
+                        	t-att-data-tooltip="t_line.description">
+                        	<t t-esc="t_line.name"/>
+                        </div>
+                    </t>
+                </div>
+    		</td>
+	    </tr>
+    	</table>
+	</t>
+
+	<!-- Appointment Scheduling Board -->
+	<t t-name="mw_motors.ASBoardWidget">
+		<table border="1" class="o_list_table" id="timetable_table"
+			style="border-radius: 2px;box-shadow: 3px 3px 2px #888888;width:100%">
+	    	<!-- Толгой зурах -->
+	    	<thead>
+	    		<tr class="text-center">
+	                <th class="stall_name" style="padding:3px">Stall</th>
+	                <t t-if="widget.times">
+	                    <t t-foreach="widget.times" t-as="time">
+	                        <th colspan="4" class="text-center" 
+	                        	style="padding:3px" >
+	                        	<t t-esc="time"/>
+	                        </th>
+	                    </t>
+	                </t>   
+                </tr>
+            </thead>
+            <tbody class="ui-sortable">
+                <t t-if="widget.timetable_lines">
+                	<tr class="text-center">
+                		<td></td>
+		                <t t-if="widget.cells_limit">
+		                    <t t-foreach="widget.cells_limit" t-as="cell">
+		                        <td class="text-center example_td" 
+		                        	style="padding:3px" >
+		                        </td>
+		                    </t>
+		                </t>   
+	                </tr>
+                	<!-- Row давталт -->
+                    <tr t-foreach="widget.timetable_lines" t-as="line" class="tr_line">
+                        <td t-att-data-id="line.line_id" 
+                        	class="text-center stall_name">
+                            <div t-att-data-tooltip="line.description">
+                                <t t-esc="line.line_name"/>
+                            </div>
+                        </td>
+                        <!-- CELL давталт -->
+                        <t t-foreach="line.cells" t-as="t_line">
+                        	<!-- Хоосон CELL -->
+                        	<td t-if="t_line.state == 'blank'"
+                        		t-att-colspan="t_line.value_colspan"
+                        		class="text-center td_cell_blank" />
+                            <!-- Захиалгагүй -->
+                            <td t-if="t_line.state == 'empty'"
+                            	t-att-data-stall_id="t_line.stall_id"
+                            	t-att-data-start_time="t_line.time"
+                            	t-att-colspan="t_line.value_colspan"
+                            	class="text-center td_cell_empty"
+                            	t-att-data-tooltip="t_line.description"> 
+                        	</td>
+                        	<!-- Захиалгатай -->
+                        	<td t-if="t_line.state == 'ordered'"
+                        		t-att-colspan="t_line.value_colspan"
+                            	class="text-center cell_clickable td_cell_ordered"
+                            	t-att-data-id="t_line.ro_id"
+                            	t-att-data-tooltip="t_line.description"> 
+                            	<div t-esc="t_line.ro_name"/>
+                            	<div t-esc="t_line.state_number"/>
+                        	</td>
+                        </t>
+                    </tr>
+                </t>
+            </tbody>
+        	<tfoot></tfoot>
+        </table>
+	</t>
+
+	<!-- Job Planning Board -->
+	<t t-name="mw_motors.JPBoardWidget">
+		<table style="width:100%;">
+			<tr>
+				<!-- <td style="width:15%;">
+					<div id="adb_left_side" style="vertical-align:top;">
+						<div class="text-center" 
+							style="padding:3px;"> 
+							Appointment Cabinet</div>
+						<t t-if="widget.all_repair_orders">
+		                    <div t-foreach="widget.all_repair_orders" t-as="t_line"
+		                    	class="text-center cell_clickable repair_order_card"
+	                        	t-att-data-id="t_line.id"
+	                        	t-att-data-tooltip="t_line.description">
+	                        	<t t-esc="t_line.name"/>
+	                        </div>
+	                    </t>
+                    </div>
+				</td> -->
+				<td style="width:100%;">
+					<table border="1" class="o_list_table" id="timetable_table"
+						style="border-radius: 2px;box-shadow: 3px 3px 2px #888888;width:100%">
+				    	<!-- Толгой зурах -->
+				    	<thead>
+				    		<tr class="text-center">
+				                <th class="stall_name" style="padding:3px">Stall</th>
+				                <t t-if="widget.times">
+				                    <t t-foreach="widget.times" t-as="time">
+				                        <th colspan="4" class="text-center" 
+				                        	style="padding:3px" >
+				                        	<t t-esc="time"/>
+				                        </th>
+				                    </t>
+				                </t>   
+			                </tr>
+		                </thead>
+		                <tbody class="ui-sortable">
+			                <t t-if="widget.timetable_lines">
+			                	<tr class="text-center">
+			                		<td></td>
+					                <t t-if="widget.cells_limit">
+					                    <t t-foreach="widget.cells_limit" t-as="cell">
+					                        <td class="text-center example_td" 
+					                        	style="padding:3px" >
+					                        </td>
+					                    </t>
+					                </t>   
+				                </tr>
+			                	<!-- Stall name давталт -->
+			                    <tr t-foreach="widget.timetable_lines" t-as="line" class="tr_line">
+			                        <td t-att-data-id="line.line_id" 
+			                        	t-if="line.is_show == 'show'"
+			                        	rowspan="2"
+			                        	class="text-center stall_name">
+			                            <div t-att-data-tooltip="line.description">
+			                                <t t-esc="line.line_name"/>
+			                            </div>
+			                        </td>
+			                        <!-- CELL давталт -->
+		                            <t t-foreach="line.cells" t-as="t_line">
+		                            	<!-- Хоосон CELL -->
+		                            	<td t-if="t_line.state == 'blank'"
+		                            		t-att-colspan="t_line.value_colspan"
+		                            		class="text-center td_cell_blank" />
+		                                <!-- Захиалгагүй -->
+		                                <td t-if="t_line.state == 'empty'"
+		                                	t-att-colspan="t_line.value_colspan"
+		                                	class="text-center td_cell_empty"
+		                                	t-att-data-tooltip="t_line.description"> 
+		                            	</td>
+		                            	<!-- Захиалгатай -->
+		                            	<td t-if="t_line.state == 'ordered'"
+		                            		t-att-colspan="t_line.value_colspan"
+		                                	class="text-center cell_clickable td_cell_ordered"
+		                                	t-att-data-id="t_line.ro_id"
+		                                	t-att-data-tooltip="t_line.description"> 
+		                                	<div t-esc="t_line.ro_name"/>
+		                                	<div t-esc="t_line.state_number"/>
+		                            	</td>
+		                            </t>
+			                    </tr>
+			                </t>
+		                </tbody>
+		            	<tfoot></tfoot>
+		            </table>
+	            </td>
+            </tr>
+		</table>
+	</t>
+
+	<!-- Job Progress Control Board -->
+	<t t-name="mw_motors.JPCBoardWidget">
+		<table style="border-radius: 2px;box-shadow: 3px 3px 2px #888888;
+			        background-color:#d7f1eb;width:100%">
+	    	<thead>
+	    		<tr class="text-center db_header">
+	                <th style="padding:3px;font-size:12pt">Waiting for Service</th>
+	                <th style="padding:3px;font-size:12pt">Being Serviced</th>
+	                <th style="padding:3px;font-size:12pt">Paused</th>
+	                <th style="padding:3px;font-size:12pt">Waiting for Inspection</th>
+	                <th style="padding:3px;font-size:12pt">Waiting for Washing</th>
+	                <th style="padding:3px;font-size:12pt">Waiting for Invoicing</th>
+	                <th style="padding:3px;font-size:12pt">Waiting for Delivery</th>
+                </tr>
+            </thead>
+            <tbody class="ui-sortable">
+            	<tr class="text-center">
+            		<!-- Waiting for Service -->
+            		<td style="width:14%;padding:2px;vertical-align:top;"
+            			class="db_column_td">
+            			<t t-if="widget.waiting_service_ros">
+            				<div t-foreach="widget.waiting_service_ros" t-as="line" 
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+		            			<t t-esc="line.state_number"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Being Serviced -->
+            		<td style="width:14%;padding:2px;vertical-align:top;"
+            			class="db_column_td">
+            			<t t-if="widget.being_serviced_ros">
+            				<div t-foreach="widget.being_serviced_ros" t-as="line"
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Paused -->
+            		<td style="width:12%;padding:2px;vertical-align:top;"
+            			class="db_column_td">
+            			<t t-if="widget.paused_ros">
+            				<div t-foreach="widget.paused_ros" t-as="line"
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Waiting for Inspection -->
+            		<td style="width:14%;padding:2px;vertical-align:top;"
+            			class="db_column_td">
+            			<t t-if="widget.waiting_inspection_ros">
+            				<div t-foreach="widget.waiting_inspection_ros" t-as="line" 
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Waiting for Washing -->
+            		<td style="width:14%;padding:2px;vertical-align:top;" 
+            			class="db_column_td">
+            			<t t-if="widget.waiting_washing_ros">
+            				<div t-foreach="widget.waiting_washing_ros" t-as="line" 
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Waiting for Invoicing -->
+            		<td style="width:14%;padding:2px;vertical-align:top;" 
+            			class="db_column_td">
+            			<t t-if="widget.waiting_invoicing_ros">
+            				<div t-foreach="widget.waiting_invoicing_ros" t-as="line" 
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+            		<!-- Waiting for Delivery -->
+            		<td style="width:16%;padding:2px;vertical-align:top;"
+            			class="db_column_td">
+            			<t t-if="widget.waiting_settlement_ros">
+            				<div t-foreach="widget.waiting_settlement_ros" t-as="line" 
+            					t-att-class="line.color_class" 
+            					t-att-data-id="line.id">
+		            			<t t-esc="line.name"/>
+	        				</div>
+        				</t>
+            		</td>
+                </tr>
+            </tbody>
+        </table>
+	</t>
+
+</templates>

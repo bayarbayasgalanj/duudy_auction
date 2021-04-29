@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Sequences for Inspection -->
+        <record id="seq_car_diagnosis" model="ir.sequence">
+            <field name="name">Car diagnosis</field>
+            <field name="code">car.diagnosis</field>
+            <field name="prefix">CDi%(y)s%(month)s-</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!-- ##############  Car diagnosis   #################### -->
+        <!-- Calendar -->
+        <record  id="car_diagnosis_calendar_view" model="ir.ui.view">
+            <field name="name">car.diagnosis.calendar</field>
+            <field name="model">car.diagnosis</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar 
+                        date_start="date_receive" 
+                        color="car_id"
+                        mode="month"
+                        quick_add="False">
+                    <field name="name"/>
+                    <field name="car_id"/>
+                    <field name="odometer_value"/>
+                </calendar>
+            </field>
+        </record>
+        <record id="view_car_diagnosis_form" model="ir.ui.view">
+            <field name="name">Car inspection form</field>
+            <field name="model">car.diagnosis</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_to_draft" string="Ноороглох" type="object"/>
+                        <button name="action_to_open" states="draft" string="Нээх" 
+                            type="object"  class="oe_highlight"/>
+                        <button name="action_to_done" states="open" type="object" 
+                            class="oe_highlight" string="Дууссан"/>
+                        <button name="action_to_cancel" states="open" 
+                            string="Цуцлах" type="object"/>
+                        
+                        <field name="state" widget="statusbar" 
+                            statusbar_visible="draft,open,proccessing,done" nolabel="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h2>
+                                <field name="name" class="oe_inline"/>
+                            </h2>
+                        </div>
+                        <group col="4">
+                            <field name="origin"/>
+                            <field name="branch_id"
+                                options="{'no_create':True}"/>
+                            <newline/>
+                        </group>
+                        <group col="4" string="Оношилгоо захиалга">
+                            <field name="receive_type"/>
+                            <field name="date_receive" required="1"/>
+
+                            <field name="to_hand_type"/>
+                            <field name="date_to_hand" required="1"/>
+                        </group>
+                        <group>
+                            <group string="Үйлчлүүлэгийн мэдээлэл">
+                                <field  name="customer_id" options="{'no_create':True}"
+                                    required="1"/>
+                                <field  name="customer_address"/>
+                                <field  name="customer_phone"/>
+                                <field  name="receive_partner_type"/>
+                            </group>
+                            <group string="Үйлчлүүлэгийн мэдээлэл">
+                                <field  name="car_id" options="{'no_create':True}" 
+                                    required="1"/>
+                                <field  name="odometer_value"/>
+                                <field  name="odometer_value_2"/>
+                                <field  name="car_state_number"/>
+                                <field  name="car_start_date"/>
+                                <field  name="car_model_id"/>
+                                <field  name="car_vin_number"/>
+                            </group>
+                        </group>
+                        <group string="Шинж тэмдэг илрэх үеийн нөхцөл" col="4">
+                            <field  name="description" colspan="4"/>
+                            
+                            <field  name="from_where"/>
+                            <field  name="frequency"/>
+
+                            <field  name="road_type"/>
+                            <field  name="road_type_2"/>
+
+                            <field  name="warning_flashing"/>
+                            <field  name="condition_type_1"/>
+
+                            <field  name="condition_speed"/>
+                            <field  name="condition_type_2"/>
+                            
+                            <field  name="condition_rpm"/>
+                            <field  name="condition_type_3"/>
+
+                            <field  name="condition_passanger_count"/>
+                            <field  name="condition_cargo_weight"/>
+
+                            <field  name="condition_caravan_weight"/>
+                            <field  name="condition_weather"/>
+
+                            <field  name="outside_temprature"/>
+                            <field  name="ac_temprature"/>
+
+                            <field  name="ac_fan_speed"/>
+                            <field  name="air_blast_setting"/>
+
+                            <field  name="air_blast_setting_2"/>
+                        </group>
+                        <group string="Оношилгоо" col="4">
+                            <field  name="performance_description"/>
+                            <field  name="main_damaged_reason"/>
+
+                            <field  name="maintenance_guidance"/>
+                            <field  name="is_warranty"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_car_diagnosis_tree" model="ir.ui.view">
+            <field name="name">Car diagnosis tree</field>
+            <field name="model">car.diagnosis</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Check List" 
+                    decoration-muted="state=='cancelled'"
+                    decoration-info="state=='open'"
+                    decoration-success="state=='done'">
+                    <field name="name"/>
+                    <field name="branch_id"/>
+                    <field name="car_id"/>
+                    <field name="customer_id"/>
+                    <field name="receive_type"/>
+                    <field name="date_receive"/>
+                    <field name="date_to_hand"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_car_diagnosis_search" model="ir.ui.view">
+            <field name="name">Car inspection search</field>
+            <field name="model">car.diagnosis</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <group string="Filters">
+                        <field name="name"/>
+                        <field name="date_receive"/>
+                        <field name="car_id"/>
+                        <field name="customer_id"/>
+                        <field name="branch_id"/>
+                        <filter string="Дууссан" domain="[('state','=','done')]" name="done"/>
+                    </group>
+                    <group expand="0" string="Group by..."> 
+                        <filter string="Жилээр" context="{'group_by':'date_receive:year'}"
+                            name="year"/>
+                        <filter string="Сараар" context="{'group_by':'date_receive:month'}"
+                            name="month" />
+                        <filter string="Өдрөөр" context="{'group_by':'date_receive:day'}"
+                            name="day"/>
+                        <filter string="Төлөв" icon="terp-stage" domain="" context="{'group_by':'state'}" name="state"/>
+                        <filter string="Тээврийн хэрэгсэлээр" domain="" context="{'group_by':'car_id'}"
+                            name="car"/>
+                        <filter string="Үйлчлүүлэгчээр" name="customer_id"
+                            context="{'group_by':'customer_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="action_car_diagnosis" model="ir.actions.act_window">
+            <field name="name">Тээврийн хэрэгслийн оношилгоо</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">car.diagnosis</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_id" ref="view_car_diagnosis_tree"/>
+        </record>    
+    
+</odoo>

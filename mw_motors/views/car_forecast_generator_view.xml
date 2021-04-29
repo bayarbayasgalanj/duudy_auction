@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Plan -->
+    <record id="car_forecast_generator_filter_view" model="ir.ui.view">
+        <field name="name">car.forecast.generator.filter</field>
+        <field name="model">car.forecast.generator</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <group expand="1" string="Group By...">
+                    <filter context="{'group_by' : 'planner_id'}" string="Planner" 
+                        name="planner_id"/>
+                    <filter context="{'group_by' : 'state'}" string="State" name="state"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="car_forecast_generator_form_view" model="ir.ui.view">
+        <field name="name">car.forecast.generator.form</field>
+        <field name="model">car.forecast.generator</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_to_draft" string="Ноороглох" type="object" 
+                        states="confirmed,done"/>
+                    <button name="action_to_confirm" class="oe_highlight" string="Батлах"  
+                        states="draft" type="object" />
+                    <button name="action_to_done" class="oe_highlight" string="Төлөвлөгөө үүсгэх"  
+                        states="confirmed" type="object" help="Засварын төлөвлөгөөг үүсгэх бол дарна"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" readonly="1" />
+                </header>
+                <sheet>
+                    <div class="pull-left">
+                        <label for="name" class="oe_inline" />
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+                    <div name="button_box">
+                        <button 
+                            name="see_expenses_view" states="confirmed,done"
+                            type="object" class="oe_stat_button oe_right"
+                            icon="fa-list" string="Пивот">
+                        </button>
+                        <button 
+                            name="export_report" states="confirmed,done"
+                            type="object" class="oe_stat_button oe_right"
+                            icon="fa-file-excel-o" string="TББ excel">
+                        </button>
+                        <button 
+                            name="generate_lines" states="confirmed"
+                            type="object" class="oe_stat_button oe_right"
+                            icon="fa-plus-square" string="Generate">
+                        </button>
+                    </div>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="planner_id"/>
+
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+
+                        <field name="forecast_type"/>
+                        <field name="total_amount"/>
+
+                        <field name="is_date_start"/>
+
+                        <field name="start_last_info"
+                            attrs="{'invisible':[('forecast_type','!=','year')]}"/>
+                    </group>
+                    <notebook>
+                        <page string="Техникийн тохиргоо">
+                            <group col="4">
+                                <button name="import_from_current" 
+                                    string="Одоогийн өгөгдлөөс татах" 
+                                    states="draft" type="object" class="oe_highlight" 
+                                    icon="fa-download" colspan="1"/>
+                                <field name="excel_data" filename="file_name"/>
+                                <button name="export_excel_template" 
+                                    string="Импортлох загвар бэлдэх" 
+                                    states="draft" type="object" 
+                                    icon="fa-upload" colspan="1"/>
+                                <button name="import_from_excel" 
+                                    string="Excel-с импортлох" 
+                                    states="draft" type="object" 
+                                    icon="fa-file-excel-o" colspan="1"/>
+                                <field name="file_name" invisible="1"/>
+
+                                <newline/>
+                                <field name="car_setting_line" nolabel="1" 
+                                    widget="one2many_list" 
+                                    colspan="4">
+                                    <tree string="Lines" editable="bottom">
+                                        <field name="car_id" options="{'no_create':True}"/>
+                                        <field name="last_date"/>
+                                        <field name="start_odometer"/>
+                                        <field name="last_pm_priority"/>
+                                        <field name="maintenance_type_id"/>
+                                        <field name="work_time_per_month" sum="Total"/>
+                                        <field name="start_date"/>
+                                        <button name="create_one_forecast" type="object"
+                                            string="Forecast гүйлгэх"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Урьдчилсан төлөвлөгөө" class="oe_page_title" accesskey="M">
+                            <group col="4">
+                                <field name="plan_generated_line" nolabel="1" widget="one2many_list"    colspan="4">
+                                    <tree string="Lines">
+                                        <field name="maintenance_type_id" />
+                                        <field name="date_plan"/>
+                                        <field name="car_id"/>
+                                        <field name="pm_odometer"/>
+                                        <field name="work_time" sum="Total" widget="float_time"/>
+                                        <field name="man_hours" sum="Total" widget="float_time"/>
+                                        <field name="total_amount" sum="Total"/>
+                                        <field name="description"/>
+                                        <field name="ro_id" invisible="1"/>
+                                        <button 
+                                            name="create_plan" type="object" 
+                                            attrs="{'invisible':[('ro_id','!=',False)]}"
+                                            string="Төлөвлөгөө үүсгэх"/>
+                                    </tree>
+                                    <form>
+                                        <group col="4">
+                                            <field name="maintenance_type_id" options="{'no_create':True}"/>
+                                            <field name="pm_priority"/>
+
+                                            <field name="date_plan"/>
+                                            <field name="description"/>
+
+                                            <field name="man_hours" sum="Total" widget="float_time"/>
+                                            <field name="work_time" required="1" widget="float_time"/>
+
+                                            <field name="pm_odometer"/>
+                                            <field name="total_amount" sum="Total"/>
+                                            
+                                            <field name="car_id" readonly="1"/>
+                                            <field name="ro_id"/>
+                                        </group>
+                                        <group>
+                                            <field name="pm_material_line" nolabel="1" 
+                                                widget="one2many_list">
+                                                <tree string="Lines">
+                                                    <field name="material_id" options="{'no_create':True}"/>
+                                                    <field name="price_unit"/>
+                                                    <field name="qty"/>
+                                                    <field name="amount" sum="Total"/>
+                                                </tree>
+                                            </field>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="car_forecast_generator_tree_view" model="ir.ui.view">
+        <field name="name">car.forecast.generator.tree</field>
+        <field name="model">car.forecast.generator</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state =='done'" decoration-info="state=='confirmed'">
+                <field name="name"/>
+                <field name="forecast_type"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="planner_id"/>
+                <field name="total_amount" sum="Total"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model='ir.actions.act_window' id='action_car_forecast_generator'>
+        <field name="name">car.forecast.generator.action</field>
+        <field name="res_model">car.forecast.generator</field>
+        
+        <field name="context">{'search_default_this_month': 1}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
