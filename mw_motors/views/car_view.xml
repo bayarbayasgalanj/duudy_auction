@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Technic VIEWs -->
+        <record model='ir.ui.view' id='car_form_view'>
+            <field name="name">Motors Car form</field>
+            <field name="model">motors.car</field>
+            <field name="arch" type="xml">
+                <form string="Car form">
+                    <header>
+                        <button name="action_to_draft" states="stopped,parking" type="object"
+                            string="Ноороглох"/>
+                        <button name="action_to_working" states="draft,stopped,parking"
+                            type="object" class="oe_highlight"
+                            string="Эхлүүлэх" />
+                        <button name="manual_increase_odometer" string="Гараар нэмэгдүүлэх"
+                            type="object"
+                            groups="mw_motors.group_car_module_odometer_user"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <!-- <field name="image" widget='image' class="oe_left oe_avatar"
+                            style="padding:5px;padding-right: 10px"/> -->
+                        <div class="oe_title">
+                            <label for="state_number" class="oe_edit_only"/>
+                            <field name="id" invisible="1"/>
+                            <h2>
+                                <field name="state_number" class="oe_inline"/>
+                            </h2>
+                        </div>
+                        <div name="button_box" class="oe_button_box oe_right">
+                            <button
+                                name="see_inspections"
+                                type="object" class="oe_stat_button oe_right"
+                                icon="fa-search" string="Inspections">
+                            </button>
+                            <button
+                                name="see_workorders"
+                                type="object" class="oe_stat_button oe_right"
+                                icon="fa-wrench" string="Work-Orders">
+                            </button>
+                        </div>
+                        <!-- <div class="oe_left">
+                            <label for="total_odometer" string="Гүйлт"/><br/>
+                            <field name="total_odometer" widget="odometer_widget"/>
+                            <field name="odometer_unit" 
+                                style="font-weight:bold;font-size:14pt;padding-left:7px"/>
+                        </div> -->
+                        <group col="4" string="Тээврийн хэрэгслийн хувийн мэдээлэл">
+                            <field name="vin_number"/>
+                            <field name="fuel_type" />
+                            <field name="car_brand_id" required="1"/>
+                            <field name="manufactured_date"/>
+                            <field name="car_model_id" domain="[('brand_id','=',car_brand_id)]" required="1"/>
+                            <field name="start_date"/>
+                            <field name="frame_number"/>
+                            <field name="total_odometer" widget="odometer_widget"/>
+                            <field name="engine_serial"/>
+                            <field name="with_warrenty"/> 
+                            <field name="engine_capacity" />
+                            
+                            <!-- <field name="document_number"/>  -->
+                            <!-- <field name="transmission_serial"/> -->
+                            <!-- <field name="work_time_per_month"/> -->
+                        </group>
+                        <group col="4" string="Ерөнхий мэдээлэл" invisible="1">
+                            <field name="car_setting_id" options="{'no_create':True}"/>
+                            <field name="model_id" options="{'no_create':True}"/>
+                            <field name="car_type" />
+                            <field name="trim" />
+                            
+                            
+                            <field name="seats" />
+                            <field name="color" widget="colorpicker"/>
+
+                            <field name="position_format" invisible="1"/>
+                            <field name="rubber_tired" invisible="1"/>
+                        </group>
+                        <group>
+                            <group col="4" string="Эзэмшигчийн мэдээлэл">
+                                <field name="partner_id"/>
+                                <field name="partner_phone" />
+                                <field name="partner_vat" string="Регистр"/>
+                                <field name="partner_type" />
+                                
+                            </group>
+                            <group col="4" string="PM засварын мэдээлэл">
+                                <field name="last_pm_priority"/>
+                                <field name="last_pm_id"/>
+                                <field name="last_pm_odometer"/>
+                                <field name="last_pm_date"/>
+                                <field name="with_insurance"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Баталгаат хугацааны мэдээлэл" col="4"
+                                attrs="{'invisible':[('with_warrenty','=',False)]}">
+                                <field name="warranty_period" />
+                                <field name="warranty_odometer" />
+
+                                <field name="warrenty_date"
+                                    attrs="{'required':[('with_warrenty','=',True)]}"/>
+                                <newline/>
+                                <field name="warranty_info" nolabel="1"
+                                    colspan="4"/>
+                                <button name="test_check_technic_warrenty"
+                                type="object" string="Test warrenty"
+                                groups="base.group_no_one" />
+                            </group>
+                            <group string="Даатгалтай холбоотой мэдээлэл" col="4"
+                                attrs="{'invisible':[('with_insurance','=',False)]}">
+                                <field name="insurance_contract_number"
+                                    attrs="{'required':[('with_insurance','=',True)]}" />
+                                <field name="insurance_payment_amount"
+                                    attrs="{'required':[('with_insurance','=',True)]}"/>
+
+                                <field name="insurance_type"
+                                    attrs="{'required':[('with_insurance','=',True)]}"/>
+                                <field name="insurance_date_end" 
+                                    attrs="{'required':[('with_insurance','=',True)]}"/>
+                                
+                                <field name="state_inspection_date_end"
+                                    attrs="{'required':[('with_insurance','=',True)]}"/>
+                                <field name="state_tax_date_end"
+                                    attrs="{'required':[('with_insurance','=',True)]}"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Гүйлтийн түүх">
+                                <group>
+                                    <field name="odometer_history_line" nolabel="1" 
+                                        colspan="4">
+                                        <tree>
+                                            <field name="date"/>
+                                            <field name="car_odometer"/>
+                                            <field name="user_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Засвар">
+                                <field name="ro_ids" nolabel="1"/>
+                            </page>
+                            <!-- <page string="Дугуйн байрлал"
+                                attrs="{'invisible':[('rubber_tired','=',False)]}">
+                                <div class="row" style="margin:10px;border-style:groove">
+                                    <div class="col-sm-4">
+                                        <widget name="tire_position_widget"/>
+                                    </div>
+                                </div>
+                            </page> -->
+                         </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model='ir.ui.view' id='car_tree_view'>
+            <field name="name">Motors Car tree</field>
+            <field name="model">motors.car</field>
+            <field name="arch" type="xml">
+                <tree string="Car"
+                    decoration-bf="state=='draft'"
+                    decoration-danger="state=='stopped'"
+                    decoration-muted="state=='inactive'"
+                    decoration-info="state=='parking'"
+                    decoration-warning="state=='repairing'"
+                    decoration-success="state=='working'">
+                    <field name="report_order" invisible="1"/>
+                    <field name="partner_id"/>
+                    <field name="model_id"/>
+                    <field name="name" />
+                    <field name="car_type"/>
+                    <field name="state_number" />
+                    <field name="vin_number" />
+                    <field name="total_odometer" />
+                    <field name="odometer_unit" invisible="1"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="car_search_view">
+            <field name="name">Motors Car search view</field>
+            <field name="model">motors.car</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="state_number"/>
+                    <field name="vin_number"/>
+                    <field name="car_setting_id"/>
+                    <field name="partner_id"/>
+                    <group expand="1" string="Шүүлт">
+                        <filter name="working" string="Ажиллаж байгаа"
+                            domain="[('state','=','working')]"/>
+                        <filter string="Засварлаж байгаа" domain="[('state','=','repairing')]"
+                            name="repairing"/>
+                        <filter string="Баталгаат" domain="[('with_warrenty','=',True)]"
+                            name="warrenty"/>
+                        <filter string="Даатгалтай" domain="[('with_insurance','=',True)]" 
+                            name="insured"/>
+                    </group>
+                    <group expand="1" string="Group By...">
+                        <filter name="groupby_status" context="{'group_by':'state'}"
+                            string="Төлөв"/>
+                        <filter name="groupby_brand" context="{'group_by':'brand_id'}"
+                            string="Үйлдвэрлэгч"/>
+                        <filter name="groupby_model" context="{'group_by':'model_id'}"
+                            string="Модел загвар"/>
+                        <filter name="groupby_type" context="{'group_by':'car_type'}"
+                            string="Тээврийн хэрэгслийн төрөл"/>
+                        <filter name="groupby_owner" context="{'group_by':'partner_id'}"
+                            string="Эзэмшигчээр"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='action_car_view'>
+            <field name="name">Тээврийн хэрэгслийн бүртгэл</field>
+            <field name="res_model">motors.car</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="car_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new vehicle.
+              </p><p>
+                You will be able to manage your fleet by keeping track of the
+                contracts, services, fixed and recurring costs, odometers and
+                fuel logs associated to each vehicle.
+            </p><p>
+                OpenERP will warn you when services or contract have to be
+                renewed.
+              </p>
+            </field>
+        </record>
+
+        <!-- Increase -->
+    <record model='ir.ui.view' id='car_odometer_increase_form'>
+        <field name="name">motors.car.odometer.increase.form</field>
+        <field name="model">motors.car.odometer.increase</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="4">
+                    <field name="date"/>
+                    <field name="last_odometer"/>
+                </group>
+                <footer>
+                    <button name="save_and_increase" string="Батлах" type="object" class="btn-primary"/>
+                    <button string="Хаах" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Warrenty CRON -->
+    <record id="cron_car_warrenty_view" model="ir.cron">
+        <field name="name">Тээврийн хэрэгслийн баталгаат хугацаа шалгах - КРОН</field>
+        <field name="model_id" ref="model_motors_car"/>
+        <field name="state">code</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="code">model._check_car_warrenty()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+    <!-- Insurance CRON -->
+    <record id="cron_car_insurance_view" model="ir.cron">
+        <field name="name">Тээврийн хэрэгслийн даатгалын хугацаа шалгах - КРОН</field>
+        <field name="model_id" ref="model_motors_car"/>
+        <field name="state">code</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="code">model._check_car_insurance()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+</odoo>
